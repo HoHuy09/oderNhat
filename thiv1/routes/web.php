@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('admin',[UserController::class, 'index']);
+//User
+Route::prefix('user')->group(function() {
+    Route::get('/',[UsersController::class,'index'])->name('user.index');
+    Route::get('add', [UsersController::class, 'addForm'])->name('user.add');
+    Route::post('add', [UsersController::class, 'saveAdd']);
+    Route::get('edit/{id}',[UsersController::class,'editForm'])->name('user.edit');
+    Route::post('edit/{id}', [UsersController::class, 'saveEdit']);
+    Route::get('remove/{id}',[UsersController::class,'remove'])->name('user.remove');
+});
+//Role
+Route::prefix('role')->group(function() {
+    Route::get('/',[RoleController::class,'index'])->name('role.index');
+    Route::get('add', [RoleController::class, 'addForm'])->name('role.add');
+    Route::post('add', [RoleController::class, 'saveAdd']);
+    Route::get('edit/{id}',[RoleController::class,'editForm'])->name('role.edit');
+    Route::post('edit/{id}', [RoleController::class, 'saveEdit']);
+    Route::get('remove/{id}',[RoleController::class,'remove'])->name('role.remove');
+});
