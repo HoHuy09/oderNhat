@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsersController;
@@ -45,4 +47,22 @@ Route::prefix('product')->group(function() {
     Route::get('edit/{id}',[ProductController::class,'editForm'])->name('product.edit');
     Route::post('edit/{id}', [ProductController::class, 'saveEdit']);
     Route::get('remove/{id}',[ProductController::class,'remove'])->name('product.remove');
+});
+//Category
+Route::prefix('category')->group(function() {
+    Route::get('/',[CategoryController::class,'index'])->name('category.index');
+    Route::get('add', [CategoryController::class, 'addForm'])->name('category.add');
+    Route::post('add', [CategoryController::class, 'saveAdd']);
+    Route::get('edit/{id}',[CategoryController::class,'editForm'])->name('category.edit');
+    Route::post('edit/{id}', [CategoryController::class, 'saveEdit']);
+    Route::get('remove/{id}',[CategoryController::class,'remove'])->name('category.remove');
+});
+//Post
+Route::prefix('posts')->group(function() {
+    Route::get('/',[PostsController::class,'index'])->name('post.index');
+    Route::get('add', [PostsController::class, 'addForm'])->name('post.add');
+    Route::post('add', [PostsController::class, 'saveAdd']);
+    Route::get('edit/{id}',[PostsController::class,'editForm'])->name('post.edit');
+    Route::post('edit/{id}', [PostsController::class, 'saveEdit']);
+    Route::get('remove/{id}',[PostsController::class,'remove'])->name('post.remove');
 });

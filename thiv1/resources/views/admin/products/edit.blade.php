@@ -1,4 +1,7 @@
 @extends('admin.layouts.main')
+@section('content-header')
+    <h2>Edit Product</h2>
+@endsection
 @section('content')
 <div class="container">
     <form action="" method="post" enctype="multipart/form-data">

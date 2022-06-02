@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('content-header')
-    <h2>Edit Role</h2>
+    <h2>Edit Categories</h2>
 @endsection
 @section('content')
 <div class="container">
@@ -10,7 +10,7 @@
             <div class="col-6">
                 <div class="form-group">
                   <label for="">Name</label>
-                  <input type="text" name="name" value="{{$roles->name}}"  class="form-control" placeholder="Nhập role">
+                  <input type="text" name="name" value="{{$category->name}}"  class="form-control" placeholder="Nhập Category">
                 </div> 
                 @error('name')
                 <p class="text-danger">{{$message}}</p>
@@ -20,7 +20,7 @@
             
             <div class="col-12 d-flex justify-content">
                 
-                <a href="{{route('role.index')}}" class="btn btn-danger">Hủy</a>
+                <a href="{{route('category.index')}}" class="btn btn-danger">Hủy</a>
                 &nbsp;
                 <button type="submit" class="btn btn-primary">Lưu</button>
             </div>

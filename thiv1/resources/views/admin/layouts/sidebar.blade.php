@@ -42,15 +42,15 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            {{-- <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('category.index')}}" class="nav-link">
                   <i class="fas fa-sitemap"></i>
                   <p>
-                    Passenger
+                    Category
                   </p>
                 </a>
-              </li> --}}
+              </li>
               <li class="nav-item">
                 <a href="{{route('product.index')}}" class="nav-link">
                   <i class="fas fa-shopping-bag"></i>
