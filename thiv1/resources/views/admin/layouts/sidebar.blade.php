@@ -50,15 +50,15 @@
                     Passenger
                   </p>
                 </a>
-              </li>
+              </li> --}}
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('product.index')}}" class="nav-link">
                   <i class="fas fa-shopping-bag"></i>
                   <p>
-                    Car
+                    Product
                   </p>
                 </a>
-              </li> --}}
+              </li>
               <li class="nav-item">
                 <a href="{{route('user.index')}}" class="nav-link">
                   <i class="fas fa-users"></i>

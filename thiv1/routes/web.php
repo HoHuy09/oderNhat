@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +36,13 @@ Route::prefix('role')->group(function() {
     Route::get('edit/{id}',[RoleController::class,'editForm'])->name('role.edit');
     Route::post('edit/{id}', [RoleController::class, 'saveEdit']);
     Route::get('remove/{id}',[RoleController::class,'remove'])->name('role.remove');
+});
+//Product
+Route::prefix('product')->group(function() {
+    Route::get('/',[ProductController::class,'index'])->name('product.index');
+    Route::get('add', [ProductController::class, 'addForm'])->name('product.add');
+    Route::post('add', [ProductController::class, 'saveAdd']);
+    Route::get('edit/{id}',[ProductController::class,'editForm'])->name('product.edit');
+    Route::post('edit/{id}', [ProductController::class, 'saveEdit']);
+    Route::get('remove/{id}',[ProductController::class,'remove'])->name('product.remove');
 });
