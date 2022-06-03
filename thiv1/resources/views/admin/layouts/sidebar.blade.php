@@ -76,6 +76,22 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{route('post.index')}}" class="nav-link">
+                  <i class="fas fa-newspaper"></i>
+                  <p>
+                    Post
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('listpost.index')}}" class="nav-link">
+                  <i class="fas fa-list-alt"></i>
+                  <p>
+                    Listpost
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{'http://localhost:8000/logout'}}" class="nav-link">
                   <i class="fas fa-sign-out-alt"></i>
                   <p>
