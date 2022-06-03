@@ -30,6 +30,8 @@ Route::any('logout', function(){
     Auth::logout();
     return redirect(route('login'));
 });
+Route::get('register', [LoginController::class, 'register'])->name('register');
+Route::post('register', [LoginController::class, 'saveregister']);
 //User
 Route::prefix('user')->middleware('auth')->group(function() {
     Route::get('/',[UsersController::class,'index'])->name('user.index');

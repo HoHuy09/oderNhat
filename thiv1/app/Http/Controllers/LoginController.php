@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -23,5 +25,14 @@ class LoginController extends Controller
             }
         }
         return back()->with('msg', 'Tài khoản/mật khẩu không chính xác');
+    }
+    public function register(){
+        return view('auth.register');
+    }
+    public function saveregister(Request $request){
+        $model = new User();
+        $model->fill($request->all());
+        $model->password = Hash::make($request->password);
+        $model->save();
     }
 }

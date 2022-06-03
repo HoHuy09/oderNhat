@@ -40,7 +40,7 @@
                         @csrf
                         <div class="flex text-sm gap-2">
                           <p class="mb-4">Không có tài khoản ?</p>
-                          <p class="text-blue-500">Tạo tài khoản</p>
+                          <a class="text-blue-500" href="{{route('register')}}">Tạo tài khoản</a>
                         </div>
                         <div class="mb-4">
                           <input
