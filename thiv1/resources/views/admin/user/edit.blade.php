@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <label for="">Avatar:</label>
                     <input type="file" name="image" class="form-control" >
-                    <img src="{{asset($user->avatar)}}" width="200px">
+                    <img src="{{asset('storage/'.$user->avatar)}}" width="200px">
                 </div>
                 @error('image')
                 <p class="text-danger">{{$message}}</p>

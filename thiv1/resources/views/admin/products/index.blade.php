@@ -27,7 +27,7 @@
                 <td>{{$item->price}}</td>
                 <td>{{$item->description}}</td>
                 <td>{{$item->link_sp}}</td>
-                <td><img src="{{asset($item->avatar)}}" width="100"></td>
+                <td><img src="{{asset('storage/'.$item->image)}}" width="100"></td>
                 <td>{{$item->category->name}}</td>
                 <td>
                     <a href="{{route('product.edit', ['id' => $item->id])}}">Edit</a>

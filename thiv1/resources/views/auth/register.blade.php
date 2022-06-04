@@ -31,23 +31,34 @@
                       <label class="block" for="Name">Name<label>
                               <input type="text" name="name" placeholder="Name"
                                   class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                                  @error('name')
+                                  <p class="text-red-500">{{$message}}</p>
+                                  @enderror
                   </div>
                   <div class="mt-4">
                       <label class="block" for="email">Email<label>
                               <input type="text" name="email" placeholder="Email"
                                   class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                                  @error('email')
+                                  <p class="text-red-500">{{$message}}</p>
+                                  @enderror
                   </div>
                   <div class="mt-4">
                       <label class="block">Password<label>
                               <input type="password" name="password" placeholder="Password"
                                   class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                                  @error('password')
+                                  <p class="text-red-500">{{$message}}</p>
+                                  @enderror
                   </div>
                   <div class="mt-4">
                       <label class="block">Confirm Password<label>
-                              <input type="password" name="confirmpassword" placeholder="Password"
+                              <input type="password" name="password_confirmation" placeholder="Password"
                                   class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                                  @error('password_confirmation')
+                                  <p class="text-red-500">{{$message}}</p>
+                                  @enderror
                   </div>
-                  <span class="text-xs text-red-400">Password must be same!</span>
                   <div class="flex">
                       <button style="
                       background: linear-gradient(

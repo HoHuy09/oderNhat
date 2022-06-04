@@ -30,7 +30,7 @@
                 <td>{{$item->content2}}</td>
                 <td>{{$item->author}}</td>
                 <td>{{$item->email}}</td>
-                <td><img src="{{asset($item->image)}}" width="100"></td>
+                <td><img src="{{asset('storage/'.$item->image)}}" width="100"></td>
                 <td>{{$item->listpost->name}}</td>
                 <td>{{$item->phone_number}}</td>
                 <td>

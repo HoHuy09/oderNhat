@@ -63,7 +63,7 @@
                 <div class="form-group">
                   <label for="">Image</label>
                   <input type="file" name="image" class="form-control" >
-                  <img src="{{asset($post->image)}}" width="200px">
+                  <img src="{{asset('storage/'.$post->image)}}" width="200px">
                 </div> 
                 @error('image')
                 <p class="text-danger">{{$message}}</p>

@@ -35,7 +35,7 @@
                 <td>{{$loop->iteration}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->email}}</td>
-                <td><img src="{{asset($item->avatar)}}" width="100"></td>
+                <td><img src="{{asset('storage/'.$item->avatar)}}" width="100"></td>
                 <td>{{$item->roles->name}}</td>
                 <td>
                     <a href="{{route('user.edit', ['id' => $item->id])}}">Edit</a>

@@ -21,7 +21,7 @@
                 <div class="form-group">
                   <label for="">Image</label>
                   <input type="file" name="image" class="form-control" >
-                  <img src="{{asset($product->image)}}" width="200px">
+                  <img src="{{asset('storage/'.$product->image)}}" width="200px">
                 </div> 
                 @error('image')
                 <p class="text-danger">{{$message}}</p>
