@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SlideshowController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,8 @@ Route::any('logout', function(){
 });
 Route::get('register', [LoginController::class, 'register'])->name('register');
 Route::post('register', [LoginController::class, 'saveregister']);
+Route::get('resetpassword', [LoginController::class, 'resetpassword'])->name('resetpassword');
+Route::post('resetpassword', [LoginController::class, 'saveresetpassword']);
 //User
 Route::prefix('user')->middleware('auth')->group(function() {
     Route::get('/',[UsersController::class,'index'])->name('user.index');
@@ -85,4 +88,13 @@ Route::prefix('listpost')->middleware('auth')->group(function() {
     Route::get('edit/{id}',[ListpostController::class,'editForm'])->name('listpost.edit');
     Route::post('edit/{id}', [ListpostController::class, 'saveEdit']);
     Route::get('remove/{id}',[ListpostController::class,'remove'])->name('listpost.remove');
+});
+//Slideshow
+Route::prefix('slideshow')->middleware('auth')->group(function() {
+    Route::get('/',[SlideshowController::class,'index'])->name('slideshow.index');
+    Route::get('add', [SlideshowController::class, 'addForm'])->name('slideshow.add');
+    Route::post('add', [SlideshowController::class, 'saveAdd']);
+    Route::get('edit/{id}',[SlideshowController::class,'editForm'])->name('slideshow.edit');
+    Route::post('edit/{id}', [SlideshowController::class, 'saveEdit']);
+    Route::get('remove/{id}',[SlideshowController::class,'remove'])->name('slideshow.remove');
 });

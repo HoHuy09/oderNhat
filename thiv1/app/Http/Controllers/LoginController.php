@@ -39,4 +39,18 @@ class LoginController extends Controller
         $model->role_id = 2;
         $model->save();
     }
+    public function resetpassword(){
+        return view('auth.resetpassword');
+    }
+    public function saveresetpassword(Request $request){
+        $email = $request->email;
+        $model = User::all()->where('email', $email)->first();
+        if($model==null){
+            return back()->with('msg', 'Email không tồn tại');
+        }else{
+            $model->password = Hash::make($request->password);
+            $model->save();
+            return redirect()->route('login')->with('msg', 'Đổi mật khẩu thành công');
+        }
+    }
 }

@@ -84,7 +84,7 @@
                           >
                             Đăng nhập
                           </button>
-                          <a class="text-gray-500" href="#!">Quên mật khẩu ?</a>
+                          <a class="text-gray-500" href="{{route('resetpassword')}}">Quên mật khẩu ?</a>
                         </div>
                         <div class="flex items-center justify-between pb-6">
                           <p class="mb-0 mr-2">Không có tài khoản ?</p>
