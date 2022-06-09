@@ -81,6 +81,20 @@
                 @enderror
                 <br>   
             </div>
+            <div class="col-12">
+                <div class="form-group">
+                  <label for="">Sản phẩm Nổi Bật</label>
+                  <select name="status" class="form-control">
+                      @if ($product->status == 1)
+                      <option selected value="1">Hot</option>
+                      <option value="0">Bình thường</option>
+                      @else
+                        <option value="1">Hot</option>
+                        <option selected value="0">Bình thường</option>
+                    @endif
+                  </select>
+                  </div> 
+            </div>
             <div class="col-12 d-flex justify-content">
                 
                 <a href="{{route('product.index')}}" class="btn btn-danger">Hủy</a>

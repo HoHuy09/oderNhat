@@ -14,6 +14,7 @@
         <th>Link_Sp</th>
         <th>Image</th>
         <th>Category_id</th>
+        <th>Status</th>
         <th>
             <a href="{{route('product.add')}}">Add</a>
         </th>
@@ -29,6 +30,12 @@
                 <td>{{$item->link_sp}}</td>
                 <td><img src="{{asset('storage/'.$item->image)}}" width="100"></td>
                 <td>{{$item->category->name}}</td>
+                @if ($item->status == 1)
+                    <td>Hot</td>
+                @else
+                    <td>Bình thường</td>
+                @endif
+                
                 <td>
                     <a href="{{route('product.edit', ['id' => $item->id])}}">Edit</a>
                     <a onclick="return confirm('Bạn có muốn xóa không?')" href="{{route('product.remove', ['id' => $item->id])}}">Remove</a>

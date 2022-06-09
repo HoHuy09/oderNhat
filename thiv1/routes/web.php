@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListpostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
@@ -21,10 +22,14 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+// Trang chủ
+Route::prefix('/')->group(function() {
+    Route::get('/',[HomeController::class,'home'])->name('home');
+    Route::get('detail/{id}',[HomeController::class,'detail'])->name('detail');
 });
+
+
+//login
 Route::get('login', [LoginController::class, 'loginForm'])->name('login');
 Route::post('login', [LoginController::class, 'postLogin']);
 Route::any('logout', function(){

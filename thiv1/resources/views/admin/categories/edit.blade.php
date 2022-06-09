@@ -17,7 +17,17 @@
                 @enderror
                 <br>   
             </div>
-            
+            <div class="col-6">
+                <div class="form-group">
+                  <label for="">Image</label>
+                  <input type="file" name="image" class="form-control" >
+                  <img src="{{asset('storage/'.$category->image)}}" width="200px">
+                </div> 
+                @error('image')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+                <br>   
+            </div>
             <div class="col-12 d-flex justify-content">
                 
                 <a href="{{route('category.index')}}" class="btn btn-danger">Hủy</a>

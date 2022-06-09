@@ -75,8 +75,9 @@
                   </form>
               </div>
               <div class="text-md mt-10 text-blue-400 text-center">
-                <h5>Create an Account!</h5>
-                <h5>Already have an account? Login!</h5>
+                
+                <a href="{{route('register')}}"><h5>Create an Account!</h5> </a>
+                <a href="{{route('login')}}"><h5>Already have an account? Login!</h5></a>
               </div>
             </div>
             <div class="md:col-span-6 md:block hidden">

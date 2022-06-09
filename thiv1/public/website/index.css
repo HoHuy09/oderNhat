@@ -1,0 +1,46 @@
+.containers{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.service_flow__step {
+    background: url(https://cdn.janbox.com/static/images/service-flow/bg-step.png) no-repeat 0 0;
+    width: 134px;
+    height: 43px;
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    font-size: 1.125rem;
+    color: white;
+    font-weight: 700;
+    line-height: 43px;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+#style-1::-webkit-scrollbar-thumb {
+    background-color: #bdadad;
+}
+#style-1::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f8f0f0;
+} 
+.service_flow__item {
+    background: #FFF7E6;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 70px 20px 70px 20px;
+    position: relative;
+    border: solid 2px #F27C08;
+    border-radius: 20px;
+    box-shadow: none;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#price{
+    text-align: center;
+    color: gray;
+    font-size: medium;
+    margin: 0 10px;
+}

@@ -18,6 +18,11 @@ class CategoryController extends Controller
     public function saveAdd(SaveCategoryRequest $request){
         $model = new Category();
         $model->fill($request->all());
+        if($request->hasFile('image')){
+            $imgPath = $request->file('image')->store('products');
+            $imgPath = str_replace('public/', '', $imgPath);
+            $model->image = $imgPath;
+        }
         $model->save();
         return redirect(route('category.index'));
     }
@@ -28,6 +33,11 @@ class CategoryController extends Controller
     public function saveEdit($id,SaveCategoryRequest $request){
         $model = Category::find($id);
         $model->fill($request->all());
+        if($request->hasFile('image')){
+            $imgPath = $request->file('image')->store('products');
+            $imgPath = str_replace('public/', '', $imgPath);
+            $model->image = $imgPath;
+        }
         $model->save();
         return redirect(route('category.index'));
     }
