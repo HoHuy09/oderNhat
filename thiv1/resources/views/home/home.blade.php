@@ -315,7 +315,7 @@
             </div>
           </div>
           <h5 class="ml-auto text-sm mt-5 pt-1 opacity-70">
-              Đã xem : <span>34</span>
+              Đã xem : <span>{{$sp->product_views}}</span>
             </h5>
         </div>
       </div>

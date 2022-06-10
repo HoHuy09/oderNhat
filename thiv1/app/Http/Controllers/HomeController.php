@@ -18,6 +18,8 @@ class HomeController extends Controller
     public function detail($id)
     {
         $product = Product::find($id);
+        $product->product_views = $product->product_views + 1;
+        $product->save();
         return view('home.detail', compact('product'));
     }
 }
