@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SaveCategoryRequest;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -43,6 +44,7 @@ class CategoryController extends Controller
     }
     public function remove($id){
         Category::destroy($id);
+        Product::where('cate_id',$id)->delete();
         return redirect(route('category.index'));
     }
 }
