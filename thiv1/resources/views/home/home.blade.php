@@ -305,7 +305,7 @@
         <div class="text-center rounded-lg hover:shadow-2xl">
           <img src="{{asset('storage/'.$sp->image)}}" alt="" class="mx-auto py-5 h-44" />
           <div>
-            <h4 class="font-bold">{{$sp->name}}</h4>
+            <a href="{{route('detail', ['id' => $sp->id])}}" class="font-bold">{{$sp->name}}</a>
             <div class="flex px-5 mt-10 pb-2">
               <div>
                 <h5 class="text-blue-400">3123 ¥</h5>
@@ -335,7 +335,7 @@
         <div class="text-center rounded-lg hover:shadow-2xl">
           <img src="{{asset('storage/'.$spnb->image)}}" alt="" class="mx-auto py-5 h-44" />
           <div>
-            <a href="{{route('user.edit', ['id' => $spnb->id])}}" class="font-bold">{{$spnb->name}}</a>
+            <a href="{{route('detail', ['id' => $spnb->id])}}" class="font-bold">{{$spnb->name}}</a>
             <div class="flex px-5 mt-10 pb-2">
               <div>
                 <h5 class="text-blue-400">3123 ¥</h5>
