@@ -32,7 +32,7 @@
                       <div class="text-center">
                         <img
                           class="mx-auto w-60"
-                          src="{{asset('storage/anhweb/[Cỡ gốc] ordernhat247 (3).png')}}"
+                          src="{{asset('storage/anhweb/logo 2c.png')}}"
                           alt="logo"
                         />
                       </div>

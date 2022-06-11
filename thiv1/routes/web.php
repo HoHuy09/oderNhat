@@ -26,6 +26,11 @@ use Illuminate\Support\Facades\Auth;
 Route::prefix('/')->group(function() {
     Route::get('/',[HomeController::class,'home'])->name('home');
     Route::get('detail/{id}',[HomeController::class,'detail'])->name('detail');
+    Route::get('cate',[HomeController::class,'cate'])->name('cate');
+    Route::post('cate',[HomeController::class,'catefilter'])->name('cate.filter');
+    Route::get('category/{id}',[HomeController::class,'category'])->name('category');
+    Route::post('category/{id}',[HomeController::class,'catefilter'])->name('category.filter');
+    Route::post('search',[HomeController::class,'search'])->name('search');
 });
 
 

@@ -41,8 +41,12 @@
           </div>
           <div class="col-span-7">
             <div class="relative">
-              <input type="text" class="w-full p-1 mt-1 pr-20 rounded-md" />
-              <i class="fas fa-search absolute top-3 right-6"></i>
+              <div class="relative">
+                <form action="{{route('search')}}" method="POST">
+                @csrf
+              <input type="text" name="search"  class="w-full p-1 mt-1 pr-20 rounded-md" />
+              <button type="submit"><i class="fas fa-search absolute top-3 right-6"></i></button>
+            </form>
             </div>
           </div>
           <div class="col-span-3 lg:ml-auto flex gap-10 mt-1">

@@ -25,4 +25,31 @@ class HomeController extends Controller
         $product->save();
         return view('home.detail', compact('product','sptt'));
     }
+    public function cate(){
+        $cate = Category::all();
+        $products = Product::all();
+        return view('home.cate', compact('cate','products'));
+        
+    }
+    public function category($id)
+    {
+        $cate = Category::all();
+        $category = Category::find($id);
+        $products = Product::where('cate_id', $id)->get();
+        return view('home.category', compact('category', 'products', 'cate'));
+    }
+    public function search(Request $request)
+    {
+        $cate = Category::all();
+        $products = Product::where('name', 'like', '%' . $request->search . '%')->get();
+        return view('home.cate', compact('products', 'cate'));
+    }
+    public function catefilter(Request $request)
+    {
+        $model = $request->status;
+        
+        $cate = Category::all();
+        $products = Product::where('status', $model)->get();
+        return view('home.cate', compact('cate','products'));
+    }
 }
