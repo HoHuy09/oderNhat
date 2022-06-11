@@ -33,21 +33,22 @@
   </head>
   <body>
     <!-- header -->
-    <div class="bg-amber-600 sticky top-0 z-10">
+    <div class="bg-amber-600 sticky top-0 z-10 lg:block hidden">
       <div class="containers py-4">
         <div class="grid grid-cols-12 gap-10">
-          <div class="col-span-2 mx-auto">
+          <div class="col-span-3 lg:col-span-2 mx-auto">
             <img class="h-10" src="{{asset('storage/anhweb/logo 2c.png')}}" alt="" />
           </div>
-          <div class="col-span-7">
+          <div class="col-span-6 lg:col-span-7">
             <div class="relative">
               <input type="text" class="w-full p-1 mt-1 pr-20 rounded-md" />
               <i class="fas fa-search absolute top-3 right-6"></i>
             </div>
           </div>
-          <div class="col-span-3 ml-auto flex gap-10 mt-1">
+          <div class="col-span-3 lg:ml-auto flex gap-10 mt-1">
+            <!-- user -->
             <div
-              class="text-2xl text-white relative"
+              class="text-2xl text-white relative hidden sm:block"
               x-data="{ open: false }"
               @mouseleave="open = false"
             >
@@ -76,9 +77,11 @@
                 </div>
               </div>
             </div>
-            <div>
+            <!-- đấu giá -->
+            <div class="hidden md:block">
               <i class="fas fa-gavel text-2xl text-white"></i>
             </div>
+            <!-- giỏ hàng -->
             <div
               x-data="{ open: false }"
               @mouseleave="open = false"
@@ -92,7 +95,7 @@
                 x-transition.scale.origin.right
                 class="absolute bg-white w-72 right-0 py-24 mt-2 bg-white shadow-xl"
               >
-                <img class="w-full px-20" src="{{asset('storage/anhweb/cart-empty.svg')}}" alt="" />
+                <img class="w-full px-20" src="./image/cart-empty.svg" alt="" />
                 <div class="text-center">
                   <h4 class="font-bold mt-3">Giỏ hàng trống!</h4>
                   <p class="text-xs mt-3">
@@ -101,10 +104,12 @@
                 </div>
               </div>
             </div>
+            <!-- end giỏ hàng -->
+            <!-- thong báo -->
             <div
               x-data="{ open: false }"
               @mouseleave="open = false"
-              class="relative"
+              class="relative hidden lg:block"
             >
               <div @mouseover="open = true">
                 <i class="fas fa-bell text-2xl text-white"></i>
@@ -121,37 +126,39 @@
         </div>
       </div>
     </div>
-    <div class="containers grid grid-cols-12 py-3">
-      <div class="col-span-2 flex border-r pl-3 border-gray-400">
-        <i class="fas fa-bars mt-1 mr-3"></i>
-        <h4 class="">Tất cả danh mục</h4>
-      </div>
-      <div class="col-span-8 flex px-10 gap-10">
-        <div>
-          <a class="flex" href="#">
-            <i class="fab fa-battle-net text-xl text-amber-600 mr-2"></i>
-            <h4 class="font-bold">Market</h4></a
-          >
+    <div class="hidden lg:block">
+      <div class="containers grid grid-cols-12 py-3">
+        <div class="col-span-2 flex border-r pl-3 border-gray-400">
+          <i class="fas fa-bars mt-1 mr-3"></i>
+          <h4 class="">Tất cả danh mục</h4>
         </div>
-        <div>
-          <a class="flex" href="#">
-            <i class="fas fa-truck text-amber-600 text-xl mr-2"></i>
-            <h4 class="font-bold">Express</h4></a
-          >
+        <div class="col-span-8 flex px-10 gap-10">
+          <div>
+            <a class="flex" href="#">
+              <i class="fab fa-battle-net text-xl text-amber-600 mr-2"></i>
+              <h4 class="font-bold">Market</h4></a
+            >
+          </div>
+          <div>
+            <a class="flex" href="#">
+              <i class="fas fa-truck text-amber-600 text-xl mr-2"></i>
+              <h4 class="font-bold">Express</h4></a
+            >
+          </div>
+          <div>
+            <a class="flex" href="#">
+              <i class="fas fa-fire-alt text-amber-600 text-xl mr-2"></i>
+              <h4 class="mt-1 font-bold">Ưu đãi</h4></a
+            >
+          </div>
         </div>
-        <div>
-          <a class="flex" href="#">
-            <i class="fas fa-fire-alt text-amber-600 text-xl mr-2"></i>
-            <h4 class="mt-1 font-bold">Ưu đãi</h4></a
-          >
+        <div class="col-span-2 flex">
+          <i class="fas fa-home text-xl text-amber-600 mr-2"></i>
+          <h4 class="font-bold mt-1">Bán ở nhật bản</h4>
         </div>
-      </div>
-      <div class="col-span-2 flex">
-        <i class="fas fa-home text-xl text-amber-600 mr-2"></i>
-        <h4 class="font-bold mt-1">Bán ở nhật bản</h4>
       </div>
     </div>
-    <div class="bg-gray-200 py-3">
+    <div class="bg-gray-200 py-3 lg:block hidden">
       <div class="containers">
         <a href="">
           <div class="text-sm flex hover:text-amber-600">
@@ -163,11 +170,24 @@
     </div>
     <!-- content -->
     <div class="containers">
-      <div class="grid grid-cols-12 mt-10 gap-10">
-        <div class="col-span-4">
-          <img src="{{asset('storage/anhweb/50.jfif')}}" alt="" />
+      <div class="grid grid-cols-1 lg:grid-cols-12 lg:mt-10 lg:gap-10">
+        <div class="hidden md:block lg:hidden sticky top-0">
+          <div class="flex  bg-gray-200  ">
+            <div class="px-6 py-3 ">
+              <a href="">
+                <i class="fas bg-gray-700 text-white px-4 py-2 text-sm rounded-full fa-angle-left"></i>
+              </a>
+            </div>
+            <div class="px-6 py-3 ml-auto">
+              <i class="fas bg-gray-700 text-white px-3 text-sm py-2 rounded-full fa-share-alt"></i>
+              <i class="fas bg-gray-700 text-white px-4 text-sm py-2 rounded-full fa-ellipsis-v"></i>
+            </div>
+          </div>
         </div>
-        <div class="col-span-8">
+        <div class="md:px-16 py-5  md:bg-gray-200 lg:bg-white lg:px-0 lg:col-span-4" >
+          <img class=" w-full" src="{{asset('storage/'.$product->image)}}"  alt="" />
+        </div>
+        <div class="lg:col-span-8 mt-2 md:mt-3 px-3 md:px-16 lg:px-0">
           <h1 class="font-bold text-xl">
             ドライヤー SALONIA　サロニア 公式店 速乾 軽量 大風量 スピーディー
             イオンドライヤー 家電 プレゼント ジェンダーレス 春夏 限定カラー
@@ -187,7 +207,7 @@
               <h5>Gía hiện tại:</h5>
               <div class="mt-3">
                 <h5 class="text-2xl font-bold">5,478 ¥</h5>
-                <span class="font-bold mt-1 text-gray-400">1,040,820 VND</span>
+                <span class="font-bold mt-1 text-gray-400">{{ number_format($product->price, 0) }} VND</span>
               </div>
             </div>
             <div>
@@ -195,7 +215,7 @@
               <p class="mt-1">Phí vận chuyển nội địa: Miễn phí vận chuyển</p>
             </div>
           </div>
-          <div class="gap-5 flex mt-14">
+          <div class=" gap-3 md:gap-5 lg:gap-5  flex mt-14">
             <div>
               <button class="px-8 border-blue-500 border text-sm">S</button>
             </div>
@@ -209,7 +229,7 @@
               <button class="px-8 border-blue-500 border text-sm">XL</button>
             </div>
           </div>
-          <div class="grid grid-cols-2 mt-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 mt-10">
             <div>
               <h4 class="text-sm font-bold">Số lượng:</h4>
               <div class="flex mt-3">
@@ -229,14 +249,14 @@
                 ></textarea>
               </div>
             </div>
-            <div class="flex flex-col mx-auto">
+            <div class="flex flex-col md:mx-auto mt-5">
               <button
-                class="bg-blue-500 w-44 font-bold text-sm py-2 text-white"
+                class="bg-blue-500 md:w-44 font-bold text-sm py-2 text-white"
               >
                 MUA NGAY
               </button>
               <button
-                class="text-blue-500 w-44 font-bold text-sm py-2 hover:bg-blue-500 border border-blue-500 mt-3 hover:text-white"
+                class="text-blue-500 md:w-44 font-bold text-sm py-2 hover:bg-blue-500 border border-blue-500 mt-3 hover:text-white"
               >
                 <i class="fab fa-opencart"></i> THÊM VÀO GIỎ
               </button>
@@ -245,20 +265,24 @@
         </div>
       </div>
 
-      <div class="mt-10">
+      <div class="border-t-4  mt-5 border-gray-300 ">
+
+      </div>
+      <div class="mt-10 md:mt-3 lg:mt-10 px-3 md:px-16 lg:px-3 ">
         <h3 class="font-bold text-lg">Sản phẩm tương tự</h3>
-        <div class="col-span-10 grid grid-cols-4 gap-5 mt-10">
+        <div class=" grid grid-cols-4 gap-5 mt-10 overflow-x-scroll w-full">
+          @foreach ($sptt as $item)
           <div class="text-center rounded-lg hover:shadow-2xl">
-            <img src="{{asset('storage/anhweb/20.jpg')}}" alt="" class="mx-auto py-5 h-44" />
+            <img src="{{asset('storage/'.$item->image)}}" alt="" class="mx-auto py-5 h-44" />
             <div>
-              <h4 class="font-bold">laptop đẹp</h4>
+              <a href="{{route('detail', ['id' => $item->id])}}" class="font-bold">{{$item->name}}</a>
               <div class="flex px-5 mt-10 pb-2">
                 <div>
                   <h5 class="text-blue-400">3123 ¥</h5>
-                  <h5 class="mr-auto text-gray-400 text-sm">5000 VND</h5>
+                  <h5 class="mr-auto text-gray-400 text-sm">{{ number_format($item->price, 0) }} VND</h5>
                 </div>
                 <h5 class="ml-auto text-sm mt-5 pt-1 opacity-70">
-                  Đã xem : <span>34</span>
+                  Đã xem : <span>{{$item->product_views}}</span>
                 </h5>
               </div>
               <div class="py-3">
@@ -270,77 +294,31 @@
               </div>
             </div>
           </div>
-          <div class="text-center rounded-lg hover:shadow-2xl">
-            <img src="{{asset('storage/anhweb/20.jpg')}}" alt="" class="mx-auto py-5 h-44" />
-            <div>
-              <h4 class="font-bold">laptop đẹp</h4>
-              <div class="flex px-5 mt-10 pb-2">
-                <div>
-                  <h5 class="text-blue-400">3123 ¥</h5>
-                  <h5 class="mr-auto text-gray-400 text-sm">5000 VND</h5>
-                </div>
-                <h5 class="ml-auto text-sm mt-5 pt-1 opacity-70">
-                  Đã xem : <span>34</span>
-                </h5>
-              </div>
-              <div class="py-3">
-                <a href="#">
-                  <i
-                    class="fab fa-gratipay hover:text-white bg-gray-200 px-3 py-3 hover:bg-black rounded-full"
-                  ></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="text-center rounded-lg hover:shadow-2xl">
-            <img src="{{asset('storage/anhweb/20.jpg')}}" alt="" class="mx-auto py-5 h-44" />
-            <div>
-              <h4 class="font-bold">laptop đẹp</h4>
-              <div class="flex px-5 mt-10 pb-2">
-                <div>
-                  <h5 class="text-blue-400">3123 ¥</h5>
-                  <h5 class="mr-auto text-gray-400 text-sm">5000 VND</h5>
-                </div>
-                <h5 class="ml-auto text-sm mt-5 pt-1 opacity-70">
-                  Đã xem : <span>34</span>
-                </h5>
-              </div>
-              <div class="py-3">
-                <a href="#">
-                  <i
-                    class="fab fa-gratipay hover:text-white bg-gray-200 px-3 py-3 hover:bg-black rounded-full"
-                  ></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="text-center rounded-lg hover:shadow-2xl">
-            <img src="{{asset('storage/anhweb/20.jpg')}}" alt="" class="mx-auto py-5 h-44" />
-            <div>
-              <h4 class="font-bold">laptop đẹp</h4>
-              <div class="flex px-5 mt-10 pb-2">
-                <div>
-                  <h5 class="text-blue-400">3123 ¥</h5>
-                  <h5 class="mr-auto text-gray-400 text-sm">5000 VND</h5>
-                </div>
-                <h5 class="ml-auto text-sm mt-5 pt-1 opacity-70">
-                  Đã xem : <span>34</span>
-                </h5>
-              </div>
-              <div class="py-3">
-                <a href="#">
-                  <i
-                    class="fab fa-gratipay hover:text-white bg-gray-200 px-3 py-3 hover:bg-black rounded-full"
-                  ></i>
-                </a>
-              </div>
-            </div>
-          </div>
+          @endforeach
+        </div>
+      </div>
+      <div class="grid grid-cols-3  lg:hidden block border-t border-gray-400 py-2 sticky bottom-0 bg-white">
+        <div class="mx-auto text-center text-gray-500">
+          <a href="">
+            <i class="fas fa-home text-sm"></i>
+            <h4 class="text-sm">Trang chủ</h4>
+          </a>
+        </div>
+        <div class="mx-auto text-center text-gray-500">
+          <i class="fas fa-heart"></i>
+            <h4 class="text-sm">Ưa thích</h4>
+          </a>
+        </div>
+        <div class="mx-auto text-center text-gray-500"> 
+          <a href="">
+            <i class="fas fa-user"></i>
+            <h4 class="text-sm">Cá nhân</h4>
+          </a>
         </div>
       </div>
     </div>
-    <!-- end header -->
-    <div class="bg-gray-100 mt-20">
+    <!--footer-->
+    <div class="bg-gray-100 mt-20 lg:block hidden">
       <div class="border-b border-t border-gray-300">
         <div class="grid grid-cols-5 mt-10 containers py-7 gap-5">
           <div class="">

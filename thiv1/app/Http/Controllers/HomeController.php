@@ -20,8 +20,9 @@ class HomeController extends Controller
     public function detail($id)
     {
         $product = Product::find($id);
+        $sptt = Product::where('cate_id', $product->cate_id)->where('id', '!=', $id)->get()->take(4);
         $product->product_views = $product->product_views + 1;
         $product->save();
-        return view('home.detail', compact('product'));
+        return view('home.detail', compact('product','sptt'));
     }
 }
