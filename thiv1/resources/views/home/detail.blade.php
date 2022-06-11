@@ -189,8 +189,7 @@
         </div>
         <div class="lg:col-span-8 mt-2 md:mt-3 px-3 md:px-16 lg:px-0">
           <h1 class="font-bold text-xl">
-            ドライヤー SALONIA　サロニア 公式店 速乾 軽量 大風量 スピーディー
-            イオンドライヤー 家電 プレゼント ジェンダーレス 春夏 限定カラー
+            {{$product->name}}
           </h1>
           <div class="mt-3">
             <span class="text-sm text-gray-600">
