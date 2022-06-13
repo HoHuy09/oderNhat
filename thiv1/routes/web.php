@@ -45,7 +45,11 @@ Route::get('register', [LoginController::class, 'register'])->name('register');
 Route::post('register', [LoginController::class, 'saveregister']);
 Route::get('resetpassword', [LoginController::class, 'resetpassword'])->name('resetpassword');
 Route::post('resetpassword', [LoginController::class, 'saveresetpassword']);
+
+Route::get('addcart/{id}', [HomeController::class, 'addcart'])->name('addcart');
+Route::get('removecart/{id}', [HomeController::class, 'removecart'])->name('deletecart');
 //User
+
 Route::prefix('user')->middleware('auth')->group(function() {
     Route::get('/',[UsersController::class,'index'])->name('user.index');
     Route::get('add', [UsersController::class, 'addForm'])->name('user.add');

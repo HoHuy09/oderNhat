@@ -63,13 +63,31 @@
             <div @mouseover="open = true">
               <i class="fab fa-opencart text-2xl text-white"></i>
             </div>
-            <div x-show="open" x-transition.scale.origin.right class="absolute bg-whitew-72 right-0 py-24 mt-2 bg-white shadow-xl">
-              <img class="w-full px-20" src="{{asset('storage/anhweb/cart-empty.svg')}}" alt="" />
-              <div class="text-center">
-                <h4 class="font-bold mt-3">Giỏ hàng trống!</h4>
-                <p class="text-xs mt-3">
-                  không có sản phẩm trong giỏ hàng của bạn
-                </p>
+            <div x-show="open" x-transition.scale.origin.right class="absolute bg-whitew-72 w-64 right-0 px-3 py-5  mt-2 bg-white shadow-xl">
+              <div>
+                <h5 class="font-bold">cart</h5>
+              </div>
+              @foreach ($cart as $item12)
+              <div class="flex gap-3 mt-3">
+                <a href=""><img class="w-20" src="{{asset('storage/'.$item12['image'])}}" alt=""></a>
+                <div>
+                  <a href="">
+                    <h5 class="font-bold text-sm hover:text-yellow-500">{{$item12['name']}}</h5>
+                  </a>
+                  <div class="grid grid-cols-2  mt-2">
+                    <div class="text-xs">
+                      <h5 class="font-bold">{{$item12['price']}} ¥</h5>
+                    </div>
+                    <div class="text-xs">
+                      <p class="text-gray-400">Số lượng : <span>{{$item12['quantity']}}</span></p>
+                      <a href="{{route('deletecart',['id'=>$item12['id']])}}"><button class="ml-12"> <i class="fas fa-trash-alt text-red-500 "></i></button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              @endforeach
+              <div class="mt-3 border-t-2 border-gray-300 ">
+                 <a href="#"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
               </div>
             </div>
           </div>
