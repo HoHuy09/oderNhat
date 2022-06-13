@@ -15,7 +15,7 @@ class HomeController extends Controller
             return $item->status == 1;
         })->sortByDesc('id')->take(10);
         $category = Category::all();
-        $cart = $request->session()->get('cart');
+        $cart = isset($request->session()->get('cart')['products']) ? $request->session()->get('cart')['products'] : [];
         return view('home.home', compact('products', 'productnb', 'category', 'cart'));
     }
     public function detail(Request $request,$id)
@@ -24,13 +24,13 @@ class HomeController extends Controller
         $sptt = Product::where('cate_id', $product->cate_id)->where('id', '!=', $id)->get()->take(4);
         $product->product_views = $product->product_views + 1;
         $product->save();
-        $cart = $request->session()->get('cart');
+        $cart = isset($request->session()->get('cart')['products']) ? $request->session()->get('cart')['products'] : [];
         return view('home.detail', compact('product','sptt','cart'));
     }
     public function cate(Request $request){
         $cate = Category::all();
         $products = Product::all();
-        $cart = $request->session()->get('cart');
+        $cart = isset($request->session()->get('cart')['products']) ? $request->session()->get('cart')['products'] : [];
         return view('home.cate', compact('cate','products','cart'));
         
     }
@@ -39,7 +39,7 @@ class HomeController extends Controller
         $cate = Category::all();
         $category = Category::find($id);
         $products = Product::where('cate_id', $id)->get();
-        $cart = $request->session()->get('cart');
+        $cart = isset($request->session()->get('cart')['products']) ? $request->session()->get('cart')['products'] : [];
         return view('home.category', compact('category', 'products', 'cate', 'cart'));
     }
     public function search(Request $request)
