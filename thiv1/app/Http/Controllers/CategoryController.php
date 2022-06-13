@@ -20,7 +20,7 @@ class CategoryController extends Controller
         $model = new Category();
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('products');
+            $imgPath = $request->file('image')->store('public/products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }
@@ -35,7 +35,7 @@ class CategoryController extends Controller
         $model = Category::find($id);
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('products');
+            $imgPath = $request->file('image')->store('public/products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }

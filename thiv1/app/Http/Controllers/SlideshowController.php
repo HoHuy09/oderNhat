@@ -22,7 +22,7 @@ class SlideshowController extends Controller
         $model = new Slideshow();
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('products');
+            $imgPath = $request->file('image')->store('public/products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }
@@ -39,7 +39,7 @@ class SlideshowController extends Controller
         $model = Slideshow::find($id);
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('products');
+            $imgPath = $request->file('image')->store('public/products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }
