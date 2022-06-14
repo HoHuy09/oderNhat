@@ -11,13 +11,14 @@ class HomeController extends Controller
 {
     public function home(Request $request)
     {
+        
         $products = Product::all()->sortByDesc('id')->take(5);
         $productnb = Product::all()->filter(function ($item) {
             return $item->status == 1;
         })->sortByDesc('id')->take(10);
         $category = Category::all();
         $cart = $request->session()->get('cart');
-        isset($cart) ? $cart : [];
+        isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
         return view('home.home', compact('products', 'productnb', 'category', 'cart'));
     }
     public function detail(Request $request,$id)
@@ -27,9 +28,13 @@ class HomeController extends Controller
         $product->product_views = $product->product_views + 1;
         $product->save();
         $user = $request->session()->get('user');
-       
+        if(isset($user)){
+            $user = $request->session()->get('user');
+        }else{
+            return redirect(route('login'));
+        }
         $cart = $request->session()->get('cart');
-        isset($cart) ? $cart : [];
+        isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
         
         return view('home.detail', compact('product','sptt','cart','user'));
     }
@@ -47,7 +52,7 @@ class HomeController extends Controller
         $category = Category::find($id);
         $products = Product::where('cate_id', $id)->get();
         $cart = $request->session()->get('cart');
-        isset($cart) ? $cart : [];
+        isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
         return view('home.category', compact('category', 'products', 'cate', 'cart'));
     }
     public function search(Request $request)
