@@ -37,10 +37,7 @@ Route::prefix('/')->group(function() {
 //login
 Route::get('login', [LoginController::class, 'loginForm'])->name('login');
 Route::post('login', [LoginController::class, 'postLogin']);
-Route::any('logout', function(){
-    Auth::logout();
-    return redirect(route('login'));
-});
+Route::any('logout',[LoginController::class,'logout'])->name('logout');
 Route::get('register', [LoginController::class, 'register'])->name('register');
 Route::post('register', [LoginController::class, 'saveregister']);
 Route::get('resetpassword', [LoginController::class, 'resetpassword'])->name('resetpassword');
@@ -48,6 +45,7 @@ Route::post('resetpassword', [LoginController::class, 'saveresetpassword']);
 
 Route::get('addcart/{id}', [HomeController::class, 'addcart'])->name('addcart');
 Route::get('removecart/{id}', [HomeController::class, 'removecart'])->name('deletecart');
+Route::get('cart/{userid}', [HomeController::class, 'cart'])->name('cart');
 //User
 
 Route::prefix('user')->middleware('auth')->group(function() {

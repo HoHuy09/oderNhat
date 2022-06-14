@@ -21,10 +21,17 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
         if(Auth::attempt(['email' => $email, 'password' => $password], $request->remember)){
+                $user = [
+                    [
+                        'id' => Auth::user()->id,
+                        'name' => Auth::user()->name,
+                    ]
+                ];
+                session()->put('user', $user);
             if(Auth::user()->role_id == 1){
                 return redirect()->route('user.index');
             }else{
-                return redirect()->route('role.index');
+                return redirect()->route('home');
             }
         }
         return back()->with('msg', 'Tài khoản/mật khẩu không chính xác');
@@ -52,5 +59,10 @@ class LoginController extends Controller
             $model->save();
             return redirect()->route('login')->with('msg', 'Đổi mật khẩu thành công');
         }
+    }
+    public function logout(){
+        session()->forget('user');
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

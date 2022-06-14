@@ -9,7 +9,7 @@ class Cart extends Model
 {
     use HasFactory;
     protected $table = 'cart';
-    public $fillable = ['product_id','quantity','price','user_id'];
+    public $fillable = ['product_id','quantity','price','user_id','status'];
     public $timestamp = false;
     public function category(){
         return $this->belongsTo(Category::class,'cate_id');
