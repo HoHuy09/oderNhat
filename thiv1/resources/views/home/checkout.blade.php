@@ -36,9 +36,9 @@
     <div class="bg-amber-600 sticky top-0 z-10">
       <div class="containers py-4">
         <div class="grid grid-cols-12 gap-10">
-            <a href="{{route('home')}}">
-                <img class="h-10" src="{{asset('storage/anhweb/logo 2c.png')}}" alt="" />
-              </a>
+          <div class="col-span-2 mx-auto">
+            <img class="h-10" src="{{asset('storage/anhweb/logo 2c.png')}}" alt="" />
+          </div>
           <div class="col-span-7">
             <div class="relative">
               <input type="text" class="w-full p-1 mt-1 pr-20 rounded-md" />
@@ -180,36 +180,66 @@
           >
             <i class="fas fa-plus pr-3"></i>Thêm sản phẩm
           </button>
-          @foreach($sp as $sp)
-          <div class="border border-gray-400 py-3 mt-3 px-3 flex gap-5">
-            <div class=" mt-3">
-               <input type="checkbox" name="" id="">
-               <img class="w-48" src="{{asset('storage/'.$sp->product->image)}}" alt="">
+          <!-- form giỏ hàng -->
+          <div class=" grid grid-cols-1   mt-3   gap-5">
+            <div class="flex border border-gray-400  py-3 px-3">
+              <div class=" mt-3">
+                <input type="checkbox" name="" id="">
+                <img class="w-48" src="./image/12.png" alt="">
+             </div>
+             <div class=" grid grid-cols-2 mt-3 gap-3 ">
+                 <div><h3 class="font-bold text-md">ラングスジャパン(RANGS) リップスティックデラックスミニ ブルー</h3>
+                     <h5 class="text-sm mt-3">Color: <span>tim</span></h5>
+                     <h5 class="text-sm">Phí vận chuyển nội địa: <span class="font-bold">Đang cập nhật</span></h5>
+                     <p class="text-sm">Ghi chú:</p>
+                     <textarea class="border border-gray-500 mt-1" name="" id="" cols="30" rows="2"></textarea>
+                 </div>
+                 <div class="grid grid-cols-2">
+                         <div class="flex h-8 ml-auto">
+                           <button class="px-2 py-1 bg-gray-400 text-sm">-</button>
+                           <input
+                             type="text"
+                             class="w-14 py-1 text-center border border-gray-300 text-sm"
+                             value="1"
+                           />
+                           <button class="px-2 py-1 bg-gray-400 text-sm">+</button>
+                         </div>
+                         <div class="ml-auto">
+                             <h5><span class="font-bold">131,526 ¥</span></h5>
+                             <button class="mr-auto text-sm hover:text-red-500">Xóa</button>
+                         </div>
+                 </div>
+             </div>
             </div>
-            <div class=" grid grid-cols-2 mt-3 gap-3">
-                <div><h3 class="font-bold text-md">{{$sp->product->name}}</h3>
-                    <h5 class="text-sm mt-3">Color: <span>tim</span></h5>
-                    <h5 class="text-sm">Phí vận chuyển nội địa: <span class="font-bold">Đang cập nhật</span></h5>
-                    <p class="text-sm">Ghi chú:</p>
-                    <textarea class="border border-gray-500 mt-1" name="" id="" cols="30" rows="2"></textarea>
-                </div>
-                <div class="grid grid-cols-2">
-                        <div class="flex h-8 ml-auto">
-                          <button class="px-2 py-1 bg-gray-400 text-sm">-</button>
-                          <input
-                            type="text"
-                            class="w-14 py-1 text-center border border-gray-300 text-sm"
-                            value="1"
-                          />
-                          <button class="px-2 py-1 bg-gray-400 text-sm">+</button>
-                        </div>
-                        <div class="ml-auto">
-                            <h5><span class="font-bold">131,526 ¥</span></h5>
-                            <button class="mr-auto text-sm hover:text-red-500">Xóa</button>
-                        </div>
-                </div>
+            <div class="flex border border-gray-400  py-3 px-3">
+              <div class=" mt-3">
+                <input type="checkbox" name="" id="">
+                <img class="w-48" src="./image/12.png" alt="">
+             </div>
+             <div class=" grid grid-cols-2 mt-3 gap-3 ">
+                 <div><h3 class="font-bold text-md">ラングスジャパン(RANGS) リップスティックデラックスミニ ブルー</h3>
+                     <h5 class="text-sm mt-3">Color: <span>tim</span></h5>
+                     <h5 class="text-sm">Phí vận chuyển nội địa: <span class="font-bold">Đang cập nhật</span></h5>
+                     <p class="text-sm">Ghi chú:</p>
+                     <textarea class="border border-gray-500 mt-1" name="" id="" cols="30" rows="2"></textarea>
+                 </div>
+                 <div class="grid grid-cols-2">
+                         <div class="flex h-8 ml-auto">
+                           <button class="px-2 py-1 bg-gray-400 text-sm">-</button>
+                           <input
+                             type="text"
+                             class="w-14 py-1 text-center border border-gray-300 text-sm"
+                             value="1"
+                           />
+                           <button class="px-2 py-1 bg-gray-400 text-sm">+</button>
+                         </div>
+                         <div class="ml-auto">
+                             <h5><span class="font-bold">131,526 ¥</span></h5>
+                             <button class="mr-auto text-sm hover:text-red-500">Xóa</button>
+                         </div>
+                 </div>
+             </div>
             </div>
-            @endforeach
           </div>
         </div>
         <div
@@ -347,10 +377,10 @@
         <div class="flex">
           <h4 class="font-bold mt-1">Kết nối với tôi</h4>
           <div class="flex gap-5 ml-10">
-            <img class="w-8" src="{{asset('storage/anhweb/facebook.png')}}" alt="" />
-            <img class="w-8" src="{{asset('storage/anhweb/ter.png')}}" alt="" />
-            <img class="w-8" src="{{asset('storage/anhweb/intagam.png')}}" alt="" />
-            <img class="w-8" src="{{asset('storage/anhweb/yout.png')}}" alt="" />
+            <img class="w-8" src="./image/facebook.png" alt="" />
+            <img class="w-8" src="./image/ter.png" alt="" />
+            <img class="w-8" src="./image/intagam.png" alt="" />
+            <img class="w-8" src="./image/yout.png" alt="" />
           </div>
         </div>
       </div>
