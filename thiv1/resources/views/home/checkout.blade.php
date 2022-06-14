@@ -182,14 +182,14 @@
           </button>
           <!-- form giỏ hàng -->
           <div class=" grid grid-cols-1   mt-3   gap-5">
+              @foreach ($cart as $sp)
             <div class="flex border border-gray-400  py-3 px-3">
               <div class=" mt-3">
                 <input type="checkbox" name="" id="">
-                <img class="w-48" src="./image/12.png" alt="">
+                <img class="w-48" src="{{asset('storage/'.$sp['image'])}}" alt="">
              </div>
              <div class=" grid grid-cols-2 mt-3 gap-3 ">
-                 <div><h3 class="font-bold text-md">ラングスジャパン(RANGS) リップスティックデラックスミニ ブルー</h3>
-                     <h5 class="text-sm mt-3">Color: <span>tim</span></h5>
+                 <div><h3 class="font-bold text-md">{{$sp['name']}}</h3>
                      <h5 class="text-sm">Phí vận chuyển nội địa: <span class="font-bold">Đang cập nhật</span></h5>
                      <p class="text-sm">Ghi chú:</p>
                      <textarea class="border border-gray-500 mt-1" name="" id="" cols="30" rows="2"></textarea>
@@ -200,46 +200,18 @@
                            <input
                              type="text"
                              class="w-14 py-1 text-center border border-gray-300 text-sm"
-                             value="1"
+                             value="{{$sp['quantity']}}"
                            />
                            <button class="px-2 py-1 bg-gray-400 text-sm">+</button>
                          </div>
                          <div class="ml-auto">
-                             <h5><span class="font-bold">131,526 ¥</span></h5>
+                             <h5><span class="font-bold">{{$sp['price']}} ¥</span></h5>
                              <button class="mr-auto text-sm hover:text-red-500">Xóa</button>
                          </div>
                  </div>
              </div>
             </div>
-            <div class="flex border border-gray-400  py-3 px-3">
-              <div class=" mt-3">
-                <input type="checkbox" name="" id="">
-                <img class="w-48" src="./image/12.png" alt="">
-             </div>
-             <div class=" grid grid-cols-2 mt-3 gap-3 ">
-                 <div><h3 class="font-bold text-md">ラングスジャパン(RANGS) リップスティックデラックスミニ ブルー</h3>
-                     <h5 class="text-sm mt-3">Color: <span>tim</span></h5>
-                     <h5 class="text-sm">Phí vận chuyển nội địa: <span class="font-bold">Đang cập nhật</span></h5>
-                     <p class="text-sm">Ghi chú:</p>
-                     <textarea class="border border-gray-500 mt-1" name="" id="" cols="30" rows="2"></textarea>
-                 </div>
-                 <div class="grid grid-cols-2">
-                         <div class="flex h-8 ml-auto">
-                           <button class="px-2 py-1 bg-gray-400 text-sm">-</button>
-                           <input
-                             type="text"
-                             class="w-14 py-1 text-center border border-gray-300 text-sm"
-                             value="1"
-                           />
-                           <button class="px-2 py-1 bg-gray-400 text-sm">+</button>
-                         </div>
-                         <div class="ml-auto">
-                             <h5><span class="font-bold">131,526 ¥</span></h5>
-                             <button class="mr-auto text-sm hover:text-red-500">Xóa</button>
-                         </div>
-                 </div>
-             </div>
-            </div>
+            @endforeach
           </div>
         </div>
         <div
@@ -250,18 +222,18 @@
          <div>
             <div class="flex text-sm px-5 mt-5 ">
                 <p>Tổng tiền sản phẩm (<span>0</span> sản phẩm)</p>
-                <p class="text-right font-bold ml-auto">0 đ</p>
+                <p class="text-right font-bold ml-auto">0 ¥</p>
               </div>
               <div class="flex text-sm px-5 mt-3">
                 <p>Phí dịch vụ</p>
-                <p class="text-right font-bold ml-auto">0 đ</p>
+                <p class="text-right font-bold ml-auto">0 ¥</p>
               </div>
               <div class="flex text-sm px-5 mt-3">
                 <p>Phí thanh toán</p>
-                <p class="text-right font-bold ml-auto">0 đ</p>
+                <p class="text-right font-bold ml-auto">0 ¥</p>
               </div>
               <div class="flex font-bold px-5 mt-5">
-                <p class="">Tổng</p>  <span class="ml-auto">0</span> đ</div>
+                <p class="">Tổng</p>  <span class="ml-auto">{{$total}}</span> ¥</div>
               </div>
               <div class="px-5 mt-3 ">
                 <a href="" ><button class="bg-amber-600 text-white w-full text-md py-1 hover:bg-amber-500">Tiến hành đặt hàng</button></a>

@@ -124,19 +124,9 @@ class HomeController extends Controller
         
         $cart = session()->get('cart');
         $total = 0;
-       
         foreach ($cart as $key => $value) {
-            $model = new Cart();
-            $model->product_id = $value['id'];
-            $model->quantity = $value['quantity'];
-            $model->price = $value['price'];
-            $model->user_id = $user[0]['id'];
-            $model->status = 0;
-            $model->save();
             $total += $value['price'] * $value['quantity'];
         }
-        $sp = Cart::where('user_id', $userid)->get();
-      
-        return view('home.checkout', compact('user','sp','cart', 'total'));
+        return view('home.checkout', compact('user' ,'cart', 'total'));
     }
 }
