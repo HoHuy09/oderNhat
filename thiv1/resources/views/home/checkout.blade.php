@@ -164,7 +164,7 @@
     <!-- content -->
     <div class="containers">
       <h1 class="text-2xl font-bold mt-5">
-        Giỏ hàng <span class="font-medium text-sm">(1 sản phẩm)</span>
+        Giỏ hàng <span class="font-medium text-sm">({{$quantity}} sản phẩm)</span>
       </h1>
       <div class="flex text-sm mt-5">
         <input type="checkbox" class="mt-1 w-10" name="" id="" />
@@ -221,8 +221,8 @@
           <h4 class="px-5 font-bold  text-xl">Thanh toán</h4>
          <div>
             <div class="flex text-sm px-5 mt-5 ">
-                <p>Tổng tiền sản phẩm (<span>0</span> sản phẩm)</p>
-                <p class="text-right font-bold ml-auto">0 ¥</p>
+                <p>Tổng tiền sản phẩm (<span>{{$quantity}}</span> sản phẩm)</p>
+                <p class="text-right font-bold ml-auto">{{$total}} ¥</p>
               </div>
               <div class="flex text-sm px-5 mt-3">
                 <p>Phí dịch vụ</p>

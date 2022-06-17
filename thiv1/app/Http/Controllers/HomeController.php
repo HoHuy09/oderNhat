@@ -124,10 +124,12 @@ class HomeController extends Controller
         
         $cart = session()->get('cart');
         $total = 0;
+        $quantity = 0;
         foreach ($cart as $key => $value) {
             $total += $value['price'] * $value['quantity'];
+            $quantity += $value['quantity'];
         }
-        return view('home.checkout', compact('user' ,'cart', 'total'));
+        return view('home.checkout', compact('user' ,'cart', 'total','quantity'));
     }
     public function introduce(Request $request)
     {
