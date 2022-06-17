@@ -129,4 +129,15 @@ class HomeController extends Controller
         }
         return view('home.checkout', compact('user' ,'cart', 'total'));
     }
+    public function introduce(Request $request)
+    {
+        $products = Product::all()->sortByDesc('id')->take(5);
+        $productnb = Product::all()->filter(function ($item) {
+            return $item->status == 1;
+        })->sortByDesc('id')->take(10);
+        $category = Category::all();
+        $cart = $request->session()->get('cart');
+        isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
+        return view('home.home', compact('products', 'productnb', 'category', 'cart'));
+    }
 }
