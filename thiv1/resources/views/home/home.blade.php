@@ -87,8 +87,8 @@
               </div>
               @endforeach
               <div class="mt-3 border-t-2 border-gray-300 ">
-                 <a href="#"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
-              </div>
+                <a href="{{route('cart')}}"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
+             </div>
             </div>
           </div>
           <div x-data="{ open: false }" @mouseleave="open = false" class="relative hidden lg:block">

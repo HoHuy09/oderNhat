@@ -37,29 +37,26 @@
       <div class="containers py-4">
         <div class="grid grid-cols-12 gap-10">
           <div class="col-span-2 mx-auto">
-            <img class="h-10" src="{{asset('storage/anhweb/logo 2c.png')}}" alt="" />
+            <a href="{{route('home')}}">
+              <img class="h-10" src="{{asset('storage/anhweb/logo 2c.png')}}" alt="" />
+            </a>
           </div>
           <div class="col-span-7">
             <div class="relative">
-              <input type="text" class="w-full p-1 mt-1 pr-20 rounded-md" />
-              <i class="fas fa-search absolute top-3 right-6"></i>
+              <form action="{{route('search')}}" method="POST">
+                @csrf
+                <input type="text" name="search" class="w-full p-1 mt-1 pr-20 rounded-md" />
+                <button type="submit"><i class="fas fa-search absolute top-3 right-6"></i></button>
+              </form>
             </div>
           </div>
           <div class="col-span-3 ml-auto flex gap-10 mt-1">
-            <div
-              class="text-2xl text-white relative"
-              x-data="{ open: false }"
-              @mouseleave="open = false"
-            >
+            <div class="text-2xl text-white relative" x-data="{ open: false }" @mouseleave="open = false">
               <div @mouseover="open = true">
                 <i class="fas fa-user"></i>
               </div>
-
-              <div
-                class="absolute bg-white w-52 right-0 mt-2 bg-white shadow-xl"
-                x-show="open"
-                x-transition.scale.origin.right
-              >
+  
+              <div class="absolute bg-white w-52 right-0 mt-2 bg-white shadow-xl" x-show="open" x-transition.scale.origin.right>
                 <div class="py-2 px-5">
                   <a href="#" class="block p-1 text-gray-700">
                     <i class="fas fa-user text-xl"></i>
@@ -79,41 +76,43 @@
             <div>
               <i class="fas fa-gavel text-2xl text-white"></i>
             </div>
-            <div
-              x-data="{ open: false }"
-              @mouseleave="open = false"
-              class="relative"
-            >
+            <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
               <div @mouseover="open = true">
                 <i class="fab fa-opencart text-2xl text-white block"></i>
               </div>
-              <div
-                x-show="open"
-                x-transition.scale.origin.right
-                class="absolute bg-white w-72 right-0 py-24 mt-2 bg-white shadow-xl"
-              >
-                <img class="w-full px-20" src="./image/cart-empty.svg" alt="" />
-                <div class="text-center">
-                  <h4 class="font-bold mt-3">Giỏ hàng trống!</h4>
-                  <p class="text-xs mt-3">
-                    không có sản phẩm trong giỏ hàng của bạn
-                  </p>
+              <div x-show="open" x-transition.scale.origin.right class="absolute bg-whitew-72 w-64 right-0 px-3 py-5  mt-2 bg-white shadow-xl">
+                  <div>
+                    <h5 class="font-bold">cart</h5>
+                  </div>
+                  @foreach ($cart as $item12)
+                  <div class="flex gap-3 mt-3">
+                    <a href=""><img class="w-20" src="{{asset('storage/'.$item12['image'])}}" alt=""></a>
+                    <div>
+                      <a href="">
+                        <h5 class="font-bold text-sm hover:text-yellow-500">{{$item12['name']}}</h5>
+                      </a>
+                      <div class="grid grid-cols-2  mt-2">
+                        <div class="text-xs">
+                          <h5 class="font-bold">{{$item12['price']}} ¥</h5>
+                        </div>
+                        <div class="text-xs">
+                          <p class="text-gray-400">Số lượng : <span>{{$item12['quantity']}}</span></p>
+                          <a href="{{route('deletecart',['id'=>$item12['id']])}}"><button class="ml-12"> <i class="fas fa-trash-alt text-red-500 "></i></button></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  @endforeach
+                  <div class="mt-3 border-t-2 border-gray-300 ">
+                     <a href="#"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
+                  </div>
                 </div>
-              </div>
             </div>
-            <div
-              x-data="{ open: false }"
-              @mouseleave="open = false"
-              class="relative"
-            >
+            <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
               <div @mouseover="open = true">
                 <i class="fas fa-bell text-2xl text-white"></i>
               </div>
-              <div
-                x-show="open"
-                x-transition.scale.origin.right
-                class="absolute bg-white w-72 pb-32 right-0 pt-5 pl-5 mt-2 bg-white shadow-xl"
-              >
+              <div x-show="open" x-transition.scale.origin.right class="absolute bg-white w-72 pb-32 right-0 pt-5 pl-5 mt-2 bg-white shadow-xl">
                 <h4 class="font-bold">Thông báo</h4>
               </div>
             </div>

@@ -173,19 +173,22 @@
       <div class="border-b border-gray-300 pb-10">
         <h4 class="mt-8 font-bold">Lọc theo tính trạng</h4>
         <div class="mt-3">
-          <div>
-            <input type="radio" value="1" name="" id="" />
-            <label for="" class="text-sm ml-2">Hot</label>
-          </div>
-          <div>
-            <input type="radio" value="0" name="" id="" />
-            <label for="" class="text-sm ml-2">Bình thường</label>
-          </div>
+          <form action="" method="POST">
+            @csrf
+            <div>
+              <input type="radio" value="1" name="status" id="" />
+              <label for="" class="text-sm ml-2">Hot</label>
+            </div>
+            <div>
+              <input type="radio" value="0" name="status" id="" />
+              <label for="" class="text-sm ml-2">Bình thường</label>
+            </div>
         </div>
       </div>
       <div class="mt-5 text-center bg-amber-500 hover:bg-amber-700">
-        <button class="py-1 text-sm text-white">Tìm theo giá</button>
+        <button type="submit" class="py-1 text-sm text-white">Lọc</button>
       </div>
+      </form>
     </div>
     <div class="col-span-10 grid grid-cols-4 gap-5 mt-3">
       @foreach($products as $item3)
