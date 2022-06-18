@@ -28,15 +28,11 @@ class HomeController extends Controller
         $product->product_views = $product->product_views + 1;
         $product->save();
         $user = $request->session()->get('user');
-        if(isset($user)){
-            $user = $request->session()->get('user');
-        }else{
-            return redirect(route('login'));
-        }
+        
         $cart = $request->session()->get('cart');
         isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
         
-        return view('home.detail', compact('product','sptt','cart','user'));
+        return view('home.detail', compact('product','sptt','cart'));
     }
     public function cate(Request $request){
         $cate = Category::all();
@@ -125,6 +121,9 @@ class HomeController extends Controller
         //     return redirect()->route('login');
         // }
         $cart = session()->get('cart');
+        if (!$cart) {
+            return redirect()->route('home')->with('success', 'Your cart is empty!');
+        }
         $total = 0;
         $quantity = 0;
         foreach ($cart as $key => $value) {

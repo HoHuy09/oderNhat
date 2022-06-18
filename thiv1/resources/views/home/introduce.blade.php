@@ -99,6 +99,11 @@
               </div>
               <div x-show="open" x-transition.scale.origin.right class="absolute bg-white w-72 pb-32 right-0 pt-5 pl-5 mt-2 bg-white shadow-xl">
                 <h4 class="font-bold">Thông báo</h4>
+                <div>@if(session()->has('success'))
+                  <div class="alert alert-success">
+                      {{ session()->get('success') }}
+                  </div>
+              @endif</div>
               </div>
             </div>
           </div>
