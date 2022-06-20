@@ -9,6 +9,9 @@
   <script src="https://kit.fontawesome.com/79e1832a3e.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@2.15.0/dist/full.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <link rel="stylesheet" href="{{ asset('website') }}/index.css" />
 </head>
 
@@ -87,7 +90,7 @@
               </div>
               @endforeach
               <div class="mt-3 border-t-2 border-gray-300 ">
-                 <a href="#"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
+                <a href="#"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
               </div>
             </div>
           </div>
@@ -149,11 +152,16 @@
         </ul>
       </div>
       <div class="lg:col-span-10 hidden lg:block">
-        <img src="{{asset('storage/anhweb/banner4.png')}}" class="w-full " style="height: 400px" alt="" />
+        <div class="your-class">
+          <div> <img src="{{asset('storage/anhweb/banner7.png')}}" class="w-full bg-cover bg-left" style="height: 400px" alt="" /></div>
+          <div><img src="{{asset('storage/anhweb/banner4.png')}}" class="w-full bg-cover" style="height: 400px" alt="" /></div>
+          <div><img src="{{asset('storage/anhweb/banner5.png')}}" class="w-full bg-cover" style="height: 400px" alt="" /></div>
+          <div><img src="{{asset('storage/anhweb/banner6.png')}}" class="w-full bg-cover" style="height: 400px" alt="" /></div>
+        </div>
       </div>
       <!-- banner mobile -->
       <div class="relative block lg:hidden">
-        <div class="absolute flex w-full mt-5 px-16 md:px-16">
+        <div class="absolute flex w-full mt-5 px-5 md:px-16">
           <div class="flex">
             <i class="fas fa-bars text-white text-2xl"></i>
             <img class="h-10 ml-5" src="{{asset('storage/anhweb/logo 2c.png')}}" alt="" />
@@ -162,7 +170,7 @@
             <i class="fab fa-opencart text-2xl text-white"></i>
           </div>
         </div>
-        <div class="absolute w-full mt-16 px-16 md:px-16">
+        <div class="absolute w-full mt-16 px-5 md:px-16">
           <div class="relative">
             <input type="text" class="w-full p-1 mt-1 pr-20 py-2 px-2 rounded-md" placeholder="Nhập tên sản phẩm ..." />
             <i class="fas fa-search absolute top-4 right-4"></i>
@@ -174,7 +182,7 @@
   </div>
   <!-- end danh sach -->
   <!-- list app mobile -->
-  <div class="containers border-t-4 border-gray-300 block lg:hidden px-16 md:px-16">
+  <div class="containers border-t-4 border-gray-300 block lg:hidden px-5 md:px-16">
     <div>
       <h4 class="font-bold text-gray-500 pt-10">Từ Việt Nam:</h4>
       <div class="grid grid-cols-4 md:grid-cols-8 mt-5 gap-5">
@@ -222,12 +230,12 @@
       </div>
     </div>
   </div>
-  <div class="containers  md:px-16 lg:px-0 mt-10">
-    <div class="flex px-16" >
+  <div class="containers px-5 lg:px-16 lg:px-0 mt-10">
+    <div class="flex md:px-14">
       <h4 class="font-bold text-xl">Sản phẩm mới</h4>
       <span class="mt-1 ml-10 text-amber-600 hover:text-black"><a href="#">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a></span>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8 px-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8 px-5 md:px-16">
       @foreach($products as $sp)
       <div class="text-center rounded-lg hover:shadow-2xl">
         <img src="{{asset('storage/'.$sp->image)}}" alt="" class="mx-auto py-5 h-44" />
@@ -250,12 +258,12 @@
       <img src="{{asset('storage/anhweb/banner1.png')}}" alt="" />
     </div>
   </div>
-  <div class="containers md:px-16 lg:px-0 mt-10">
-    <div class="flex px-16">
+  <div class="containers px-5 lg:px-16 lg:px-0 mt-10">
+    <div class="flex md:px-14">
       <h4 class="font-bold text-xl">Sản phẩm nổi bật</h4>
       <span class="mt-1 ml-10 text-amber-600 hover:text-black"><a href="#">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a></span>
     </div>
-    <div class="grid grid-cols-2 px-16 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8">
+    <div class="grid grid-cols-2 px-5 md:px-16 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8">
       @foreach($productnb as $spnb)
       <div class=" px-5 rounded-lg hover:shadow-2xl">
         <img src="{{asset('storage/'.$spnb->image)}}" alt="" class="mx-auto py-5 h-44" />
@@ -279,8 +287,8 @@
     </div>
   </div>
   <!-- danh mục -->
-  <div class="containers md:px-16 lg:px-0 mt-20">
-    <div class="px-16">
+  <div class="containers px-5  lg:16 lg:px-0 mt-20">
+    <div class="px-5 md:px-14">
       <div class="flex">
         <h4 class="mt-2 font-bold text-xl">Danh mục sản phẩm</h4>
         <h5 class="mt-3 ml-5 text-yellow-500 hover:text-black">
@@ -536,6 +544,20 @@
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.your-class').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        arrows: false
+      });
+    });
+  </script>
 </body>
 
 </html>

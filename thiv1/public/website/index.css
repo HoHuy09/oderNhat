@@ -1,7 +1,10 @@
-.containers{
-    width: 1100px;
-    margin: 0 auto;
+@media only screen and (min-width: 1200px) {
+    .containers {
+        width: 1200px;
+        margin: 0 auto;
+    }
 }
+
 .service_flow__step {
     background: url(https://cdn.janbox.com/static/images/service-flow/bg-step.png) no-repeat 0 0;
     width: 134px;
@@ -17,13 +20,16 @@
     -moz-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
 }
+
 #style-1::-webkit-scrollbar-thumb {
     background-color: #bdadad;
 }
+
 #style-1::-webkit-scrollbar {
     width: 6px;
     background-color: #f8f0f0;
-} 
+}
+
 .service_flow__item {
     background: #FFF7E6;
     text-align: center;
