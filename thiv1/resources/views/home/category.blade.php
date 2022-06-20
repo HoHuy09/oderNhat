@@ -90,7 +90,7 @@
               </div>
               @endforeach
               <div class="mt-3 border-t-2 border-gray-300 ">
-                 <a href="#"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
+                <a href="{{route('cart')}}"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
               </div>
             </div>
           </div>
@@ -100,6 +100,11 @@
             </div>
             <div x-show="open" x-transition.scale.origin.right class="absolute bg-white w-72 pb-32 right-0 pt-5 pl-5 mt-2 bg-white shadow-xl">
               <h4 class="font-bold">Thông báo</h4>
+              <div>@if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif</div>
             </div>
           </div>
         </div>
@@ -173,19 +178,22 @@
       <div class="border-b border-gray-300 pb-10">
         <h4 class="mt-8 font-bold">Lọc theo tính trạng</h4>
         <div class="mt-3">
-          <div>
-            <input type="radio" value="1" name="" id="" />
-            <label for="" class="text-sm ml-2">Hot</label>
-          </div>
-          <div>
-            <input type="radio" value="0" name="" id="" />
-            <label for="" class="text-sm ml-2">Bình thường</label>
-          </div>
+          <form action="" method="POST">
+            @csrf
+            <div>
+              <input type="radio" value="1" name="status" id="" />
+              <label for="" class="text-sm ml-2">Hot</label>
+            </div>
+            <div>
+              <input type="radio" value="0" name="status" id="" />
+              <label for="" class="text-sm ml-2">Bình thường</label>
+            </div>
         </div>
       </div>
       <div class="mt-5 text-center bg-amber-500 hover:bg-amber-700">
-        <button class="py-1 text-sm text-white">Tìm theo giá</button>
+        <button type="submit" class="py-1 text-sm text-white">Lọc</button>
       </div>
+      </form>
     </div>
     <div class="col-span-10 grid grid-cols-4 gap-5 mt-3">
       @foreach($products as $item3)

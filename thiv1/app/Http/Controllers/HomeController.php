@@ -28,21 +28,17 @@ class HomeController extends Controller
         $product->product_views = $product->product_views + 1;
         $product->save();
         $user = $request->session()->get('user');
-        if(isset($user)){
-            $user = $request->session()->get('user');
-        }else{
-            return redirect(route('login'));
-        }
+        
         $cart = $request->session()->get('cart');
         isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
         
-        return view('home.detail', compact('product','sptt','cart','user'));
+        return view('home.detail', compact('product','sptt','cart'));
     }
     public function cate(Request $request){
         $cate = Category::all();
         $products = Product::all();
         $cart = $request->session()->get('cart');
-        isset($cart) ? $cart : [];
+        isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
         return view('home.cate', compact('cate','products','cart'));
         
     }
@@ -59,15 +55,18 @@ class HomeController extends Controller
     {
         $cate = Category::all();
         $products = Product::where('name', 'like', '%' . $request->search . '%')->get();
-        return view('home.cate', compact('products', 'cate'));
+        $cart = $request->session()->get('cart');
+        isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
+        return view('home.cate', compact('products', 'cate', 'cart'));
     }
     public function catefilter(Request $request)
     {
         $model = $request->status;
-        
         $cate = Category::all();
         $products = Product::where('status', $model)->get();
-        return view('home.cate', compact('cate','products'));
+        $cart = $request->session()->get('cart');
+        isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
+        return view('home.cate', compact('cate','products','cart'));
     }
     public function addcart(Request $request,$id)
     {
@@ -113,30 +112,30 @@ class HomeController extends Controller
             return redirect()->back()->with('success', 'Product removed successfully!');
         }
     }
-    public function cart(Request $request,$userid)
+    public function cart(Request $request)
     {
-        $user = $request->session()->get('user');
-        if(isset($user)){
-            $product = Cart::where('user_id', $userid)->get();
-        }else{
-            return redirect()->route('login');
-        }
-        
+        // $user = $request->session()->get('user');
+        // if(isset($user)){
+        //     $product = Cart::where('user_id', $userid)->get();
+        // }else{
+        //     return redirect()->route('login');
+        // }
         $cart = session()->get('cart');
-        $total = 0;
-       
-        foreach ($cart as $key => $value) {
-            $model = new Cart();
-            $model->product_id = $value['id'];
-            $model->quantity = $value['quantity'];
-            $model->price = $value['price'];
-            $model->user_id = $user[0]['id'];
-            $model->status = 0;
-            $model->save();
-            $total += $value['price'] * $value['quantity'];
+        if (!$cart) {
+            return redirect()->route('home')->with('success', 'Your cart is empty!');
         }
-        $sp = Cart::where('user_id', $userid)->get();
-      
-        return view('home.checkout', compact('user','sp','cart', 'total'));
+        $total = 0;
+        $quantity = 0;
+        foreach ($cart as $key => $value) {
+            $total += $value['price'] * $value['quantity'];
+            $quantity += $value['quantity'];
+        }
+        return view('home.checkout', compact( 'cart', 'total','quantity'));
+    }
+    public function introduce(Request $request)
+    {
+        $cart = $request->session()->get('cart');
+        isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
+        return view('home.introduce', compact('cart'));
     }
 }

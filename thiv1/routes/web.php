@@ -42,10 +42,10 @@ Route::get('register', [LoginController::class, 'register'])->name('register');
 Route::post('register', [LoginController::class, 'saveregister']);
 Route::get('resetpassword', [LoginController::class, 'resetpassword'])->name('resetpassword');
 Route::post('resetpassword', [LoginController::class, 'saveresetpassword']);
-
+Route::get('introduce',[HomeController::class,'introduce'])->name('introduce');
 Route::get('addcart/{id}', [HomeController::class, 'addcart'])->name('addcart');
 Route::get('removecart/{id}', [HomeController::class, 'removecart'])->name('deletecart');
-Route::get('cart/{userid}', [HomeController::class, 'cart'])->name('cart');
+Route::get('cart', [HomeController::class, 'cart'])->name('cart');
 //User
 
 Route::prefix('user')->middleware('auth')->group(function() {
