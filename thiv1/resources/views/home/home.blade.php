@@ -151,7 +151,7 @@
         <ul class="h-full" id="style-1">
           @foreach($category as $cate)
           <li class="py-2 px-3 hover:bg-gray-100">
-            <a class="flex" href=""><i class="mt-1 mr-3 fab fa-airbnb"></i>{{$cate->name}}</a>
+            <a class="flex" href="{{route('cate', ['id' => $cate->id])}}"><i class="mt-1 mr-3 fab fa-airbnb"></i>{{$cate->name}}</a>
           </li>
           @endforeach
         </ul>

@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index(Request $request){
+       
+
         $product = Product::all();
         
         return view('admin.products.index',compact('product'));

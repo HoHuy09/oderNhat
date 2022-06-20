@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<<<<<<< HEAD
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -68,54 +67,6 @@
                 <p class="text-xs mt-3">
                   không có sản phẩm trong giỏ hàng của bạn
                 </p>
-=======
-    <script
-      defer
-      src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"
-    ></script>
-    <link rel="stylesheet" href="{{ asset('website') }}/index.css" />
-  </head>
-  <body>
-    <!-- header -->
-    <div class="bg-amber-600 sticky top-0 z-10">
-      <div class="containers py-4">
-        <div class="grid grid-cols-12 gap-10">
-          <div class="col-span-2 mx-auto">
-            <a href="{{route('home')}}">
-              <img class="h-10" src="{{asset('storage/anhweb/logo 2c.png')}}" alt="" />
-            </a>
-          </div>
-          <div class="col-span-7">
-            <div class="relative">
-              <form action="{{route('search')}}" method="POST">
-                @csrf
-                <input type="text" name="search" class="w-full p-1 mt-1 pr-20 rounded-md" />
-                <button type="submit"><i class="fas fa-search absolute top-3 right-6"></i></button>
-              </form>
-            </div>
-          </div>
-          <div class="col-span-3 ml-auto flex gap-10 mt-1">
-            <div class="text-2xl text-white relative" x-data="{ open: false }" @mouseleave="open = false">
-              <div @mouseover="open = true">
-                <i class="fas fa-user"></i>
-              </div>
-  
-              <div class="absolute bg-white w-52 right-0 mt-2 bg-white shadow-xl" x-show="open" x-transition.scale.origin.right>
-                <div class="py-2 px-5">
-                  <a href="#" class="block p-1 text-gray-700">
-                    <i class="fas fa-user text-xl"></i>
-                    <span class="ml-2 text-sm">Profile</span>
-                  </a>
-                  <a href="#" class="block p-1 text-gray-700">
-                    <i class="fas fa-cog text-xl"></i>
-                    <span class="ml-2 text-sm">Settings</span>
-                  </a>
-                  <a href="#" class="block p-1 text-gray-700">
-                    <i class="fas fa-sign-out-alt text-xl"></i>
-                    <span class="ml-2 text-sm">Logout</span>
-                  </a>
-                </div>
->>>>>>> eb011b440fb220b3dc11a1c438adddef45d4f1e1
               </div>
             </div>
           </div>
@@ -123,10 +74,6 @@
             <div @mouseover="open = true">
               <i class="fas fa-bell text-2xl text-white"></i>
             </div>
-<<<<<<< HEAD
-            <div x-show="open" x-transition.scale.origin.right class="absolute bg-white w-72 pb-32 right-0 pt-5 pl-5 mt-2 bg-white shadow-xl">
-              <h4 class="font-bold">Thông báo</h4>
-=======
             <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
               <div @mouseover="open = true">
                 <i class="fab fa-opencart text-2xl text-white block"></i>
@@ -171,7 +118,6 @@
                   </div>
               @endif</div>
               </div>
->>>>>>> eb011b440fb220b3dc11a1c438adddef45d4f1e1
             </div>
           </div>
         </div>
@@ -210,86 +156,6 @@
   </div>
   <div class="bg-gray-200 py-3">
     <div class="containers">
-<<<<<<< HEAD
-      <a href="">
-        <div class="text-sm flex hover:text-amber-600">
-          <i class="fas fa-home text-sm mr-3"></i>
-          <h5 class="">Trang chủ</h5>
-        </div>
-      </a>
-    </div>
-  </div>
-  <!-- content -->
-  <div class="containers">
-    <h1 class="text-2xl font-bold mt-5">
-      Giỏ hàng <span class="font-medium text-sm">(1 sản phẩm)</span>
-    </h1>
-    <div class="flex text-sm mt-5">
-      <input type="checkbox" class="mt-1 w-10" name="" id="" />
-      <h4 class="font-semibold border-r pr-2 border-gray-500">
-        Chọn tất cả - <span>1</span> sản phẩm (số lượng <span>1</span>)
-      </h4>
-      <button class="pl-2 hover:text-red-500">Xóa tất cả</button>
-    </div>
-    <div class="grid grid-cols-12 mt-5 gap-10">
-      <div class="col-span-8">
-        <button class="border-2 border-yellow-500 text-yellow-500 py-1 w-full hover:bg-yellow-500 hover:text-white">
-          <i class="fas fa-plus pr-3"></i>Thêm sản phẩm
-        </button>
-        <!-- form giỏ hàng -->
-        <div class=" grid grid-cols-1   mt-3   gap-5">
-
-          <div class="flex border border-gray-400  py-3 px-3">
-            <div class=" mt-3">
-              <input type="checkbox" name="" id="">
-              <img class="w-48" src="./image/12.png" alt="">
-            </div>
-            <div class=" grid grid-cols-2 mt-3 gap-3 ">
-              <div>
-                <h3 class="font-bold text-md">ラングスジャパン(RANGS) リップスティックデラックスミニ ブルー</h3>
-                <h5 class="text-sm mt-3">Color: <span>tim</span></h5>
-                <h5 class="text-sm">Phí vận chuyển nội địa: <span class="font-bold">Đang cập nhật</span></h5>
-                <p class="text-sm">Ghi chú:</p>
-                <textarea class="border border-gray-500 mt-1" name="" id="" cols="30" rows="2"></textarea>
-              </div>
-              <div class="grid grid-cols-2">
-                <div class="flex h-8 ml-auto">
-                  <button class="px-2 py-1 bg-gray-400 text-sm">-</button>
-                  <input type="text" class="w-14 py-1 text-center border border-gray-300 text-sm" value="1" />
-                  <button class="px-2 py-1 bg-gray-400 text-sm">+</button>
-                </div>
-                <div class="ml-auto">
-                  <h5><span class="font-bold">131,526 ¥</span></h5>
-                  <button class="mr-auto text-sm hover:text-red-500">Xóa</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="flex border border-gray-400  py-3 px-3">
-            <div class=" mt-3">
-              <input type="checkbox" name="" id="">
-              <img class="w-48" src="./image/12.png" alt="">
-            </div>
-            <div class=" grid grid-cols-2 mt-3 gap-3 ">
-              <div>
-                <h3 class="font-bold text-md">ラングスジャパン(RANGS) リップスティックデラックスミニ ブルー</h3>
-                <h5 class="text-sm mt-3">Color: <span>tim</span></h5>
-                <h5 class="text-sm">Phí vận chuyển nội địa: <span class="font-bold">Đang cập nhật</span></h5>
-                <p class="text-sm">Ghi chú:</p>
-                <textarea class="border border-gray-500 mt-1" name="" id="" cols="30" rows="2"></textarea>
-              </div>
-              <div class="grid grid-cols-2">
-                <div class="flex h-8 ml-auto">
-                  <button class="px-2 py-1 bg-gray-400 text-sm">-</button>
-                  <input type="text" class="w-14 py-1 text-center border border-gray-300 text-sm" value="1" />
-                  <button class="px-2 py-1 bg-gray-400 text-sm">+</button>
-                </div>
-                <div class="ml-auto">
-                  <h5><span class="font-bold">131,526 ¥</span></h5>
-                  <button class="mr-auto text-sm hover:text-red-500">Xóa</button>
-                </div>
-              </div>
-=======
       <h1 class="text-2xl font-bold mt-5">
         Giỏ hàng <span class="font-medium text-sm">({{$quantity}} sản phẩm)</span>
       </h1>
@@ -337,36 +203,10 @@
                          </div>
                  </div>
              </div>
->>>>>>> eb011b440fb220b3dc11a1c438adddef45d4f1e1
             </div>
             @endforeach
           </div>
         </div>
-<<<<<<< HEAD
-      </div>
-      <div class="col-span-4 border border-gray-300 bg-no-repeat py-10 bg-center bg-cover" style="background-image: url('./image/bg-modal-header.png')">
-        <h4 class="px-5 font-bold  text-xl">Thanh toán</h4>
-        <div>
-          <div class="flex text-sm px-5 mt-5 ">
-            <p>Tổng tiền sản phẩm (<span>0</span> sản phẩm)</p>
-            <p class="text-right font-bold ml-auto">0 đ</p>
-          </div>
-          <div class="flex text-sm px-5 mt-3">
-            <p>Phí dịch vụ</p>
-            <p class="text-right font-bold ml-auto">0 đ</p>
-          </div>
-          <div class="flex text-sm px-5 mt-3">
-            <p>Phí thanh toán</p>
-            <p class="text-right font-bold ml-auto">0 đ</p>
-          </div>
-          <div class="flex font-bold px-5 mt-5">
-            <p class="">Tổng</p> <span class="ml-auto">0</span> đ
-          </div>
-        </div>
-        <div class="px-5 mt-3 ">
-          <a href=""><button class="bg-amber-600 text-white w-full text-md py-1 hover:bg-amber-500">Tiến hành đặt hàng</button></a>
-          <p class="text-xs mt-2 text-gray-400">*Quý khách nên thanh toán ngay tránh sản phẩm bị tăng giá do chênh lệch tỉ giá</p>
-=======
         <div
           class="col-span-4 border border-gray-300 bg-no-repeat py-10 bg-center bg-cover"
           style="background-image: url('./image/bg-modal-header.png')"
@@ -393,7 +233,6 @@
                  <p class="text-xs mt-2 text-gray-400">*Quý khách nên thanh toán ngay tránh sản phẩm bị tăng giá do chênh lệch tỉ giá</p>
                </div>
          </div>
->>>>>>> eb011b440fb220b3dc11a1c438adddef45d4f1e1
         </div>
       </div>
     </div>
