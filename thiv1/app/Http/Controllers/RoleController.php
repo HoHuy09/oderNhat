@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class RoleController extends Controller
 {
     public function index(Request $request){
-        $role = Role::all();
+        $role = Role::paginate(5);
         
         return view('admin.role.index',compact('role'));
     }

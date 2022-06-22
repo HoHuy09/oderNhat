@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ListpostController extends Controller
 {
     public function index(Request $request){
-        $listpost = Listpost::all();
+        $listpost = Listpost::paginate(5);
         return view('admin.listpost.index',compact('listpost'));
     }
     public function addForm(){

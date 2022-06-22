@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class UsersController extends Controller
 {
     public function index(Request $request){
-        $pageSize = 10;
+        $pageSize = 5;
        
 
         $keyword = $request->has('keyword') ? $request->keyword : "";

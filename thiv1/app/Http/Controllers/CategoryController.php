@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index(Request $request){
-        $category = Category::all();
+        $category = Category::paginate(5);
         return view('admin.categories.index',compact('category'));
     }
     public function addForm(){

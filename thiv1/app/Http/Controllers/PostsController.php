@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class PostsController extends Controller
 {
     public function index(Request $request){
-        $post = Post::all();
+        $post = Post::paginate(5);
         return view('admin.post.index',compact('post'));
     }
     public function addForm(){

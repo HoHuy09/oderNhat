@@ -56,24 +56,6 @@
           <div>
             <i class="fas fa-gavel text-2xl text-white"></i>
           </div>
-          <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
-            <div @mouseover="open = true">
-              <i class="fab fa-opencart text-2xl text-white block"></i>
-            </div>
-            <div x-show="open" x-transition.scale.origin.right class="absolute bg-white w-72 right-0 py-24 mt-2 bg-white shadow-xl">
-              <img class="w-full px-20" src="./image/cart-empty.svg" alt="" />
-              <div class="text-center">
-                <h4 class="font-bold mt-3">Giỏ hàng trống!</h4>
-                <p class="text-xs mt-3">
-                  không có sản phẩm trong giỏ hàng của bạn
-                </p>
-              </div>
-            </div>
-          </div>
-          <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
-            <div @mouseover="open = true">
-              <i class="fas fa-bell text-2xl text-white"></i>
-            </div>
             <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
               <div @mouseover="open = true">
                 <i class="fab fa-opencart text-2xl text-white block"></i>
