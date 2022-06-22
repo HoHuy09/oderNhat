@@ -16,6 +16,12 @@
 </head>
 
 <body>
+  <!-- loading -->
+  <div class="loader h-screen z-20 w-full bg-white  fixed justify-center items-center  left-0 top-0">
+    <div class="w-full z-10 mt-96">
+      <img class="w-52 mx-auto" src="{{asset('storage/anhweb/loader.gif')}}" alt="">
+    </div>
+  </div>
   <!-- header -->
   <div class="bg-amber-600 hidden lg:block sticky top-0 z-10">
     <div class="containers pt-4 ">
@@ -91,7 +97,7 @@
               @endforeach
               <div class="mt-3 border-t-2 border-gray-300 ">
                 <a href="{{route('cart')}}"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
-             </div>
+              </div>
             </div>
           </div>
           <div x-data="{ open: false }" @mouseleave="open = false" class="relative hidden lg:block">
@@ -102,9 +108,10 @@
               <h4 class="font-bold">Thông báo </h4>
               <div>@if(session()->has('success'))
                 <div class="alert alert-success">
-                    {{ session()->get('success') }}
+                  {{ session()->get('success') }}
                 </div>
-            @endif</div>
+                @endif
+              </div>
             </div>
           </div>
         </div>
@@ -134,6 +141,13 @@
           <a class="flex" href="#">
             <i class="fas fa-fire-alt text-amber-600 text-xl mr-2"></i>
             <h4 class="mt-1 font-bold">Ưu đãi</h4>
+          </a>
+        </div>
+        <div>
+          <a class="flex" href="#">
+            <i class="fas fa-leaf  text-amber-600 text-xl mr-2"></i>
+
+            <h4 class="mt-1 font-bold">Giới thiệu</h4>
           </a>
         </div>
       </div>
@@ -235,18 +249,18 @@
       </div>
     </div>
   </div>
-  <div class="containers px-5 lg:px-16 lg:px-0 mt-10">
-    <div class="flex md:px-14">
+  <div class="containers px-5 md:px-0  lg:px-0 mt-10">
+    <div class="flex md:px-14 lg:px-0">
       <h4 class="font-bold text-xl">Sản phẩm mới</h4>
       <span class="mt-1 ml-10 text-amber-600 hover:text-black"><a href="#">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a></span>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8 px-5 md:px-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8  md:px-16 lg:px-10">
       @foreach($products as $sp)
-      <div class="text-center rounded-lg hover:shadow-2xl">
+      <div class="text-center px-5 rounded-lg hover:shadow-2xl">
         <img src="{{asset('storage/'.$sp->image)}}" alt="" class="mx-auto py-5 h-44" />
         <div>
           <a href="{{route('detail', ['id' => $sp->id])}}" class="font-bold">{{$sp->name}}</a>
-          <div class="flex px-5 mt-10 pb-2">
+          <div class="flex mt-10 pb-2">
             <div>
               <h5 class="text-blue-400">3123 ¥</h5>
               <h5 class="mr-auto text-gray-400 text-sm">{{$sp->price}} VND</h5>
@@ -263,12 +277,12 @@
       <img src="{{asset('storage/anhweb/banner1.png')}}" alt="" />
     </div>
   </div>
-  <div class="containers px-5 lg:px-16 lg:px-0 mt-10">
-    <div class="flex md:px-14">
+  <div class="containers px-5 md:px-0 lg:px-0 mt-10">
+    <div class="flex md:px-14 lg:px-0">
       <h4 class="font-bold text-xl">Sản phẩm nổi bật</h4>
       <span class="mt-1 ml-10 text-amber-600 hover:text-black"><a href="#">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a></span>
     </div>
-    <div class="grid grid-cols-2 px-5 md:px-16 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8">
+    <div class="grid grid-cols-2  md:px-16 lg:px-10 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8">
       @foreach($productnb as $spnb)
       <div class=" px-5 rounded-lg hover:shadow-2xl">
         <img src="{{asset('storage/'.$spnb->image)}}" alt="" class="mx-auto py-5 h-44" />
@@ -292,8 +306,8 @@
     </div>
   </div>
   <!-- danh mục -->
-  <div class="containers px-5  lg:16 lg:px-0 mt-20">
-    <div class="px-5 md:px-14">
+  <div class="containers px-5  lg:px-0 mt-20">
+    <div class=" md:px-14 lg:px-0">
       <div class="flex">
         <h4 class="mt-2 font-bold text-xl">Danh mục sản phẩm</h4>
         <h5 class="mt-3 ml-5 text-yellow-500 hover:text-black">
@@ -301,7 +315,7 @@
         </h5>
       </div>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 px-16 mt-10 text-center gap-5">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 md:px-16 lg:px-10 mt-10 text-center gap-5">
       <!-- @foreach($category as $cate)
       <div>
         <a href="#">
@@ -553,6 +567,11 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script type="text/javascript">
+    var loader = document.querySelector('.loader')
+    window.addEventListener('load', function() {
+      loader.style.display = "none"
+    })
+    //loading
     $(document).ready(function() {
       $('.your-class').slick({
         slidesToShow: 1,
