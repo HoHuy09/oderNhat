@@ -41,4 +41,56 @@
         @endforeach 
     </tbody>
 </table>
+@if ($post->hasPages())
+    <!-- Pagination -->
+    <div class="pull-right pagination">
+        <ul class="pagination">
+            {{-- Previous Page Link --}}
+            @if ($post->onFirstPage())
+                <li class="disabled">
+                    <span><i class="fa fa-angle-double-left"></i></span>
+                </li>
+            @else
+                <li>
+                    <a href="{{ $post->previousPageUrl() }}">
+                        <span><i class="fa fa-angle-double-left"></i></span>
+                    </a>
+                </li>
+            @endif 
+            {{-- Pagination Elements --}}
+            {{-- @if ($post->lastPage() > 1)
+            <ul class="pagination">
+             @for ($i = 1; $i <= $post->lastPage(); $i++)
+                <li class="{{ ($post->currentPage() == $i) ? 'active' : '' }}">
+            <a href="{{ $post->url($i) }}">{{ $i }}</a>
+            </li>
+            @endfor
+            </ul>
+            @endif --}}
+                @for ($i = 1; $i <= $post->lastPage(); $i++)
+                        @if ($i == $post->currentPage())
+                            <li class="active"><span>{{ $i }}</span></li>
+                        @elseif (($i == $post->currentPage() + 1 || $i == $post->currentPage() + 2) || $i == $post->lastPage())
+                            <li><a href="{{ $post->url($i) }}">{{ $i }}</a></li>
+                        @elseif ($i == $post->lastPage() - 1)
+                            <li class="disabled"><span><i class="fa fa-ellipsis-h"></i></span></li>
+                        @endif
+                @endfor
+               
+
+            {{-- Next Page Link --}}
+             @if ($post->hasMorePages())
+                <li>
+                    <a href="{{ $post->nextPageUrl() }}">
+                        <span><i class="fa fa-angle-double-right"></i></span>
+                    </a>
+                </li>
+            @else
+                <li class="disabled">
+                    <span><i class="fa fa-angle-double-right"></i></span>
+                </li>
+            @endif
+        </ul>
+    </div>
+    @endif
     @endsection

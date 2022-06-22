@@ -10,7 +10,7 @@ class SlideshowController extends Controller
 {
     public function index()
     {
-        $slideshow = Slideshow::all();
+        $slideshow = Slideshow::paginate(5);
         return view('admin.slideshow.index', compact('slideshow'));
     }
     public function addForm()

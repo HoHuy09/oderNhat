@@ -44,7 +44,65 @@
                 </td>
             </tr>
         @endforeach 
-       
+        
     </tbody>
 </table>
+    </div>
+    @if ($product->hasPages())
+    <!-- Pagination -->
+    <div class="pull-right pagination">
+        <ul class="pagination">
+            {{-- Previous Page Link --}}
+            @if ($product->onFirstPage())
+                <li class="disabled">
+                    <span><i class="fa fa-angle-double-left"></i></span>
+                </li>
+            @else
+                <li>
+                    <a href="{{ $product->previousPageUrl() }}">
+                        <span><i class="fa fa-angle-double-left"></i></span>
+                    </a>
+                </li>
+            @endif 
+            {{-- Pagination Elements --}}
+            {{-- @if ($product->lastPage() > 1)
+            <ul class="pagination">
+             @for ($i = 1; $i <= $product->lastPage(); $i++)
+                <li class="{{ ($product->currentPage() == $i) ? 'active' : '' }}">
+            <a href="{{ $product->url($i) }}">{{ $i }}</a>
+            </li>
+            @endfor
+            </ul>
+            @endif --}}
+                @for ($i = 1; $i <= $product->lastPage(); $i++)
+                        @if ($i == $product->currentPage())
+                            <li class="active"><span>{{ $i }}</span></li>
+                        @elseif (($i == $product->currentPage() + 1 || $i == $product->currentPage() + 2) || $i == $product->lastPage())
+                            <li><a href="{{ $product->url($i) }}">{{ $i }}</a></li>
+                        @elseif ($i == $product->lastPage() - 1)
+                            <li class="disabled"><span><i class="fa fa-ellipsis-h"></i></span></li>
+                        @endif
+                @endfor
+               
+
+            {{-- Next Page Link --}}
+             @if ($product->hasMorePages())
+                <li>
+                    <a href="{{ $product->nextPageUrl() }}">
+                        <span><i class="fa fa-angle-double-right"></i></span>
+                    </a>
+                </li>
+            @else
+                <li class="disabled">
+                    <span><i class="fa fa-angle-double-right"></i></span>
+                </li>
+            @endif
+        </ul>
+    </div>
+    @endif
+   
+       
+   
+        
+
     @endsection
