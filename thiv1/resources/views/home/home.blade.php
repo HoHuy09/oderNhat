@@ -99,7 +99,6 @@ justify-content: center;">
                     </div>
                   </div>
                 </div>
-<<<<<<< HEAD
                 @endforeach
                 <div class="mt-3 border-t-2 border-gray-300 ">
                   <a href="{{route('cart')}}"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
@@ -118,26 +117,6 @@ justify-content: center;">
                   </div>
                   @endif
                 </div>
-=======
-              </div>
-              @endforeach
-              <div class="mt-3 border-t-2 border-gray-300 ">
-                <a href="{{route('cart')}}"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
-              </div>
-            </div>
-          </div>
-          <div x-data="{ open: false }" @mouseleave="open = false" class="relative hidden lg:block">
-            <div @mouseover="open = true">
-              <i class="fas fa-bell text-2xl text-white"></i>
-            </div>
-            <div x-show="open" x-transition.scale.origin.right class="absolute bg-white w-72 pb-32 right-0 pt-5 pl-5 mt-2 bg-white shadow-xl">
-              <h4 class="font-bold">Thông báo </h4>
-              <div>@if(session()->has('success'))
-                <div class="alert alert-success">
-                  {{ session()->get('success') }}
-                </div>
-                @endif
->>>>>>> 313301f49eaae4e76c7b5a016a03c22de5dc1e67
               </div>
             </div>
           </div>
