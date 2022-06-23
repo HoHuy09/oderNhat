@@ -52,7 +52,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('category.index')}}" class="nav-link">
+                <a href="{{route('categorys.index')}}" class="nav-link">
                   <i class="fas fa-sitemap"></i>
                   <p>
                     Category

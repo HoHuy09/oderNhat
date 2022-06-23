@@ -189,26 +189,12 @@
                         <div class="screen-image__cover"></div>
                     </div>
                     <div id="slider" class="slider slider-nav ">
+                      @foreach($hasp as $hasp)
                         <div class="mx-2">
                             <img class="thumbnail active w-16 py-3"
-                            src="{{asset('storage/'.$product->image)}}" />
+                            src="{{asset('storage/'.$hasp->image)}}" />
                         </div>
-                        <div class="mx-2">
-                            <img class="thumbnail w-16 py-3"
-                            src="{{asset('storage/'.$product->image)}}" />
-                        </div>
-                        <div class="mx-2">
-                            <img class="thumbnail w-16 py-3"
-                            src="{{asset('storage/'.$product->image)}}" />
-                        </div>
-                        <div class="mx-2">
-                            <img class="thumbnail w-16 py-3"
-                            src="{{asset('storage/'.$product->image)}}" />
-                        </div>
-                        <div class="mx-2">
-                            <img class="thumbnail w-16 py-3"
-                            src="{{asset('storage/'.$product->image)}}" />
-                        </div>
+                      @endforeach
                     </div>
                     <button id="slideLeft" class="previous_caro absolute left-0" style="top: 380px;"><i
                             class="fas fa-angle-left  bg-black opacity-80 px-3 py-2 rounded-full text-white "></i></button>

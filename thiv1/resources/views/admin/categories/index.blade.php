@@ -12,7 +12,7 @@
         <th>Name</th>
         <th>Image</th>
         <th>
-            <a href="{{route('category.add')}}">Add</a>
+            <a href="{{route('categorys.add')}}">Add</a>
         </th>
     </thead>
     <tbody>
@@ -23,8 +23,8 @@
                 <td>{{$item->name}}</td>
                 <td><img src="{{asset('storage/'.$item->image)}}" width="100"></td>
                 <td>
-                    <a href="{{route('category.edit', ['id' => $item->id])}}">Edit</a>
-                    <a onclick="return confirm('Bạn có muốn xóa không?')" href="{{route('category.remove', ['id' => $item->id])}}">Remove</a>
+                    <a href="{{route('categorys.edit', ['id' => $item->id])}}">Edit</a>
+                    <a onclick="return confirm('Bạn có muốn xóa không?')" href="{{route('categorys.remove', ['id' => $item->id])}}">Remove</a>
                 </td>
             </tr>
         @endforeach 

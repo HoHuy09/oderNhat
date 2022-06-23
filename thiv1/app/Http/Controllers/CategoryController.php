@@ -20,12 +20,12 @@ class CategoryController extends Controller
         $model = new Category();
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('public/products');
+            $imgPath = $request->file('image')->store('products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }
         $model->save();
-        return redirect(route('category.index'));
+        return redirect(route('categorys.index'));
     }
     public function editForm($id,Request $request){  
         $category = Category::find($id);
@@ -35,16 +35,16 @@ class CategoryController extends Controller
         $model = Category::find($id);
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('public/products');
+            $imgPath = $request->file('image')->store('products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }
         $model->save();
-        return redirect(route('category.index'));
+        return redirect(route('categorys.index'));
     }
     public function remove($id){
         Category::destroy($id);
         Product::where('cate_id',$id)->delete();
-        return redirect(route('category.index'));
+        return redirect(route('categorys.index'));
     }
 }

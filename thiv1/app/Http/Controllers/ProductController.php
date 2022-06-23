@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SaveProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -22,12 +23,26 @@ class ProductController extends Controller
         $model = new Product();
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('public/products');
+            $imgPath = $request->file('image')->store('products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }
         
         $model->save();
+        
+        if($request->hasFile('product_image')) {
+            ;
+            // duyệt từng ảnh và thực hiện lưu
+            foreach ($request->product_image as $index => $files) {
+                $imgPath = $files->store('products');
+                $imgPath = str_replace('public/', '', $imgPath);
+                // Tạo đối tưọng HinhAnh
+                $hinhAnh = new ProductImage();
+                $hinhAnh->product_id = $model->id;
+                $hinhAnh->image = $imgPath;
+                $hinhAnh->save();
+            }
+         }
         return redirect(route('product.index'));
     }
     public function editForm($id,Request $request){  
@@ -39,7 +54,7 @@ class ProductController extends Controller
         $model = Product::find($id);
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('public/products');
+            $imgPath = $request->file('image')->store('products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }

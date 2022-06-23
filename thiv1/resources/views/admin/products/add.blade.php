@@ -28,6 +28,16 @@
                 <br>   
             </div>
             <div class="col-6">
+              <div class="form-group">
+                <label for="">Image Status</label>
+                <input type="file" name="product_image[]" class="form-control" multiple >
+              </div> 
+              @error('product_image')
+              <p class="text-danger">{{$message}}</p>
+              @enderror
+              <br>   
+          </div>
+            <div class="col-6">
                 <div class="form-group">
                   <label for="">Price</label>
                   <input type="text" name="price" placeholder="Nhập giá" class="form-control" >
