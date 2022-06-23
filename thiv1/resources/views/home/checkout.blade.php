@@ -17,7 +17,17 @@
 </head>
 
 <body>
-  <!-- header -->
+  <div class="loader h-screen z-20 w-full bg-white  fixed justify-center items-center  left-0 top-0" style="width: 100%;
+height: 100vh; position: fixed;
+top: 0;
+left: 0;
+display: flex;
+align-items: center;
+justify-content: center;">
+    <img style="width:200px;" src="{{asset('storage/anhweb/loader.gif')}}" alt="">
+  </div>
+  <div class="content" style="display: none">
+    <!-- header -->
   <div class="bg-amber-600 sticky top-0 z-10">
     <div class="containers py-4">
       <div class="grid grid-cols-12 gap-10">
@@ -341,6 +351,13 @@
       </div>
     </div>
   </div>
+  </div>
 </body>
-
+<script>
+  var loader = document.querySelector('.loader')
+ var content = document.querySelector('.content')
+ window.addEventListener('load', function() {
+loader.style.display = "none"
+content.style.display = "block"})
+</script>
 </html>
