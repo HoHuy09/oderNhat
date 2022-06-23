@@ -99,6 +99,7 @@ justify-content: center;">
                     </div>
                   </div>
                 </div>
+<<<<<<< HEAD
                 @endforeach
                 <div class="mt-3 border-t-2 border-gray-300 ">
                   <a href="{{route('cart')}}"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
@@ -117,6 +118,26 @@ justify-content: center;">
                   </div>
                   @endif
                 </div>
+=======
+              </div>
+              @endforeach
+              <div class="mt-3 border-t-2 border-gray-300 ">
+                <a href="{{route('cart')}}"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
+              </div>
+            </div>
+          </div>
+          <div x-data="{ open: false }" @mouseleave="open = false" class="relative hidden lg:block">
+            <div @mouseover="open = true">
+              <i class="fas fa-bell text-2xl text-white"></i>
+            </div>
+            <div x-show="open" x-transition.scale.origin.right class="absolute bg-white w-72 pb-32 right-0 pt-5 pl-5 mt-2 bg-white shadow-xl">
+              <h4 class="font-bold">Thông báo </h4>
+              <div>@if(session()->has('success'))
+                <div class="alert alert-success">
+                  {{ session()->get('success') }}
+                </div>
+                @endif
+>>>>>>> 313301f49eaae4e76c7b5a016a03c22de5dc1e67
               </div>
             </div>
           </div>
@@ -129,7 +150,199 @@ justify-content: center;">
           <i class="fas fa-bars mt-1 mr-3"></i>
           <h4 class="">Tất cả danh mục</h4>
         </div>
+<<<<<<< HEAD
         <div class="col-span-8 flex px-10 gap-10">
+=======
+        <div>
+          <a class="flex" href="#">
+            <i class="fas fa-truck text-amber-600 text-xl mr-2"></i>
+            <h4 class="font-bold">Express</h4>
+          </a>
+        </div>
+        <div>
+          <a class="flex" href="#">
+            <i class="fas fa-fire-alt text-amber-600 text-xl mr-2"></i>
+            <h4 class="mt-1 font-bold">Ưu đãi</h4>
+          </a>
+        </div>
+        <div>
+          <a class="flex" href="#">
+            <i class="fas fa-leaf  text-amber-600 text-xl mr-2"></i>
+
+            <h4 class="mt-1 font-bold">Giới thiệu</h4>
+          </a>
+        </div>
+      </div>
+      <div class="col-span-2 flex">
+        <i class="fas fa-home text-xl text-amber-600 mr-2"></i>
+        <h4 class="font-bold mt-1">Bán ở nhật bản</h4>
+      </div>
+    </div>
+  </div>
+  <!-- end header -->
+  <!-- danh sach -->
+  <div class="containers">
+    <div class="grid grid-cols-1 lg:grid-cols-12 border-t border-gray-300 border-b">
+      <div class="lg:col-span-2 hidden lg:block">
+        <ul class="h-full" id="style-1">
+          @foreach($category as $cate)
+          <li class="py-2 px-3 hover:bg-gray-100">
+            <a class="flex" href="{{route('cate', ['id' => $cate->id])}}"><i class="mt-1 mr-3 fab fa-airbnb"></i>{{$cate->name}}</a>
+          </li>
+          @endforeach
+        </ul>
+      </div>
+      <div class="lg:col-span-10 hidden lg:block">
+        <div class="your-class">
+          <div> <img src="{{asset('storage/anhweb/banner7.png')}}" class="w-full bg-cover bg-left" style="height: 400px" alt="" /></div>
+          <div><img src="{{asset('storage/anhweb/banner4.png')}}" class="w-full bg-cover" style="height: 400px" alt="" /></div>
+          <div><img src="{{asset('storage/anhweb/banner5.png')}}" class="w-full bg-cover" style="height: 400px" alt="" /></div>
+          <div><img src="{{asset('storage/anhweb/banner6.png')}}" class="w-full bg-cover" style="height: 400px" alt="" /></div>
+        </div>
+      </div>
+      <!-- banner mobile -->
+      <div class="relative block lg:hidden">
+        <div class="absolute flex w-full mt-5 px-5 md:px-16">
+          <div class="flex">
+            <i class="fas fa-bars text-white text-2xl"></i>
+            <img class="h-10 ml-5" src="{{asset('storage/anhweb/logo 2c.png')}}" alt="" />
+          </div>
+          <div class="ml-auto">
+            <i class="fab fa-opencart text-2xl text-white"></i>
+          </div>
+        </div>
+        <div class="absolute w-full mt-16 px-5 md:px-16">
+          <div class="relative">
+            <input type="text" class="w-full p-1 mt-1 pr-20 py-2 px-2 rounded-md" placeholder="Nhập tên sản phẩm ..." />
+            <i class="fas fa-search absolute top-4 right-4"></i>
+          </div>
+        </div>
+        <img width="100%" src="{{asset('storage/anhweb/bannermobile.png')}}" alt="" />
+      </div>
+    </div>
+  </div>
+  <!-- end danh sach -->
+  <!-- list app mobile -->
+  <div class="containers border-t-4 border-gray-300 block lg:hidden px-5 md:px-16">
+    <div>
+      <h4 class="font-bold text-gray-500 pt-10">Từ Việt Nam:</h4>
+      <div class="grid grid-cols-4 md:grid-cols-8 mt-5 gap-5">
+        <div class="text-center">
+          <a href="">
+            <img class="mx-auto w-6/12 md:w-10/12" src="{{asset('storage/anhweb/amazon2.png')}}" alt="" />
+            <span class="text-sm">Amazon</span>
+          </a>
+        </div>
+        <div class="text-center">
+          <a href="">
+            <img class="mx-auto w-6/12 md:w-10/12" src="{{asset('storage/anhweb/shop.png')}}" alt="" />
+            <span class="text-sm">Shoppe</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h4 class="font-bold text-gray-500 pt-5">Từ japan:</h4>
+      <div class="grid grid-cols-4 md:grid-cols-8 mt-5 gap-5">
+        <div class="text-center">
+          <a href="">
+            <img class="mx-auto w-6/12 md:w-10/12" src="{{asset('storage/anhweb/amazon2.png')}}" alt="" />
+            <span class="text-sm">Amazon</span>
+          </a>
+        </div>
+        <div class="text-center">
+          <a href="">
+            <img class="mx-auto w-6/12 md:w-10/12" src="{{asset('storage/anhweb/shop.png')}}" alt="" />
+            <span class="text-sm">Shoppe</span>
+          </a>
+        </div>
+        <div class="text-center">
+          <a href="">
+            <img class="mx-auto w-6/12 md:w-10/12" src="{{asset('storage/anhweb/amazon2.png')}}" alt="" />
+            <span class="text-sm">Amazon</span>
+          </a>
+        </div>
+        <div class="text-center">
+          <a href="">
+            <img class="mx-auto w-6/12 md:w-10/12" src="{{asset('storage/anhweb/amazon2.png')}}" alt="" />
+            <span class="text-sm">Amazon</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="containers px-5 md:px-0  lg:px-0 mt-10">
+    <div class="flex md:px-14 lg:px-0">
+      <h4 class="font-bold text-xl">Sản phẩm mới</h4>
+      <span class="mt-1 ml-10 text-amber-600 hover:text-black"><a href="#">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a></span>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8  md:px-16 lg:px-10">
+      @foreach($products as $sp)
+      <div class="text-center px-5 rounded-lg hover:shadow-2xl">
+        <img src="{{asset('storage/'.$sp->image)}}" alt="" class="mx-auto py-5 h-44" />
+        <div>
+          <a href="{{route('detail', ['id' => $sp->id])}}" class="font-bold">{{$sp->name}}</a>
+          <div class="flex mt-10 pb-2">
+            <div>
+              <h5 class="text-blue-400">3123 ¥</h5>
+              <h5 class="mr-auto text-gray-400 text-sm">{{$sp->price}} VND</h5>
+            </div>
+            <h5 class="ml-auto text-sm mt-5 pt-1 opacity-70">
+              Đã xem <span>{{$sp->product_views}}</span>
+            </h5>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    </div>
+    <div class="mt-10">
+      <img src="{{asset('storage/anhweb/banner1.png')}}" alt="" />
+    </div>
+  </div>
+  <div class="containers px-5 md:px-0 lg:px-0 mt-10">
+    <div class="flex md:px-14 lg:px-0">
+      <h4 class="font-bold text-xl">Sản phẩm nổi bật</h4>
+      <span class="mt-1 ml-10 text-amber-600 hover:text-black"><a href="#">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a></span>
+    </div>
+    <div class="grid grid-cols-2  md:px-16 lg:px-10 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8">
+      @foreach($productnb as $spnb)
+      <div class=" px-5 rounded-lg hover:shadow-2xl">
+        <img src="{{asset('storage/'.$spnb->image)}}" alt="" class="mx-auto py-5 h-44" />
+        <div>
+          <a href="{{route('detail', ['id' => $spnb->id])}}" class="font-bold text-md">{{$spnb->name}}</a>
+          <div class="flex mt-10 pb-2">
+            <div>
+              <h5 class="text-blue-400">3123 ¥</h5>
+              <h5 class="mr-auto text-gray-400 text-sm">{{$spnb->price}}</h5>
+            </div>
+            <h5 class="ml-auto text-sm mt-5 pt-1 opacity-70">
+              Đã xem <span>{{$spnb->product_views}}</span>
+            </h5>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    </div>
+    <div class="mt-10">
+      <img src="{{asset('storage/anhweb/banner2.png')}}" alt="" />
+    </div>
+  </div>
+  <!-- danh mục -->
+  <div class="containers px-5  lg:px-0 mt-20">
+    <div class=" md:px-14 lg:px-0">
+      <div class="flex">
+        <h4 class="mt-2 font-bold text-xl">Danh mục sản phẩm</h4>
+        <h5 class="mt-3 ml-5 text-yellow-500 hover:text-black">
+          <a href="">Xem tất cả <i class="fas fa-long-arrow-alt-right"></i></a>
+        </h5>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 md:px-16 lg:px-10 mt-10 text-center gap-5">
+      <!-- @foreach($category as $cate)
+      <div>
+        <a href="#">
+          <img class="mx-auto" src="{{asset('storage/'.$cate->image)}}" alt="" />
+>>>>>>> 313301f49eaae4e76c7b5a016a03c22de5dc1e67
           <div>
             <a class="flex" href="#">
               <i class="fab fa-battle-net text-xl text-amber-600 mr-2"></i>
