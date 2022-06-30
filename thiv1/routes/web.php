@@ -126,3 +126,11 @@ Route::prefix('slideshow')->middleware('auth')->group(function() {
     Route::post('edit/{id}', [SlideshowController::class, 'saveEdit']);
     Route::get('remove/{id}',[SlideshowController::class,'remove'])->name('slideshow.remove');
 });
+// Doashboard
+Route::prefix('doashboard')->middleware('auth')->group(function() {
+    Route::get('/',[AdminController::class,'doashboard'])->name('doashboard.index');
+});
+//statistical
+Route::prefix('statistical')->middleware('auth')->group(function() {
+    Route::get('/',[AdminController::class,'statistical'])->name('statistical.index');
+});
