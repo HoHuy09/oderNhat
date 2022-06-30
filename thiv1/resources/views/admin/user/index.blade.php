@@ -153,11 +153,53 @@
               </tbody>
             </table>
           </div>
+          
+@if ($user->hasPages())
+<!-- Pagination -->
+<div class="pull-right paginations">
+    <ul class="paginations">
+        {{-- Previous Page Link --}}
+        @if ($user->onFirstPage())
+            <li class="disabled">
+                <span><i class="fa fa-angle-double-left"></i></span>
+            </li>
+        @else
+            <li>
+                <a href="{{ $user->previousPageUrl() }}">
+                    <span><i class="fa fa-angle-double-left"></i></span>
+                </a>
+            </li>
+        @endif 
+            @for ($i = 1; $i <= $user->lastPage(); $i++)
+                    @if ($i == $user->currentPage())
+                        <li class="active"><span>{{ $i }}</span></li>
+                    @elseif (($i == $user->currentPage() + 1 || $i == $user->currentPage() + 2) || $i == $user->lastPage())
+                        <li><a href="{{ $user->url($i) }}">{{ $i }}</a></li>
+                    @elseif ($i == $user->lastPage() - 1)
+                        <li class="disabled"><span><i class="fa fa-ellipsis-h"></i></span></li>
+                    @endif
+            @endfor
+           
+
+        {{-- Next Page Link --}}
+         @if ($user->hasMorePages())
+            <li>
+                <a href="{{ $user->nextPageUrl() }}">
+                    <span><i class="fa fa-angle-double-right"></i></span>
+                </a>
+            </li>
+        @else
+            <li class="disabled">
+                <span><i class="fa fa-angle-double-right"></i></span>
+            </li>
+        @endif
+    </ul>
+</div>
+@endif
         </div>
       </div>
     </div>
   </main>
-
   <!--
   MODAL
 -->

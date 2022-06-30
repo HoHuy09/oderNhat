@@ -104,6 +104,7 @@
                             <thead>
                                 <tr>
                                     <th width="10"><input type="checkbox" id="all"></th>
+                                    <th>STT</th>
                                     <th>Mã sản phẩm</th>
                                     <th>Tên sản phẩm</th>
                                     <th>Ảnh</th>
@@ -118,6 +119,7 @@
                                 @foreach ($product as $item)
                                 <tr>
                                     <td width="10"><input type="checkbox" name="check1" value="1"></td>
+                                    <td>{{($product->currentPage() - 1)*$product->perPage() + $loop->iteration}}</td>
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->name}}</td>
                                     <td><img src="{{asset('storage/'.$item->image)}}" alt="" width="60px;"></td>
@@ -134,6 +136,7 @@
                             </tbody>
                         </table>
                     </div>
+                    {{$product->links()}}
                 </div>
             </div>
         </div>
