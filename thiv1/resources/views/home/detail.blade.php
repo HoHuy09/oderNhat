@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -181,39 +179,33 @@
             </div>
         </div>
     </div>
-    <div class="containers z-30">
+    <div class="containers">
         <div class="grid grid-cols-1 lg:grid-cols-12 lg:mt-10 lg:gap-10">
             <div class="md:px-16 py-5  bg-gray-200 lg:bg-white lg:px-0 lg:col-span-4">
-                <div class="relative z-10 md:z-10 z-99" id="content-wrapper" onmouseover="bigimg(this)" onmouseout="normalImg(this)">
+                <div class="relative z-10 md:z-10 z-99" id="content-wrapper">
                     <div class="screen-image">
-                        <img class="screen-image__img w-full bg-cover " id="featured" src="{{asset('storage/'.$product->image)}}" />
+                        <img class="screen-image__img w-full bg-cover " id="featured"
+                            src="{{asset('storage/'.$product->image)}}" />
                         <div class="screen-image__cover"></div>
                     </div>
-                    <div id="slider"  class="slider slider-nav ">
+                    <div id="slider" class="slider slider-nav ">
+                      @foreach($hasp as $hasp)
                         <div class="mx-2">
-                            <img class="thumbnail active w-16 py-3 " src="{{asset('storage/'.$product->image)}}" alt="">
+                            <img class="thumbnail active w-16 py-3"
+                            src="{{asset('storage/'.$hasp->image)}}" />
                         </div>
-                        <div class="mx-2">
-                            <img class="thumbnail w-16 py-3" src="{{asset('storage/'.$product->image)}}" alt="">
-                        </div>
-                        <div class="mx-2">
-                            <img class="thumbnail w-16 py-3 " src="{{asset('storage/'.$product->image)}}" alt="">
-                        </div>
-                        <div class="mx-2">
-                            <img class="thumbnail w-16 py-3 " src="{{asset('storage/'.$product->image)}}" alt="">
-                        </div>
-                        <div class="mx-2">
-                            <img class="thumbnail w-16 py-3 " src="{{asset('storage/'.$product->image)}}" alt="">
-                        </div>
+                      @endforeach
                     </div>
-                    <button id="slideLeft" class="previous_caro absolute left-0 hidden" style="top: 380px; margin-Left:-100px;"><i class="fas fa-angle-left  bg-black opacity-80 px-3 py-2 rounded-full text-white "></i></button>
-                    <button id="slideRight" class="next_caro absolute right-0 hidden" style="top: 380px;margin-Right:-100px;"><i class="fas fa-angle-right  bg-black opacity-80 px-3 py-2 rounded-full text-white "></i></button>
+                    <button id="slideLeft" class="previous_caro absolute left-0" style="top: 380px;"><i
+                            class="fas fa-angle-left  bg-black opacity-80 px-3 py-2 rounded-full text-white "></i></button>
+                    <button id="slideRight" class="next_caro absolute right-0" style="top: 380px;"><i
+                            class="fas fa-angle-right  bg-black opacity-80 px-3 py-2 rounded-full text-white "></i></button>
 
                 </div>
             </div>
             <div class="lg:col-span-8 mt-2 md:mt-3 px-3 md:px-16 lg:px-0">
                 <h1 class="font-bold text-xl">
-                    {{$product->name}}
+                   {{$product->name}}
                 </h1>
                 <div class="mt-3">
                     <span class="text-sm text-gray-600">
@@ -229,8 +221,7 @@
                     <div>
                         <h5>Gía hiện tại:</h5>
                         <div class="mt-3">
-                            <h5 class="text-2xl font-bold">5,478 ¥</h5>
-                            <span class="font-bold mt-1 text-gray-400">{{ number_format($product->price, 0) }} ¥</span>
+                            <h5 class="text-2xl font-bold">{{ number_format($product->price, 0) }} ¥</h5>
                         </div>
                     </div>
                     <div>
@@ -255,8 +246,9 @@
                         <button class="bg-blue-500 md:w-44 font-bold text-sm py-2 text-white">
                             MUA NGAY
                         </button>
-                        <button class="text-blue-500 md:w-44 font-bold text-sm py-2 hover:bg-blue-500 border border-blue-500 mt-3 hover:text-white">
-                            <a href="{{route('addcart')}}"><i class="fab fa-opencart"></i> THÊM VÀO GIỎ</a>
+                        <button
+                            class="text-blue-500 md:w-44 font-bold text-sm py-2 hover:bg-blue-500 border border-blue-500 mt-3 hover:text-white">
+                            <a href="{{route('addcart',['id' => $product->id])}}"><i class="fab fa-opencart"></i> THÊM VÀO GIỎ</a>
                         </button>
                     </div>
                 </div>
@@ -275,17 +267,14 @@
         <div class="mt-10 md:mt-3 lg:mt-10 px-3 md:px-16 lg:px-0 z-99">
             <h3 class="font-bold text-2xl">Sản phẩm tương tự</h3>
             <div class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10  w-full">
-                @foreach ($sptt as $item)
+                @foreach($sptt as $item)
                 <div class="text-center rounded-lg hover:shadow-2xl py-3 duration-1000">
-                    <img src="{{asset('storage/'.$item->image)}}" alt="" class="mx-auto py-5 h-44" />
+                  <img src="{{asset('storage/'.$item->image)}}" alt="" class="mx-auto py-5 h-44" />
                     <div>
-                        <a href="{{route('detail', ['id' => $item->id])}}">
-                            <h4 class="font-bold px-3">{{$item->name}}</h4>
-                        </a>
+                      <a href="{{route('detail', ['id' => $item->id])}}" class="font-bold">{{$item->name}}</a>
                         <div class="flex px-5 mt-10 pb-2">
                             <div>
-                                <h5 class="text-blue-400">3123 ¥</h5>
-                                <h5 class="mr-auto text-gray-400 text-sm">{{ number_format($item->price, 0) }} ¥</h5>
+                                <h5 class="text-blue-400">{{ number_format($item->price, 0) }} ¥</h5>
                             </div>
                             <h5 class="ml-auto text-sm mt-5 pt-1 opacity-70">
                                 Đã xem : <span>{{$item->product_views}}</span>
@@ -293,7 +282,8 @@
                         </div>
                         <div class="py-3">
                             <a href="#">
-                                <i class="fab fa-gratipay hover:text-white bg-gray-200 px-3 py-3 hover:bg-black rounded-full"></i>
+                                <i
+                                    class="fab fa-gratipay hover:text-white bg-gray-200 px-3 py-3 hover:bg-black rounded-full"></i>
                             </a>
                         </div>
                     </div>
@@ -442,94 +432,76 @@
             </div>
         </div>
     </div>
-    <script>
-        // hover image detail
-        var imagehover = document.querySelector('#slideLeft')
-        var image2hover = document.querySelector('#slideRight')
-        function bigimg(x) {
-            imagehover.style.display="block"
-            imagehover.style.transition="2s"
-            imagehover.style.marginLeft="0px"
-            image2hover.style.display="block"
-            image2hover.style.transition="2s"
-            image2hover.style.marginRight="0px"
-        }
-
-        function normalImg(x) {
-            imagehover.style.display="none"
-            imagehover.style.transition="2s"
-            imagehover.style.marginLeft="-100px"
-            image2hover.style.display="none"
-            image2hover.style.transition="2s"
-            image2hover.style.marginRight="-100px"
-        }
-
-
-        var loader = document.querySelector('.loader')
-        window.addEventListener('load', function() {
-            loader.style.display = "none"
-        })
-        //navimage
-        let thumbnails = document.getElementsByClassName('thumbnail')
-
-        let activeImages = document.getElementsByClassName('active')
-
-        for (var i = 0; i < thumbnails.length; i++) {
-
-            thumbnails[i].addEventListener('click', function() {
-                console.log(activeImages)
-                if (activeImages.length > 0) {
-                    activeImages[0].classList.remove('active')
-                }
-
-
-                this.classList.add('active')
-                document.getElementById('featured').src = this.src
-            })
-        }
-
-
-        let buttonRight = document.getElementById('slideRight');
-        let buttonLeft = document.getElementById('slideLeft');
-
-        buttonLeft.addEventListener('click', function() {
-            document.getElementById('slider').scrollLeft -= 180
-        })
-
-        buttonRight.addEventListener('click', function() {
-            document.getElementById('slider').scrollLeft += 180
-        })
-
-        const cover = document.querySelector(".screen-image__cover");
-        cover.addEventListener("mousemove", function(e) {
-            const screenImage = document.querySelector(".screen-image");
-            const image = document.querySelector(".screen-image__img");
-            image.style = "width: auto;height:auto;max-height:unset";
-
-            let imageWidth = image.offsetWidth;
-            let imageHeight = image.offsetHeight;
-            const screenWidth = screenImage.offsetWidth;
-            const screenHeight = screenImage.offsetHeight;
-            const spaceX = (imageWidth / 2 - screenWidth) * 2;
-            const spaceY = (imageHeight / 2 - screenHeight) * 2;
-            imageWidth = imageWidth + spaceX;
-            imageHeight = imageHeight + spaceY;
-
-            let x =
-                e.pageX - screenImage.offsetParent?.offsetLeft - screenImage.offsetLeft;
-            let y = e.pageY - screenImage.offsetParent?.offsetTop - screenImage.offsetTop;
-
-            const positionX = (imageWidth / screenWidth / 2) * x;
-            const positionY = (imageHeight / screenHeight / 2) * y;
-
-            image.style = `left: ${-positionX}px;top: ${-positionY}px;width: auto;height:auto;max-height:unset;transform:none;`;
-        });
-
-        cover.addEventListener("mouseleave", function(e) {
-            const image = document.querySelector(".screen-image__img");
-            image.style = ``;
-        });
-    </script>
+    </div>
 </body>
+<script>
+var loader = document.querySelector('.loader')
+var content = document.querySelector('.content')
+window.addEventListener('load', function() {
+ loader.style.display = "none"
+ content.style.display = "block"
+})
 
+   //navimage
+   let thumbnails = document.getElementsByClassName('thumbnail')
+
+   let activeImages = document.getElementsByClassName('active')
+
+   for (var i = 0; i < thumbnails.length; i++) {
+
+       thumbnails[i].addEventListener('click', function () {
+           console.log(activeImages)
+           if (activeImages.length > 0) {
+               activeImages[0].classList.remove('active')
+           }
+
+
+           this.classList.add('active')
+           document.getElementById('featured').src = this.src
+       })
+   }
+
+
+   let buttonRight = document.getElementById('slideRight');
+   let buttonLeft = document.getElementById('slideLeft');
+
+   buttonLeft.addEventListener('click', function () {
+       document.getElementById('slider').scrollLeft -= 180
+   })
+
+   buttonRight.addEventListener('click', function () {
+       document.getElementById('slider').scrollLeft += 180
+   })
+
+   const cover = document.querySelector(".screen-image__cover");
+   cover.addEventListener("mousemove", function (e) {
+       const screenImage = document.querySelector(".screen-image");
+       const image = document.querySelector(".screen-image__img");
+       image.style = "width: auto;height:auto;max-height:unset";
+
+       let imageWidth = image.offsetWidth;
+       let imageHeight = image.offsetHeight;
+       const screenWidth = screenImage.offsetWidth;
+       const screenHeight = screenImage.offsetHeight;
+       const spaceX = (imageWidth / 2 - screenWidth) * 2;
+       const spaceY = (imageHeight / 2 - screenHeight) * 2;
+       imageWidth = imageWidth + spaceX;
+       imageHeight = imageHeight + spaceY;
+
+       let x =
+           e.pageX - screenImage.offsetParent?.offsetLeft - screenImage.offsetLeft;
+       let y = e.pageY - screenImage.offsetParent?.offsetTop - screenImage.offsetTop;
+
+       const positionX = (imageWidth / screenWidth / 2) * x;
+       const positionY = (imageHeight / screenHeight / 2) * y;
+
+       image.style = `left: ${-positionX}px;top: ${-positionY}px;width: auto;height:auto;max-height:unset;transform:none;`;
+   });
+
+   cover.addEventListener("mouseleave", function (e) {
+       const image = document.querySelector(".screen-image__img");
+       image.style = ``;
+   });
+
+</script>
 </html>
