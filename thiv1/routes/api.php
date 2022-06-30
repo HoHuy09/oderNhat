@@ -1,7 +1,10 @@
 <?php
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('edit/{id}',[ProductController::class,'editForm'])->name('product.edit');
+Route::post('edit/{id}', [ProductController::class, 'saveEdit']);

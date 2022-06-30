@@ -6,9 +6,12 @@ use App\Http\Controllers\ListpostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ControlsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SlideshowController;
 use App\Http\Controllers\UsersController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,6 +59,10 @@ Route::prefix('user')->middleware('auth')->group(function() {
     Route::post('edit/{id}', [UsersController::class, 'saveEdit']);
     Route::get('remove/{id}',[UsersController::class,'remove'])->name('user.remove');
 });
+//controls
+Route::prefix('controls')->middleware('auth')->group(function() {
+    Route::get('/',[RoleController::class,'index'])->name('controls.index');
+});
 //Role
 Route::prefix('role')->middleware('auth')->group(function() {
     Route::get('/',[RoleController::class,'index'])->name('role.index');
@@ -64,6 +71,15 @@ Route::prefix('role')->middleware('auth')->group(function() {
     Route::get('edit/{id}',[RoleController::class,'editForm'])->name('role.edit');
     Route::post('edit/{id}', [RoleController::class, 'saveEdit']);
     Route::get('remove/{id}',[RoleController::class,'remove'])->name('role.remove');
+});
+//client
+Route::prefix('client')->middleware('auth')->group(function() {
+    Route::get('/',[ClientController::class,'index'])->name('client.index');
+    Route::get('add', [ClientController::class, 'addForm'])->name('client.add');
+    Route::post('add', [ClientController::class, 'saveAdd']);
+    Route::get('edit/{id}',[ClientController::class,'editForm'])->name('client.edit');
+    Route::post('edit/{id}', [ClientController::class, 'saveEdit']);
+    Route::get('remove/{id}',[ClientController::class,'remove'])->name('client.remove');
 });
 //Product
 Route::prefix('product')->middleware('auth')->group(function() {

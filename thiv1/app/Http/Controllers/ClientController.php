@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SaveProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ClientController extends Controller
 {
     public function index(Request $request){
-        $product = Product::paginate(5);
-        
-        return view('admin.products.index',compact('product'));
+        $user = User::all()->where('role_id', 2);
+        return view('admin.client.index',compact('user'));
     }
     public function addForm(){
         $category = Category::all();
-        return view('admin.products.add',compact('category'));
+        return view('admin.client.add',compact('category'));
     }
     public function saveAdd(SaveProductRequest $request){
     

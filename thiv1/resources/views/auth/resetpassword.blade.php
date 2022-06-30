@@ -1,96 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      src="https://kit.fontawesome.com/79e1832a3e.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@2.15.0/dist/full.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body>
-    <div class="bg-gray-200">
-      <div class="container mx-auto">
-        <div class="py-40 px-10 md:px-36 pb-56">
-          <div class="grid grid-cols-1 lg:grid-cols-12">
-            <div
-              class="col-1 md:col-span-6 bg-white rounded-l-md p-3 pt-5 pb-5 md:p-20"
-            >
-              <div class="mx-2 md:mx-0 xxl:mx-8">
-                <div class="flex">
-                  <h4 class="font-bold text-2xl text-center mb-3">
-                    Forgot Your Password?
-                  </h4>
-                  <i class="fas mt-2 fa-times ml-auto"></i>
+
+<head>
+    <title>Khôi phục mật khẩu | Website quản trị v2.0</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ asset('website') }}/util.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('website') }}/main.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                <img src="{{asset('storage/anhweb/fg-img.png')}}" alt="IMG">
+              </div>
+                <div class="login100-form validate-form">
+                    <span class="login100-form-title">
+                        <b>KHÔI PHỤC MẬT KHẨU</b>
+                    </span>
+                    <form action="custommer.html" method="post">
+                        @csrf
+                        <div class="wrap-input100 validate-input"
+                            data-validate="Bạn cần nhập đúng thông tin như: ex@abc.xyz">
+                            <input class="input100" type="text" placeholder="Nhập email" name="email"
+                                id="emailInput" value="" />
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class='bx bx-mail-send' ></i>
+                            </span>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <button onclick="return RegexEmail('emailInput')" style="font-weight: 600; font-size:15.5px; background:#ffd43b; border:1px solid #ffd43b; width:100%;padding-top:7px; padding-bottom:7px; border-radius:5px;" type="submit">Reset password</button>
+                        </div>
+
+                        <div class="text-center p-t-12">
+                            <a class="txt2" href="{{route('login')}}">
+                                Trở về đăng nhập
+                            </a>
+                        </div>
+                    </form>
+                    <!-- link page -->
+                    <div class="text-center p-t-70 txt2">
+                        Phần mềm quản lý bán hàng <i class="far fa-copyright" aria-hidden="true"></i>
+                        <script type="text/javascript">document.write(new Date().getFullYear());</script> <a
+                            class="txt2" href="">  </a>
+                    </div>
                 </div>
-                <p>
-                  We get it, stuff happens. Just enter your email address below
-                  and we'll send you a link to reset your password!
-                </p>
-              </div>
-              <div class="pt-10 px-3 md:px-0">
-                  @if (session('msg'))
-                      <span class="text-red-500">{{ session('msg') }}</span>
-                    @endif
-                  <form action="" method="post">
-                      @csrf
-                    <h4 class="mb-2">Email</h4>
-                    <input
-                      type="text"
-                      name="email"
-                      class="rounded-md w-full border-2 border-gray-400 p-2"
-                      placeholder="Enter Email Address"
-                    />
-                    <h4 class="mb-2">Password</h4>
-                    <input
-                      type="password"
-                      name="password"
-                      class="rounded-md w-full border-2 border-gray-400 p-2"
-                      placeholder="Enter New Password"
-                    />
-                    <button
-                    type="submit"
-                  class="xxl:px-32 pt-2 w-full pb-2 rounded-xl mt-5 hover:bg-red-500 text-white border-2 border-blue-500"
-                  style="
-                    background: linear-gradient(
-                      to right,
-                      #ee7724,
-                      #d8363a,
-                      #dd3675,
-                      #b44593
-                    );
-                  "
-                >
-                  Reset Password
-                </button>
-                  </form>
-              </div>
-              <div class="text-md mt-10 text-blue-400 text-center">
-                
-                <a href="{{route('register')}}"><h5>Create an Account!</h5> </a>
-                <a href="{{route('login')}}"><h5>Already have an account? Login!</h5></a>
-              </div>
             </div>
-            <div class="md:col-span-6 md:block hidden">
-              <div
-                class="h-full rounded-r-md"
-                style="
-                  background-image: url('{{asset('storage/anhweb/photo-1517519014922-8fc06b814a0e.jpeg')}}');
-                "
-              ></div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </body>
+   
+</body>
 </html>

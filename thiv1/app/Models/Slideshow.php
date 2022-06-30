@@ -9,6 +9,6 @@ class Slideshow extends Model
 {
     use HasFactory;
     protected $table = 'slideshow';
-    public $fillable = ['image','link_lk'];
+    public $fillable = ['link_lk'];
     public $timestamp = false;
 }

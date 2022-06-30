@@ -20,6 +20,7 @@ class LoginController extends Controller
     public function postLogin(LoginRequest $request){
         $email = $request->email;
         $password = $request->password;
+
         if(Auth::attempt(['email' => $email, 'password' => $password], $request->remember)){
                 $user = [
                     [

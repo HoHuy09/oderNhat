@@ -1,137 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      src="https://kit.fontawesome.com/79e1832a3e.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@2.15.0/dist/full.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body>
-    <div class="bg-gray-200">
-      <section class="h-full gradient-form container mx-auto md:h-screen">
-        <div class="container py-12 px-6 h-full">
-          <div
-            class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800"
-          >
-            <div class="xl:w-10/12">
-              <div class="block bg-white shadow-lg rounded-lg">
-                <div class="lg:flex lg:flex-wrap g-0">
-                  <div class="lg:w-6/12 px-4 md:px-0">
-                    <div class="md:p-12 md:mx-6">
-                      <div class="text-center">
-                        <img
-                          class="mx-auto w-60"
-                          src="{{asset('storage/anhweb/logo 2c.png')}}"
-                          alt="logo"
-                        />
-                      </div>
-                      <form method="post">
-                        @csrf
-                        <div class="flex text-sm gap-2">
-                          <p class="mb-4">Không có tài khoản ?</p>
-                          <a class="text-blue-500" href="{{route('register')}}">Tạo tài khoản</a>
-                        </div>
-                        <div class="mb-4">
-                          <input
-                            type="text"
-                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                            id="exampleFormControlInput1"
-                            name="email"
-                            placeholder="Email"
-                          />
-                          @error('email')
-                        <p class="text-red-500">{{$message}}</p>
-                        @enderror
-                        </div>
-                        <div class="mb-4">
-                          <input
-                            type="password"
-                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                            name="password"
-                            id="exampleFormControlInput1"
-                            placeholder="Password"
-                          />
-                          @error('password')
-                            <p class="text-red-500">{{$message}}</p>
-                            @enderror
-                        </div>
-                        <div class="text-center pt-1 mb-12 pb-1">
-                          <button
-                            class="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
-                            type="submit"
-                            data-mdb-ripple="true"
-                            data-mdb-ripple-color="light"
-                            style="
-                              background: linear-gradient(
-                                to right,
-                                #ee7724,
-                                #d8363a,
-                                #dd3675,
-                                #b44593
-                              );
-                            "
-                          >
-                            Đăng nhập
-                          </button>
-                          <a class="text-gray-500" href="{{route('resetpassword')}}">Quên mật khẩu ?</a>
-                        </div>
-                        <div class="flex items-center justify-between pb-6">
-                          <p class="mb-0 mr-2">Không có tài khoản ?</p>
-                          <button
-                            type="button"
-                            class="inline-block px-6 py-2 border-2 border-red-600 text-red-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                            data-mdb-ripple="true"
-                            data-mdb-ripple-color="light"
-                          >
-                            Trợ giúp
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                  <div
-                    class="lg:w-6/12 flex items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none"
-                    style="
-                      background: linear-gradient(
-                        to right,
-                        #ee7724,
-                        #d8363a,
-                        #dd3675,
-                        #b44593
-                      );
-                    "
-                  >
-                    
-                    <div class="text-white px-4 py-6 md:p-12 md:mx-6">
-                      <h4 class="text-xl font-semibold mb-6">
-                        We are more than just a company
-                      </h4>
-                      <p class="text-sm">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+<html lang="vi">
+
+<head>
+  <title>Đăng nhập quản trị | Website quản trị v2.0</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{{ asset('website') }}/util.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('website') }}/main.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100">
+        <div class="login100-pic js-tilt" data-tilt>
+          <img src="{{asset('storage/anhweb/team.jpg')}}" alt="IMG">
         </div>
-      </section>
+        <!--=====TIÊU ĐỀ======-->
+        <div class="login100-form validate-form">
+          <span class="login100-form-title">
+            <b>ĐĂNG NHẬP HỆ THỐNG POS</b>
+          </span>
+          <!--=====FORM INPUT TÀI KHOẢN VÀ PASSWORD======-->
+          <form method="post">
+            @csrf
+            <div class="wrap-input100 validate-input" style="margin-bottom:0px; ">
+              <input class="input100" type="text" placeholder="Tài khoản quản trị" name="email">
+              <span class="symbol-input100">
+                <i class='bx bx-user'></i>
+              </span>
+           
+            </div>
+             @error('email')
+              <span class="focus-input100" style="font-size:12px; margin-top:-10px; color:red;">{{$message}}</span>
+              @enderror
+
+            <div class="wrap-input100 validate-input" style="padding-top:14px;margin-bottom:0px;">
+              <input autocomplete="off" class="input100" type="password" placeholder="Mật khẩu" name="password">
+              <span toggle="#password-field" class="bx fa-fw bx-hide field-icon click-eye"></span>
+              <span class="focus-input100"></span>
+              <span class="symbol-input100" style="padding-top:12px;">
+                <i class='bx bx-key'></i>
+              </span>
+            </div>
+            @error('password')
+              <span class="focus-input100" style="font-size:12px; margin-top:-10px; color:red;">{{$message}}</span>
+              @enderror
+
+            <!--=====ĐĂNG NHẬP======-->
+            <div class="container-login100-form-btn">
+              <button style="font-weight: 600; font-size:15.5px; background:#ffd43b; border:1px solid #ffd43b; width:100%;padding-top:7px; padding-bottom:7px; border-radius:5px;" type="submit">Đăng nhập</button>
+            </div>
+            <div style="display:flex; gap: 50px;">
+              <!-- tạo tài khoản -->
+              <div class="text-left p-t-12">
+                <a class="txt2" href="{{route('register')}}">
+                  Tạo tài khoản mới?
+                </a>
+              </div>
+              <!--=====LINK TÌM MẬT KHẨU======-->
+              <div class="text-right p-t-12">
+                <a class="txt2" href="{{route('resetpassword')}}">
+                                    Bạn quên mật khẩu?
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                    <!--=====FOOTER======-->
+                    <div class="text-center p-t-70 txt2">
+                        Phần mềm quản lý bán hàng <i class="far fa-copyright" aria-hidden="true"></i>
+                        <script type="text/javascript">document.write(new Date().getFullYear());</script> <a
+                            class="txt2" href="#"> </a>
+                    </div>
+</div>
+            </div>
+        </div>
     </div>
-  </body>
+    <!--Javascript-->
+
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script type="text/javascript">
+        //show - hide mật khẩu
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text"
+            } else {
+                x.type = "password";
+            }
+        }
+        $(".click-eye").click(function () {
+            $(this).toggleClass("bx-show bx-hide");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+    </script>
+</body>
+
 </html>
