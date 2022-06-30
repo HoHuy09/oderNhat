@@ -22,7 +22,7 @@ class PostsController extends Controller
         $model = new Post();
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('public/products');
+            $imgPath = $request->file('image')->store('products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }
@@ -39,7 +39,7 @@ class PostsController extends Controller
         
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('public/products');
+            $imgPath = $request->file('image')->store('products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }

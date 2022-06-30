@@ -31,8 +31,8 @@ class HomeController extends Controller
         
         $cart = $request->session()->get('cart');
         isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
-        
-        return view('home.detail', compact('product','sptt','cart'));
+        $hasp = $product->productimage;
+        return view('home.detail', compact('product','sptt','cart','hasp'));
     }
     public function cate(Request $request){
         $cate = Category::all();

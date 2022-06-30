@@ -579,7 +579,7 @@ justify-content: center;">
       loader.style.display = "none"
       content.style.display = "block"
     })
-    
+
     //loading
     $(document).ready(function() {
       $('.your-class').slick({
@@ -592,5 +592,37 @@ justify-content: center;">
     });
   </script>
 </body>
-
-</html>
+<div class="grid grid-cols-5 gap-5 mt-8">
+  <div class="px-3 py-3 rounded-xl hover:shadow-xl border border-gray-300">
+    <a href="">
+      <img src="{{asset('storage/anhweb/amazon.png')}}" alt="" class="mx-auto" /></a>
+    <div>
+      <h4 class="font-bold">Amazon</h4>
+      <p class="text-sm text-gray-400 mt-3 pb-5">
+        Sàn thương mại điện tử Amazon Nhật Bản
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+<!-- menu mobile -->
+<div class="grid grid-cols-3 containers  lg:hidden  border-t border-gray-400 py-2 sticky bottom-0 bg-white">
+  <div class="mx-auto text-center text-gray-500">
+    <a href="">
+      <i class="fas fa-home text-sm"></i>
+      <h4 class="text-sm">Trang chủ</h4>
+    </a>
+  </div>
+  <div class="mx-auto text-center text-gray-500">
+    <i class="fas fa-heart"></i>
+    <h4 class="text-sm">Ưa thích</h4>
+    </a>
+  </div>
+  <div class="mx-auto text-center text-gray-500">
+    <a href="">
+      <i class="fas fa-user"></i>
+      <h4 class="text-sm">Cá nhân</h4>
+    </a>
+  </div>
+</div>
+<!-- footer -->

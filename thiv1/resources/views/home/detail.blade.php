@@ -19,77 +19,107 @@
 
 <body>
     <!-- loading -->
-    <div class="loader h-screen z-20 w-full bg-white  fixed justify-center items-center  left-0 top-0">
-        <div class="w-full z-10 mt-96">
-            <img class="w-52 mx-auto" src="./image/loader.gif" alt="">
-        </div>
-    </div>
+    <div class="loader h-screen z-20 w-full bg-white  fixed justify-center items-center  left-0 top-0" style="width: 100%;
+    height: 100vh; position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;">
+        <img style="width:200px;" src="{{asset('storage/anhweb/loader.gif')}}" alt="">
+      </div>
     <!-- header -->
-    <div class="bg-amber-600 sticky top-0 z-20 lg:block hidden">
+    <div class="content" style="display: none">
+      <div class="bg-amber-600 sticky top-0 z-20 lg:block hidden">
         <div class="containers py-4 ">
             <div class="grid grid-cols-12 gap-10">
                 <div class="col-span-3 lg:col-span-2 mx-auto">
-                    <img class="h-10" src="./image//logo 2c.png" alt="" />
+                  <a href="{{route('home')}}">
+                    <img class="h-10" src="{{asset('storage/anhweb/logo 2c.png')}}" alt="" />
+                  </a>
                 </div>
                 <div class="col-span-6 lg:col-span-7">
-                    <div class="relative">
-                        <input type="text" class="w-full p-1 mt-1 pr-20 rounded-md" />
-                        <i class="fas fa-search absolute top-3 right-6"></i>
-                    </div>
+                  <div class="relative">
+                    <form action="{{route('search')}}" method="POST">
+                      @csrf
+                      <input type="text" name="search" class="w-full p-1 mt-1 pr-20 rounded-md" />
+                      <button type="submit"><i class="fas fa-search absolute top-3 right-6"></i></button>
+                    </form>
+                  </div>
                 </div>
                 <div class="col-span-3 lg:ml-auto flex gap-10 mt-1">
-                    <!-- user -->
-                    <div class="text-2xl text-white relative hidden sm:block" x-data="{ open: false }" @mouseleave="open = false">
-                        <div @mouseover="open = true">
-                            <i class="fas fa-user"></i>
-                        </div>
-
-                        <div class="absolute bg-white w-52 right-0 mt-2 bg-white shadow-xl" x-show="open" x-transition.scale.origin.right>
-                            <div class="py-2 px-5">
-                                <a href="#" class="block p-1 text-gray-700">
-                                    <i class="fas fa-user text-xl"></i>
-                                    <span class="ml-2 text-sm">Profile</span>
-                                </a>
-                                <a href="#" class="block p-1 text-gray-700">
-                                    <i class="fas fa-cog text-xl"></i>
-                                    <span class="ml-2 text-sm">Settings</span>
-                                </a>
-                                <a href="#" class="block p-1 text-gray-700">
-                                    <i class="fas fa-sign-out-alt text-xl"></i>
-                                    <span class="ml-2 text-sm">Logout</span>
-                                </a>
+                  <div class="text-2xl text-white relative hidden lg:block" x-data="{ open: false }" @mouseleave="open = false">
+                    <div @mouseover="open = true">
+                      <i class="fas fa-user"></i>
+                    </div>
+        
+                    <div class="absolute bg-white w-52 right-0 mt-2 bg-white shadow-xl" x-show="open" x-transition.scale.origin.right>
+                      <div class="py-2 px-5">
+                        <a href="#" class="block p-1 text-gray-700">
+                          <i class="fas fa-user text-xl"></i>
+                          <span class="ml-2 text-sm">Profile</span>
+                        </a>
+                        <a href="#" class="block p-1 text-gray-700">
+                          <i class="fas fa-cog text-xl"></i>
+                          <span class="ml-2 text-sm">Settings</span>
+                        </a>
+                        <a href="#" class="block p-1 text-gray-700">
+                          <i class="fas fa-sign-out-alt text-xl"></i>
+                          <span class="ml-2 text-sm">Logout</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="hidden lg:block">
+                    <i class="fas fa-gavel text-2xl text-white"></i>
+                  </div>
+                  <!-- icon cart -->
+                  <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
+                    <div @mouseover="open = true">
+                      <i class="fab fa-opencart text-2xl text-white"></i>
+                    </div>
+                    <div x-show="open" x-transition.scale.origin.right class="absolute bg-whitew-72 w-64 right-0 px-3 py-5  mt-2 bg-white shadow-xl">
+                      <div>
+                        <h5 class="font-bold">cart</h5>
+                      </div>
+                      @foreach ($cart as $item12)
+                      <div class="flex gap-3 mt-3">
+                        <a href=""><img class="w-20" src="{{asset('storage/'.$item12['image'])}}" alt=""></a>
+                        <div>
+                          <a href="">
+                            <h5 class="font-bold text-sm hover:text-yellow-500">{{$item12['name']}}</h5>
+                          </a>
+                          <div class="grid grid-cols-2  mt-2">
+                            <div class="text-xs">
+                              <h5 class="font-bold">{{$item12['price']}} ¥</h5>
                             </div>
-                        </div>
-                    </div>
-                    <!-- đấu giá -->
-                    <div class="hidden md:block">
-                        <i class="fas fa-gavel text-2xl text-white"></i>
-                    </div>
-                    <!-- giỏ hàng -->
-                    <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
-                        <div @mouseover="open = true">
-                            <i class="fab fa-opencart text-2xl text-white block"></i>
-                        </div>
-                        <div x-show="open" x-transition.scale.origin.right class="absolute bg-white w-72 right-0 py-24 mt-2 bg-white shadow-xl">
-                            <img class="w-full px-20" src="./image/cart-empty.svg" alt="" />
-                            <div class="text-center">
-                                <h4 class="font-bold mt-3">Giỏ hàng trống!</h4>
-                                <p class="text-xs mt-3">
-                                    không có sản phẩm trong giỏ hàng của bạn
-                                </p>
+                            <div class="text-xs">
+                              <p class="text-gray-400">Số lượng : <span>{{$item12['quantity']}}</span></p>
+                              <a href="{{route('deletecart',['id'=>$item12['id']])}}"><button class="ml-12"> <i class="fas fa-trash-alt text-red-500 "></i></button></a>
                             </div>
+                          </div>
                         </div>
+                      </div>
+                      @endforeach
+                      <div class="mt-3 border-t-2 border-gray-300 ">
+                        <a href="{{route('cart')}}"><button class="border-2 border-yellow-500 mt-3 hover:bg-yellow-500 hover:text-white text-center w-full text-yellow-500">view cart</button></a>
+                     </div>
                     </div>
-                    <!-- end giỏ hàng -->
-                    <!-- thong báo -->
-                    <div x-data="{ open: false }" @mouseleave="open = false" class="relative hidden lg:block">
-                        <div @mouseover="open = true">
-                            <i class="fas fa-bell text-2xl text-white"></i>
-                        </div>
-                        <div x-show="open" x-transition.scale.origin.right class="absolute bg-white w-72 pb-32 right-0 pt-5 pl-5 mt-2 bg-white shadow-xl">
-                            <h4 class="font-bold">Thông báo</h4>
-                        </div>
+                  </div>
+                  <div x-data="{ open: false }" @mouseleave="open = false" class="relative hidden lg:block">
+                    <div @mouseover="open = true">
+                      <i class="fas fa-bell text-2xl text-white"></i>
                     </div>
+                    <div x-show="open" x-transition.scale.origin.right class="absolute bg-white w-72 pb-32 right-0 pt-5 pl-5 mt-2 bg-white shadow-xl">
+                      <h4 class="font-bold">Thông báo </h4>
+                      <div>@if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif</div>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -128,10 +158,10 @@
     </div>
     <div class="bg-gray-200 py-3 lg:block hidden">
         <div class="containers">
-            <a href="">
+            <a href="#">
                 <div class="text-sm flex hover:text-amber-600">
                     <i class="fas fa-home text-sm mr-3"></i>
-                    <h5 class="">Trang chủ</h5>
+                    <div class="">Trang chủ / <span><a href="{{route('category', ['id' => $product->cate_id])}}">{{$product->category->name}}</a></span> / {{$product->name}}</div>
                 </div>
             </a>
         </div>
@@ -200,7 +230,7 @@
                         <h5>Gía hiện tại:</h5>
                         <div class="mt-3">
                             <h5 class="text-2xl font-bold">5,478 ¥</h5>
-                            <span class="font-bold mt-1 text-gray-400">{{ number_format($product->price, 0) }} VND</span>
+                            <span class="font-bold mt-1 text-gray-400">{{ number_format($product->price, 0) }} ¥</span>
                         </div>
                     </div>
                     <div>
@@ -226,7 +256,7 @@
                             MUA NGAY
                         </button>
                         <button class="text-blue-500 md:w-44 font-bold text-sm py-2 hover:bg-blue-500 border border-blue-500 mt-3 hover:text-white">
-                            <a href="{{route('addcart',['id' => $product->id])}}"><i class="fab fa-opencart"></i> THÊM VÀO GIỎ</a>
+                            <a href="{{route('addcart')}}"><i class="fab fa-opencart"></i> THÊM VÀO GIỎ</a>
                         </button>
                     </div>
                 </div>
@@ -238,7 +268,7 @@
             <h3 class="font-bold text-2xl">Mô tả sản phẩm</h3>
             <div class="py-10 ">
                 <p>
-                    香料無添加、レギュラーコーヒー100%(厳選アラビカ豆使用)のコーヒーです。コーヒー本来の特徴を生かす天然水使用。じっくり低温抽出により、すっきりきれいな後味が際立った、香る「コールドブリュー」に仕上げました。香り・味わいにこだわるあなたにコーヒー本来の自然な香りが楽しめるブラックをお届けします。
+                    {{$product->description}}
                 </p>
             </div>
         </div>
@@ -255,7 +285,7 @@
                         <div class="flex px-5 mt-10 pb-2">
                             <div>
                                 <h5 class="text-blue-400">3123 ¥</h5>
-                                <h5 class="mr-auto text-gray-400 text-sm">{{ number_format($item->price, 0) }} VND</h5>
+                                <h5 class="mr-auto text-gray-400 text-sm">{{ number_format($item->price, 0) }} ¥</h5>
                             </div>
                             <h5 class="ml-auto text-sm mt-5 pt-1 opacity-70">
                                 Đã xem : <span>{{$item->product_views}}</span>
@@ -397,10 +427,10 @@
             <div class="flex">
                 <h4 class="font-bold mt-1">Kết nối với tôi</h4>
                 <div class="flex gap-5 ml-10">
-                    <img class="w-8" src="./image/facebook.png" alt="" />
-                    <img class="w-8" src="./image/ter.png" alt="" />
-                    <img class="w-8" src="./image/intagam.png" alt="" />
-                    <img class="w-8" src="./image/yout.png" alt="" />
+                  <img class="w-8" src="{{asset('storage/anhweb/facebook.png')}}" alt="" />
+                  <img class="w-8" src="{{asset('storage/anhweb/ter.png')}}" alt="" />
+                  <img class="w-8" src="{{asset('storage/anhweb/intagam.png')}}" alt="" />
+                  <img class="w-8" src="{{asset('storage/anhweb/yout.png')}}" alt="" />
                 </div>
             </div>
         </div>

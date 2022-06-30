@@ -91,13 +91,13 @@ Route::prefix('product')->middleware('auth')->group(function() {
     Route::get('remove/{id}',[ProductController::class,'remove'])->name('product.remove');
 });
 //Category
-Route::prefix('category')->middleware('auth')->group(function() {
-    Route::get('/',[CategoryController::class,'index'])->name('category.index');
-    Route::get('add', [CategoryController::class, 'addForm'])->name('category.add');
+Route::prefix('categorys')->middleware('auth')->group(function() {
+    Route::get('/',[CategoryController::class,'index'])->name('categorys.index');
+    Route::get('add', [CategoryController::class, 'addForm'])->name('categorys.add');
     Route::post('add', [CategoryController::class, 'saveAdd']);
-    Route::get('edit/{id}',[CategoryController::class,'editForm'])->name('category.edit');
+    Route::get('edit/{id}',[CategoryController::class,'editForm'])->name('categorys.edit');
     Route::post('edit/{id}', [CategoryController::class, 'saveEdit']);
-    Route::get('remove/{id}',[CategoryController::class,'remove'])->name('category.remove');
+    Route::get('remove/{id}',[CategoryController::class,'remove'])->name('categorys.remove');
 });
 //Post
 Route::prefix('posts')->middleware('auth')->group(function() {

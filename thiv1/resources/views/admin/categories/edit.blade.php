@@ -30,7 +30,7 @@
             </div>
             <div class="col-12 d-flex justify-content">
                 
-                <a href="{{route('category.index')}}" class="btn btn-danger">Hủy</a>
+                <a href="{{route('categorys.index')}}" class="btn btn-danger">Hủy</a>
                 &nbsp;
                 <button type="submit" class="btn btn-primary">Lưu</button>
             </div>

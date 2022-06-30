@@ -18,7 +18,7 @@ class ListpostController extends Controller
         $model = new Listpost();
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('public/products');
+            $imgPath = $request->file('image')->store('products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }
@@ -33,7 +33,7 @@ class ListpostController extends Controller
         $model = Listpost::find($id);
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('public/products');
+            $imgPath = $request->file('image')->store('products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }

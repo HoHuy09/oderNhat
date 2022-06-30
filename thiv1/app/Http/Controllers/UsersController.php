@@ -40,7 +40,7 @@ class UsersController extends Controller
         $model->fill($request->all());
         $model->password = Hash::make($request->password);
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('public/products');
+            $imgPath = $request->file('image')->store('products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->avatar = $imgPath;
         }
@@ -60,7 +60,7 @@ class UsersController extends Controller
         if($request->hasFile('image')){
             Storage::delete($model->image);
 
-            $imgPath = $request->file('image')->store('public/products');
+            $imgPath = $request->file('image')->store('products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->avatar = $imgPath;
         }
