@@ -28,11 +28,12 @@ class HomeController extends Controller
         $product->product_views = $product->product_views + 1;
         $product->save();
         $user = $request->session()->get('user');
-        
+        isset($user) ? $user = $request->session()->get('user') : $user=[];
+       
         $cart = $request->session()->get('cart');
         isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
         $hasp = $product->productimage;
-        return view('home.detail', compact('product','sptt','cart','hasp'));
+        return view('home.detail', compact('product','sptt','cart','hasp','user'));
     }
     public function cate(Request $request){
         $cate = Category::all();

@@ -22,12 +22,13 @@ class LoginController extends Controller
         $password = $request->password;
 
         if(Auth::attempt(['email' => $email, 'password' => $password], $request->remember)){
-                $user = [
+                $user = 
                     [
                         'id' => Auth::user()->id,
                         'name' => Auth::user()->name,
+                        'avatar' => Auth::user()->avatar
                     ]
-                ];
+            ;
                 session()->put('user', $user);
             if(Auth::user()->role_id == 1){
                 return redirect()->route('user.index');
