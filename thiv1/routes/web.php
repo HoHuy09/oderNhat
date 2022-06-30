@@ -11,6 +11,7 @@ use App\Http\Controllers\ControlsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SlideshowController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\AdminController;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
