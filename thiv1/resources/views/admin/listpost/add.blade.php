@@ -85,7 +85,7 @@
                             @csrf
                             <div class="form-group col-md-3">
                                 <label class="control-label">Tên Danh mục</label>
-                                <input class="form-control" type="text" tyle="name" placeholder="mời nhập listpost">
+                                <input class="form-control" type="text" name="name" placeholder="mời nhập listpost">
                                 @error('name')
                                 <p class="text-danger">{{$message}}</p>
                                 @enderror
