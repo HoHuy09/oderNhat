@@ -66,7 +66,7 @@
   <main class="app-content">
     <div class="app-title">
       <ul class="app-breadcrumb breadcrumb side">
-        <li class="breadcrumb-item active"><a href="#"><b>Danh sách nhân viên</b></a></li>
+        <li class="breadcrumb-item active"><a href="#"><b>Danh sách khách hàng</b></a></li>
       </ul>
       <div id="clock"></div>
     </div>
@@ -80,7 +80,7 @@
               <div class="col-sm-2">
 
                 <a class="btn btn-add btn-sm" href="form-add-nhan-vien.html" title="Thêm"><i class="fas fa-plus"></i>
-                  Tạo mới nhân viên</a>
+                  Tạo mới</a>
               </div>
               <div class="col-sm-2">
                 <a class="btn btn-delete btn-sm nhap-tu-file" type="button" title="Nhập" onclick="myFunction(this)"><i class="fas fa-file-upload"></i> Tải từ file</a>

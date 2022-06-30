@@ -152,6 +152,7 @@
                 @endforeach 
               </tbody>
             </table>
+            {{$user->links('vendor.pagination.custom')}}
           </div>
           
 @if ($user->hasPages())
