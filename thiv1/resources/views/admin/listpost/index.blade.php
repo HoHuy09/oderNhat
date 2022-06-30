@@ -127,6 +127,7 @@
               </tbody>
             </table>
           </div>
+          {{$listpost->links('vendor.pagination.custom')}}
         </div>
       </div>
     </div>

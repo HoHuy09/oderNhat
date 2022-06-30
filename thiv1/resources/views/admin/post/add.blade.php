@@ -246,7 +246,6 @@
                   <a href="javascript:" class="Choicefile"><i class="fas fa-cloud-upload-alt"></i> Chọn ảnh</a>
                   <p style="clear:both"></p>
                 </div>
-
               </div>
               <div class="form-group col-md-4">
                 <label for="" class="control-label">Danh mục</label>

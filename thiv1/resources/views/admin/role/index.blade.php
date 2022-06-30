@@ -123,6 +123,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{$role->links('vendor.pagination.custom')}}
                     </div>
                 </div>
             </div>

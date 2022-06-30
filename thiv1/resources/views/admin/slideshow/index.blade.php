@@ -132,6 +132,7 @@
                   @endforeach 
                 </tbody>
               </table>
+              {{$slideshow->links('vendor.pagination.custom')}}
             </div>
           </div>
         </div>
