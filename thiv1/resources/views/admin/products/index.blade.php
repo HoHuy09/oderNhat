@@ -136,7 +136,7 @@
                             </tbody>
                         </table>
                     </div>
-                    {{$product->links()}}
+                    {{$product->links('vendor.pagination.custom')}}
                 </div>
             </div>
         </div>
