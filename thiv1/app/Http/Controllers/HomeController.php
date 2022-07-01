@@ -19,7 +19,9 @@ class HomeController extends Controller
         $category = Category::all();
         $cart = $request->session()->get('cart');
         isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
-        return view('home.home', compact('products', 'productnb', 'category', 'cart'));
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user=[];
+        return view('home.home', compact('products', 'productnb', 'category', 'cart','user'));
     }
     public function detail(Request $request,$id)
     {
@@ -40,7 +42,9 @@ class HomeController extends Controller
         $products = Product::all();
         $cart = $request->session()->get('cart');
         isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
-        return view('home.cate', compact('cate','products','cart'));
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user=[];
+        return view('home.cate', compact('cate','products','cart','user'));
         
     }
     public function category(Request $request,$id)
@@ -50,7 +54,9 @@ class HomeController extends Controller
         $products = Product::where('cate_id', $id)->get();
         $cart = $request->session()->get('cart');
         isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
-        return view('home.category', compact('category', 'products', 'cate', 'cart'));
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user=[];
+        return view('home.category', compact('category', 'products', 'cate', 'cart','user'));
     }
     public function search(Request $request)
     {
@@ -58,7 +64,9 @@ class HomeController extends Controller
         $products = Product::where('name', 'like', '%' . $request->search . '%')->get();
         $cart = $request->session()->get('cart');
         isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
-        return view('home.cate', compact('products', 'cate', 'cart'));
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user=[];
+        return view('home.cate', compact('products', 'cate', 'cart','user'));
     }
     public function catefilter(Request $request)
     {
@@ -67,7 +75,9 @@ class HomeController extends Controller
         $products = Product::where('status', $model)->get();
         $cart = $request->session()->get('cart');
         isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
-        return view('home.cate', compact('cate','products','cart'));
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user=[];
+        return view('home.cate', compact('cate','products','cart','user'));
     }
     public function addcart(Request $request,$id)
     {
@@ -137,6 +147,8 @@ class HomeController extends Controller
     {
         $cart = $request->session()->get('cart');
         isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
-        return view('home.introduce', compact('cart'));
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user=[];
+        return view('home.introduce', compact('cart','user'));
     }
 }

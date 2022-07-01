@@ -17,29 +17,51 @@
           </div>
         </div>
         <div class="col-span-3 lg:ml-auto flex gap-10 mt-1">
+          @if ($user == [])
           <div class="text-2xl text-white relative hidden lg:block" x-data="{ open: false }" @mouseleave="open = false">
-            <div @mouseover="open = true">
-              <i class="fas fa-user"></i>
-            </div>
-
-            <div class="absolute bg-white w-52 right-0 mt-2 bg-white shadow-xl" x-show="open" x-transition.scale.origin.right>
-              <div class="py-2 px-5">
-                <a href="#" class="block p-1 text-gray-700">
-                  <i class="fas fa-user text-xl"></i>
-                  <span class="ml-2 text-sm">Profile</span>
-                </a>
-                <a href="#" class="block p-1 text-gray-700">
-                  <i class="fas fa-cog text-xl"></i>
-                  <span class="ml-2 text-sm">Settings</span>
-</a>
-                <a href="#" class="block p-1 text-gray-700">
-                  <i class="fas fa-sign-out-alt text-xl"></i>
-                  <span class="ml-2 text-sm">Logout</span>
-                </a>
+              <div @mouseover="open = true">
+                  <i class="fas fa-user"></i>
               </div>
-            </div>
-          </div>
 
+              <div class="absolute bg-white w-52 right-0 mt-2 bg-white shadow-xl" x-show="open" x-transition.scale.origin.right>
+                  <div class="py-2 px-5">
+                      <a href="{{route('register')}}" class="block p-1 text-gray-700">
+                          <i class="fas fa-user text-xl"></i>
+                          <span class="ml-2 text-sm">Đăng ký</span>
+                      </a>
+                      <a href="{{route('login')}}" class="block p-1 text-gray-700">
+                          <i class="fas fa-user text-xl"></i>
+                          <span class="ml-2 text-sm">Đăng nhập</span>
+                      </a>
+                  </div>
+              </div>
+          </div>
+          @else
+          <div class="text-2xl text-white relative hidden lg:block" x-data="{ open: false }" @mouseleave="open = false">
+              <div @mouseover="open = true" class="flex">
+                  <img src="{{asset('storage/'.$user['avatar'])}}" class="rounded-full" width="30px">
+                  <p class="ml-3 text-sm mt-1">{{$user['name']}}</p>
+              </div>
+
+              <div class="absolute bg-white w-52 right-0 mt-2 bg-white shadow-xl" x-show="open" x-transition.scale.origin.right>
+                  <div class="py-2 px-5">
+                      <a href="#" class="block p-1 text-gray-700">
+                          <i class="fas fa-user text-xl"></i>
+                          <span class="ml-2 text-sm">Cài đặt thông tin</span>
+                      </a>
+                      <a href="#" class="block p-1 text-gray-700">
+                          <i class="fas fa-user text-xl"></i>
+                          <span class="ml-2 text-sm">Sản phẩm yêu thích</span>
+                      </a>
+                      <a href="{{route('logout')}}" class="block p-1 text-gray-700">
+                          <i class="fas fa-user text-xl"></i>
+                          <span class="ml-2 text-sm">Đăng xuất</span>
+                      </a>
+                      
+                  </div>
+              </div>
+          </div>
+          @endif
           <div class="hidden lg:block">
             <i class="fas fa-gavel text-2xl text-white"></i>
           </div>
