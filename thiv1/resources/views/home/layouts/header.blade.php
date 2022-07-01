@@ -1,10 +1,10 @@
    <!-- header -->
-   <div class="bg-amber-600 hidden lg:block sticky top-0 z-10">
+   <div class=" hidden lg:block sticky top-0 z-10" style="background: #001c40;">
     <div class="containers pt-4 ">
       <div class="grid grid-cols-12 gap-10">
         <div class="col-span-2 mx-auto">
           <a href="{{route('home')}}">
-            <img class="h-10" src="{{asset('storage/anhweb/logo 2c.png')}}" alt="" />
+            <img class="h-10" src="{{asset('storage/anhweb/logo.png')}}" alt="" />
           </a>
         </div>
         <div class="col-span-7">
@@ -103,33 +103,32 @@
       <div class="col-span-8 flex px-10 gap-10">
         <div>
           <a class="flex" href="#">
-            <i class="fab fa-battle-net text-xl text-amber-600 mr-2"></i>
+            <i class="fab fa-battle-net text-xl  mr-2"style="color: #001c40;"></i>
             <h4 class="font-bold">Market</h4>
           </a>
         </div>
         <div>
           <a class="flex" href="#">
-            <i class="fas fa-truck text-amber-600 text-xl mr-2"></i>
+            <i class="fas fa-truck  text-xl mr-2" style="color: #001c40;"></i>
             <h4 class="font-bold">Express</h4>
           </a>
         </div>
         <div>
           <a class="flex" href="#">
-            <i class="fas fa-fire-alt text-amber-600 text-xl mr-2"></i>
-            <h4 class="mt-1 font-bold">Ưu đãi</h4>
+            <i class="fas fa-fire-alt  text-xl mr-2" style="color: #001c40;" ></i>
+            <h4 class="font-bold">Ưu đãi</h4>
           </a>
         </div>
         <div>
           <a class="flex" href="#">
-            <i class="fas fa-leaf  text-amber-600 text-xl mr-2"></i>
-
-            <h4 class="mt-1 font-bold">Giới thiệu</h4>
+            <i class="fas fa-leaf  text-xl mr-2" style="color: #001c40;"></i>
+            <h4 class="font-bold">Giới thiệu</h4>
           </a>
         </div>
       </div>
       <div class="col-span-2 flex">
-        <i class="fas fa-home text-xl text-amber-600 mr-2"></i>
-        <h4 class="font-bold mt-1">Bán ở nhật bản</h4>
+        <i class="fas fa-home text-xl  mr-2"  style="color: #001c40;"></i>
+        <h4 class="font-bold ">Bán ở nhật bản</h4>
       </div>
     </div>
   </div>
