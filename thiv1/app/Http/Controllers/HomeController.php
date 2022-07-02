@@ -125,6 +125,8 @@ class HomeController extends Controller
     }
     public function cart(Request $request)
     {
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user=[];
         // $user = $request->session()->get('user');
         // if(isset($user)){
         //     $product = Cart::where('user_id', $userid)->get();
@@ -141,7 +143,7 @@ class HomeController extends Controller
             $total += $value['price'] * $value['quantity'];
             $quantity += $value['quantity'];
         }
-        return view('home.checkout', compact( 'cart', 'total','quantity'));
+        return view('home.checkout', compact( 'cart', 'total','quantity','user'));
     }
     public function introduce(Request $request)
     {
