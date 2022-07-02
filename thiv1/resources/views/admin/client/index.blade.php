@@ -134,7 +134,7 @@
                   <td>{{$item->roles->name}}</td>
                   <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
                     </button>
-                    <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
+                    <button onclick="getProduct({{$item->id}})" class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
                     </button>
                   </td>
                 </tr>
@@ -165,23 +165,27 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label class="control-label">ID nhân viên</label>
-              <input class="form-control" type="text" required value="#CD2187" disabled>
+              <input class="form-control id" type="text" required value="#CD2187" disabled>
             </div>
             <div class="form-group col-md-6">
               <label class="control-label">Họ và tên</label>
-              <input class="form-control" type="text" required value="Võ Trường">
+              <input class="form-control name" type="text" required value="Võ Trường">
             </div>
             <div class="form-group  col-md-6">
               <label class="control-label">Số điện thoại</label>
-              <input class="form-control" type="number" required value="09267312388">
+              <input class="form-control phone" type="number" required value="09267312388">
+            </div>
+            <div class="form-group  col-md-6">
+              <label class="control-label">image</label>
+              <input class="form-control image" id="iamgeProfile" type="file" value="image">
             </div>
             <div class="form-group col-md-6">
               <label class="control-label">Địa chỉ email</label>
-              <input class="form-control" type="text" required value="truong.vd2000@gmail.com">
+              <input class="form-control email" type="text" required value="truong.vd2000@gmail.com">
             </div>
             <div class="form-group col-md-6">
               <label class="control-label">Ngày sinh</label>
-              <input class="form-control" type="date" value="15/03/2000">
+              <input class="form-control birthday" type="date" value="15/03/2000">
             </div>
             <div class="form-group  col-md-6">
               <label for="exampleSelect1" class="control-label">Chức vụ</label>
@@ -204,7 +208,7 @@
         color: #ea0000;">Chỉnh sửa nâng cao</a>
           <BR>
           <BR>
-          <button class="btn btn-save" type="button">Lưu lại</button>
+          <button onclick="editUsser()" class="btn btn-save" type="button">Lưu lại</button>
           <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
           <BR>
         </div>
@@ -349,6 +353,58 @@
         keyboard: false
       })
     });
+
+
+    //get data from database
+    function getProduct(id) {
+      $.get(`http://127.0.0.1:8000/api/user/edit/${id}`, function(data, status) {
+
+        $(".modal .row .id").val(data.user.id);
+        $(".modal .row .name").val(data.user.name);
+        $(".modal .row .email").val(data.user.email);
+      });
+
+    }
+
+
+    //update data from database
+
+    function editUsser() {
+      var id = $(".modal .row .id").val();
+      var name = $(".modal .row .name").val();
+      var email = $(".modal .row .email").val();
+      var updateImage = document.getElementById('iamgeProfile');
+      var data = {
+        name: name,
+        email: email
+      }
+      console.log(data);
+      $.post(`http://127.0.0.1:8000/api/user/edit/${id}`, data, function(data, status) {
+        $(".modal .row .id").val(data.user.id);
+        $(".modal .row .name").val(data.user.name);
+        $(".modal .row .email").val(data.user.email);
+      });
+
+      let files = updateImage.files[0]
+      let dataFile = new FormData()
+      dataFile.append("image", files)
+      $.ajax({
+        type: 'POST',
+        url: `http://127.0.0.1:8000/api/user/add/image/${id}`,
+        data: dataFile,
+        contentType: false,
+        processData: false,
+        success: (response) => {
+          if (response) {
+            // $(".avataProfile").attr("src", function() {
+            //   return `${url}/storage/${response.image}`
+            // })
+            console.log(response);
+          }
+          location.reload();
+        }
+      });      
+    }
   </script>
 </body>
 

@@ -11,7 +11,7 @@
 
 <body>
   <!-- loading -->
-<div class="loader h-screen z-20 w-full bg-white  fixed justify-center items-center  left-0 top-0" style="width: 100%;
+  <div class="loader h-screen z-20 w-full bg-white  fixed justify-center items-center  left-0 top-0" style="width: 100%;
 height: 100vh; position: fixed;
 top: 0;
 left: 0;
@@ -24,9 +24,10 @@ justify-content: center;">
     @include('home.layouts.header')
     <!-- end header -->
     <!-- danh sach -->
-   @yield('content')
+    @yield('content')
     @include('home.layouts.footer')
-</div>
+  </div>
 </body>
 @include('home.layouts.script')
+
 </html>

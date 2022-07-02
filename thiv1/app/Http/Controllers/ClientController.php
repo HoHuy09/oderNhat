@@ -31,25 +31,39 @@ class ClientController extends Controller
         $model->save();
         return redirect(route('product.index'));
     }
+
+    // public function editForm($id){
     public function editForm($id,Request $request){  
-        $product = Product::find($id);
-        $category = Category::all();
-        // return response()->json();
-        return response(compact('category','product'), 200);
-        // return  view('admin.products.edit',compact('category','product'));
+        $user = User::find($id);
+        return response(compact('user'), 200);
     }
-    public function saveEdit($id,SaveProductRequest $request){
-        $model = Product::find($id);
+
+    //
+    public function saveEdit($id,Request $request){
+        $model = User::find($id);
         $model->fill($request->all());
-        if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('public/products');
-            $imgPath = str_replace('public/', '', $imgPath);
-            $model->image = $imgPath;
-        }
+        // if($request->hasFile('image')){
+        //     $imgPath = $request->file('image')->store('public/products');
+        //     $imgPath = str_replace('public/', '', $imgPath);
+        //     $model->image = $imgPath;
+        // }
         
         $model->save();
-        return redirect(route('product.index'));
+        return response('true', 200);
     }
+
+    public function profileUpdateImage(Request $request, $id)
+    {
+        $result = User::find($id);
+        $imgPath = $request['image']->store('public/products');
+        $imgPath = str_replace('public/', '', $imgPath);
+        $result->avatar = $imgPath;
+        $result->save();
+        return response()->json('true', 200);
+    }
+    
+
+
     public function remove($id){
         Product::destroy($id);
         return redirect(route('product.index'));

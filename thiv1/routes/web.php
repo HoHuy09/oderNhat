@@ -87,8 +87,8 @@ Route::prefix('product')->middleware('auth')->group(function() {
     Route::get('/',[ProductController::class,'index'])->name('product.index');
     Route::get('add', [ProductController::class, 'addForm'])->name('product.add');
     Route::post('add', [ProductController::class, 'saveAdd']);
-    Route::get('edit/{id}',[ProductController::class,'editForm'])->name('product.edit');
-    Route::post('edit/{id}', [ProductController::class, 'saveEdit']);
+    // Route::get('edit/{id}',[ProductController::class,'editForm'])->name('product.edit');
+    // Route::post('edit/{id}', [ProductController::class, 'saveEdit']);
     Route::get('remove/{id}',[ProductController::class,'remove'])->name('product.remove');
 });
 //Category
