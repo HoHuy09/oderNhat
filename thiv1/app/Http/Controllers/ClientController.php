@@ -52,7 +52,7 @@ class ClientController extends Controller
         return response('true', 200);
     }
 
-    public function profileUpdateImage(Request $request, $id)
+    public function productUpdateImage(Request $request, $id)
     {
         $result = User::find($id);
         $imgPath = $request['image']->store('public/products');

@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
-
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +22,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('edit/{id}',[ProductController::class,'editForm']);
+Route::get('edit/{id}', [ProductController::class, 'editForm']);
 Route::post('edit/{id}', [ProductController::class, 'saveEdit']);
 
-Route::get('user/edit/{id}',[ClientController::class,'editForm']);
+Route::get('role/edit/{id}', [RoleController::class, 'editForm']);
+Route::post('role/edit/{id}', [RoleController::class, 'saveEdit']);
+
+Route::get('user/edit/{id}', [ClientController::class, 'editForm']);
 Route::post('user/edit/{id}', [ClientController::class, 'saveEdit']);
 
 Route::post('user/add/image/{id}', [ClientController::class, 'profileUpdateImage']);
+// api routes product
+
+Route::middleware('auth:sanctum')->get('/product', function (Request $request) {
+    return $request->product();
+});

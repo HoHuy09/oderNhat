@@ -116,8 +116,9 @@
                                     <td width="10"><input type="checkbox" name="check1" value="1"></td>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->name}}</td>
-                                    <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i> </button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm trash" onclick="return confirm('Bạn có muốn xóa không?')" href="{{route('product.remove', ['id' => $item->id])}}"><i class="fas fa-trash-alt"></i></a>
+                                        <button type="submit" onclick="getRole({{$item->id}})" class="btn btn-primary btn-sm edit" title="Sửa" name="{{$item->id}}" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -129,20 +130,45 @@
             </div>
         </div>
     </main>
-    <!-- Essential javascripts for application to work-->
+    <!--
+  MODAL
+-->
+    <div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group  col-md-12">
+                            <span class="thong-tin-thanh-toan">
+                                <h5>Chỉnh sửa thông tin sản phẩm cơ bản</h5>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label">ID</label>
+                            <input class="form-control id" type="text" required value="#CD2187" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Tên chức vụ</label>
+                            <input class="form-control name" type="text" required>
+                        </div>
+                    </div>
+                    <button class="btn btn-save"  type="button">Lưu lại</button>
+                    <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+MODAL
+-->
     <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="src/jquery.table2excel.js"></script>
-    <script src="js/main.js"></script>
-    <!-- The javascript plugin to display page loading on top-->
-    <script src="js/plugins/pace.min.js"></script>
-    <!-- Page specific javascripts-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-    <!-- Data table plugin-->
-    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">
         $('#sampleTable').DataTable();
     </script>
@@ -243,7 +269,6 @@
             var copyTextarea = document.querySelector('.js-copytextarea');
             copyTextarea.focus();
             copyTextarea.select();
-
             try {
                 var successful = document.execCommand('copy');
                 var msg = successful ? 'successful' : 'unsuccessful';
@@ -254,13 +279,14 @@
         });
 
 
-        //Modal
-        $("#show-emp").on("click", function() {
-            $("#ModalUP").modal({
-                backdrop: false,
-                keyboard: false
-            })
-        });
+        //get data from modal
+        function getRole(id) {
+            $.get(`/api/edit/${id}`, function(data, status) {
+                console.log(data);
+                $(' .id').val(data.roles.id);
+                $('.name').val(data.roles.name);
+            });
+        }
     </script>
 </body>
 

@@ -69,4 +69,16 @@ class ProductController extends Controller
         Product::destroy($id);
         return redirect(route('product.index'));
     }
+
+    
+    public function profileUpdateImage(Request $request, $id)
+    {
+        $result = Product::find($id);
+        $imgPath = $request['image']->store('public/products');
+        $imgPath = str_replace('public/', '', $imgPath);
+        $result->avatar = $imgPath;
+        $result->save();
+        return response()->json('true', 200);
+    }
+    
 }

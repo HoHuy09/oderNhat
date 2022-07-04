@@ -357,7 +357,7 @@
 
     //get data from database
     function getProduct(id) {
-      $.get(`http://127.0.0.1:8000/api/user/edit/${id}`, function(data, status) {
+      $.get(`/api/user/edit/${id}`, function(data, status) {
 
         $(".modal .row .id").val(data.user.id);
         $(".modal .row .name").val(data.user.name);
@@ -379,7 +379,7 @@
         email: email
       }
       console.log(data);
-      $.post(`http://127.0.0.1:8000/api/user/edit/${id}`, data, function(data, status) {
+      $.post(`/api/user/edit/${id}`, data, function(data, status) {
         $(".modal .row .id").val(data.user.id);
         $(".modal .row .name").val(data.user.name);
         $(".modal .row .email").val(data.user.email);
@@ -390,18 +390,16 @@
       dataFile.append("image", files)
       $.ajax({
         type: 'POST',
-        url: `http://127.0.0.1:8000/api/user/add/image/${id}`,
+        url: `/api/user/add/image/${id}`,
         data: dataFile,
         contentType: false,
         processData: false,
         success: (response) => {
           if (response) {
-            // $(".avataProfile").attr("src", function() {
-            //   return `${url}/storage/${response.image}`
-            // })
+
             console.log(response);
           }
-          // location.reload();
+          location.reload();
         }
       });      
     }

@@ -28,7 +28,7 @@ Trang chủ
         <div class="flex">
           <i class="fas fa-bars text-white text-2xl"></i>
           <img class="h-10 ml-5" src="{{asset('storage/anhweb/logo 2c.png')}}" alt="" />
-</div>
+        </div>
         <div class="ml-auto">
           <i class="fab fa-opencart text-2xl text-white"></i>
         </div>
@@ -98,28 +98,31 @@ Trang chủ
     <h4 class="font-bold text-xl">Sản phẩm mới</h4>
     <span class="mt-1 ml-10 text-amber-600 hover:text-black"><a href="#">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a></span>
   </div>
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8  md:px-16 lg:px-10">
-    @foreach($products as $sp)
-    <div class="text-center px-5 rounded-lg hover:shadow-2xl">
+  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8  md:px-16 lg:px-10">
+
+    @if($products->count() <= 5) @foreach($products as $sp) <div class="text-center px-5 rounded-lg hover:shadow-2xl">
       <img src="{{asset('storage/'.$sp->image)}}" alt="" class="mx-auto py-5 h-44" />
       <div>
-        <a href="{{route('detail', ['id' => $sp->id])}}" class="font-bold">{{$sp->name}}</a>
-        <div class="flex mt-10 pb-2">
-          <div>
-            <h5 class="text-blue-400">3123 ¥</h5>
-            <h5 class="mr-auto text-gray-400 text-sm">{{$sp->price}} VND</h5>
+        <a href="{{route('detail', ['id' => $sp->id])}}" class="font-bold nameProduct">{{$sp->name}}</a>
+        <div class="flex mt-10 pb-7">
+          <div class="mr-auto">
+            <h5 class="font-semibold text-sm">{{$sp->price}} VND</h5>
+            <h5 class=" text-xs text-left m-0 pt-1 opacity-70">
+              Đã xem <span>{{$sp->product_views}}</span>
+            </h5>
           </div>
-          <h5 class="ml-auto text-sm mt-5 pt-1 opacity-70">
-            Đã xem <span>{{$sp->product_views}}</span>
-          </h5>
+          <div>
+            <i class="far fa-heart bg-gray-200 p-2 rounded-full hover:bg-gray-400 hover:text-white duration-700"></i>
+          </div>
         </div>
       </div>
-    </div>
-    @endforeach
   </div>
-  <div class="mt-10">
-    <img src="{{asset('storage/anhweb/banner1.png')}}" alt="" />
-  </div>
+  @endforeach
+  @endif
+</div>
+<div class="mt-10">
+  <img src="{{asset('storage/anhweb/banner1.png')}}" alt="" />
+</div>
 </div>
 <div class="containers px-5 md:px-0 lg:px-0 mt-10">
   <div class="flex md:px-14 lg:px-0">
@@ -127,27 +130,29 @@ Trang chủ
     <span class="mt-1 ml-10 text-amber-600 hover:text-black"><a href="#">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a></span>
   </div>
   <div class="grid grid-cols-2  md:px-16 lg:px-10 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8">
-    @foreach($productnb as $spnb)
-    <div class=" px-5 rounded-lg hover:shadow-2xl">
+    @if($productnb->count() <= 10) @foreach($productnb as $spnb) <div class=" px-5 rounded-lg hover:shadow-2xl">
       <img src="{{asset('storage/'.$spnb->image)}}" alt="" class="mx-auto py-5 h-44" />
       <div>
-        <a href="{{route('detail', ['id' => $spnb->id])}}" class="font-bold text-md">{{$spnb->name}}</a>
-        <div class="flex mt-10 pb-2">
-          <div>
-            <h5 class="text-blue-400">3123 ¥</h5>
-            <h5 class="mr-auto text-gray-400 text-sm">{{$spnb->price}}</h5>
+        <a href="{{route('detail', ['id' => $spnb->id])}}" class="font-bold text-md nameProduct">{{$spnb->name}}</a>
+        <div class="flex mt-10 pb-7">
+          <div class="mr-auto">
+            <h5 class="font-semibold text-sm">{{$sp->price}} VND</h5>
+            <h5 class=" text-xs text-left m-0 pt-1 opacity-70">
+              Đã xem <span>{{$sp->product_views}}</span>
+            </h5>
           </div>
-          <h5 class="ml-auto text-sm mt-5 pt-1 opacity-70">
-            Đã xem <span>{{$spnb->product_views}}</span>
-          </h5>
+          <div>
+            <i class="far fa-heart bg-gray-200 p-2 rounded-full hover:bg-gray-400 hover:text-white duration-700"></i>
+          </div>
         </div>
       </div>
-    </div>
-    @endforeach
   </div>
-  <div class="mt-10">
-    <img src="{{asset('storage/anhweb/banner2.png')}}" alt="" />
-  </div>
+  @endforeach
+  @endif
+</div>
+<div class="mt-10">
+  <img src="{{asset('storage/anhweb/banner2.png')}}" alt="" />
+</div>
 </div>
 <!-- danh mục -->
 <div class="containers px-5  lg:px-0 mt-20">
@@ -256,7 +261,7 @@ Trang chủ
         <img src="{{asset('storage/anhweb/amazon.png')}}" alt="" class="mx-auto" /></a>
       <div>
         <h4 class="font-bold">Amazon</h4>
-<p class="text-sm text-gray-400 mt-3 pb-5">
+        <p class="text-sm text-gray-400 mt-3 pb-5">
           Sàn thương mại điện tử Amazon Nhật Bản
         </p>
       </div>
