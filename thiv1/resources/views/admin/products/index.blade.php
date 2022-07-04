@@ -129,7 +129,7 @@
                                     <td>{{$item->category->name}}</td>
                                     <td>
                                         <a class="btn btn-primary btn-sm trash" onclick="return confirm('Bạn có muốn xóa không?')" href="{{route('product.remove', ['id' => $item->id])}}"><i class="fas fa-trash-alt"></i></a>
-                                        <button type="submit" class="btn btn-primary btn-sm edit" title="Sửa" name="{{$item->id}}" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button>
+                                        <button type="submit" onclick="getProduct({{$item->id}})" class="btn btn-primary btn-sm edit" title="Sửa" name="{{$item->id}}" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -148,7 +148,6 @@
     <div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-
                 <div class="modal-body">
                     <div class="row">
                         <div class="form-group  col-md-12">
@@ -157,55 +156,67 @@
                             </span>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label class="control-label">Mã sản phẩm </label>
-                            <input class="form-control" type="number" value="71309005">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label">ID sản phẩm</label>
+                                <input class="form-control id" type="text" required value="#CD2187" disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Tên sản phẩm</label>
+                                <input class="form-control name" type="text" required value="Bàn ăn gỗ Theresa">
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label class="control-label">Số lượng</label>
+                                <input class="form-control number" type="number" required value="20">
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="exampleSelect1" class="control-label">Tình trạng sản phẩm</label>
+                                <select class="form-control" id="exampleSelect1">
+                                    <option>Còn hàng</option>
+                                    <option>Hết hàng</option>
+                                    <option>Đang nhập hàng</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="">Sản phẩm Nổi Bật</label>
+                                <select name="status" class="form-control">
+                                    <option>-- Chọn tình trạng --</option>
+                                    <option value="1">Hot</option>
+                                    <option value="0">Bình thường</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Giá bán</label>
+                                <input class="form-control price" type="text">
+                            </div>
+                            <!-- \image -->
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Ảnh sản phẩm</label>
+                                <input type="file" class="form-control image" name="image" value="image" id="image">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Link sản phẩm</label>
+                                <input type="text" name="link_sp" placeholder="Điền link sản phẩm" class="form-control link">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="exampleSelect1" class="control-label">Danh mục</label>
+                                <select class="form-control category" id="exampleSelect1">
+                               
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Mô tả sản phẩm</label>
+                                <textarea class="form-control description" id="mota" name="description"></textarea>
+                                <script>
+                                    CKEDITOR.replace('mota');
+                                </script>
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label class="control-label">Tên sản phẩm</label>
-                            <input class="form-control" type="text" required value="Bàn ăn gỗ Theresa">
-                        </div>
-                        <div class="form-group  col-md-6">
-                            <label class="control-label">Số lượng</label>
-                            <input class="form-control" type="number" required value="20">
-                        </div>
-                        <div class="form-group col-md-6 ">
-                            <label for="exampleSelect1" class="control-label">Tình trạng sản phẩm</label>
-                            <select class="form-control" id="exampleSelect1">
-                                <option>Còn hàng</option>
-                                <option>Hết hàng</option>
-                                <option>Đang nhập hàng</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="control-label">Giá bán</label>
-                            <input class="form-control" type="text" value="5.600.000">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="exampleSelect1" class="control-label">Danh mục</label>
-                            <select class="form-control" id="exampleSelect1">
-                                <option>Bàn ăn</option>
-                                <option>Bàn thông minh</option>
-                                <option>Tủ</option>
-                                <option>Ghế gỗ</option>
-                                <option>Ghế sắt</option>
-                                <option>Giường người lớn</option>
-                                <option>Giường trẻ em</option>
-                                <option>Bàn trang điểm</option>
-                                <option>Giá đỡ</option>
-                            </select>
-                        </div>
-                    </div>
-                    <BR>
-                    <a href="#" style="    float: right;
-    font-weight: 600;
-    color: #ea0000;">Chỉnh sửa sản phẩm nâng cao</a>
-                    <BR>
-                    <BR>
-                    <button class="btn btn-save" type="button">Lưu lại</button>
+                    </form>
+                    <button class="btn btn-save" onclick="editProduct()" type="button">Lưu lại</button>
                     <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
-                    <BR>
                 </div>
                 <div class="modal-footer">
                 </div>
@@ -216,9 +227,11 @@
 MODAL
 -->
 
-    <script src="{{ asset('js') }}/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="{{ asset('js') }}/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="{{ asset('js') }}/plugins/dataTables.bootstrap.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="src/jquery.table2excel.js"></script>
+    <script src="js/main.js"></script>
     <script type="text/javascript">
         $('#sampleTable').DataTable();
         //Thời Gian
@@ -260,6 +273,71 @@ MODAL
                 }
                 return i;
             }
+        }
+
+        // get data from table 
+        function getProduct(id) {
+            $.get(`/api/edit/${id}`, function(data, status) {
+                console.log(data);
+                $(".modal-body .row .id").val(data.product.id);
+                $(".modal-body .row .name").val(data.product.name);
+                $(".modal-body .row .number").val(data.product.quantity);
+                $(".modal-body .row .category").val(data.product.category);
+                $(".modal-body .row .link").val(data.product.link_sp);
+                $(".modal-body .row .price").val(data.product.price);
+                $(".modal-body .row .description").val(data.product.description);
+                data.category.forEach(element => {
+                    $(".modal-body .row .category").append(`<option value="${element.id}">${element.name}</option>`);
+                });
+
+            });
+        }
+
+        //update data from database
+
+        function editProduct() {
+            var id = $(".modal .row .id").val();
+            var name = $(".modal-body .row .name").val();
+            var number = $(".modal-body .row .number").val();
+            var category = $(".modal-body .row .category").val();
+            var price = $(".modal-body .row .price").val();
+            var link = $(".modal-body .row .link").val();
+            var description = $(".modal-body .row .description").val();
+            var updateImage = document.getElementById('image');
+            var data = {
+                name: name,
+                link_sp: link,
+                quantity: number,
+                category: category,
+                price: price,
+                description: description,
+            }
+            console.log(category);
+            $.post(`/api/edit/${id}`, data, function(data, status) {
+                $(".modal .row .id").val(data.user.id);
+                $(".modal-body .row .name").val(data.product.name);
+                $(".modal-body .row .number").val(data.product.quantity);
+                $(".modal-body .row .category").val(data.product.category);
+                $(".modal-body .row .price").val(data.product.price);
+                $(".modal-body .row .description").val(data.product.description);
+            });
+
+            let files = updateImage.files[0]
+            let dataFile = new FormData()
+            dataFile.append("image", files)
+            $.ajax({
+                type: 'POST',
+                url: `/api/product/add/image/${id}`,
+                data: dataFile,
+                contentType: false,
+                processData: false,
+                success: (response) => {
+                    if (response) {
+                        console.log(response);
+                    }
+                    location.reload();
+                }
+            });
         }
     </script>
 </body>

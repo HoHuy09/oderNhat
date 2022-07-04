@@ -242,3 +242,13 @@ max-width: 100%;
     left: -100px;
 }
 /*  */
+.nameProduct {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    -webkit-line-clamp: 2;
+    height: 43px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }

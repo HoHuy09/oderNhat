@@ -484,3 +484,14 @@ input[type=submit]{
   padding-bottom:5px;
   font-weight: 900;
 }
+/*  */
+.nameProduct {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 20px;
+  -webkit-line-clamp: 2;
+  height: 75px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}

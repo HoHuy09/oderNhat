@@ -88,12 +88,12 @@
                                         <i class="fas fa-user text-xl"></i>
                                         <span class="ml-2 text-sm">Đăng xuất</span>
                                     </a>
-                                    
+
                                 </div>
                             </div>
                         </div>
                         @endif
-                        
+
 
                         <div class="hidden lg:block">
                             <i class="fas fa-gavel text-2xl text-white"></i>
@@ -299,27 +299,24 @@
             </div>
             <div class="mt-10 md:mt-3 lg:mt-10 px-3 md:px-16 lg:px-0 z-99">
                 <h3 class="font-bold text-2xl">Sản phẩm tương tự</h3>
-                <div class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10  w-full">
+                <div class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mt-10  w-full">
                     @foreach ($sptt as $item)
-                    <div class="text-center rounded-lg hover:shadow-2xl py-3 duration-1000">
+                    <div class="text-center rounded-lg hover:shadow-2xl py-3 duration-700">
                         <img src="{{asset('storage/'.$item->image)}}" alt="" class="mx-auto py-5 h-44" />
                         <div>
                             <a href="{{route('detail', ['id' => $item->id])}}">
-                                <h4 class="font-bold px-3">{{$item->name}}</h4>
+                                <h4 class="font-bold px-3 nameProduct">{{$item->name}}</h4>
                             </a>
-                            <div class="flex px-5 mt-10 pb-2">
+                            <div class="flex px-5 mt-10 pb-7">
                                 <div>
-                                    <h5 class="text-blue-400">3123 ¥</h5>
-                                    <h5 class="mr-auto text-gray-400 text-sm">{{ number_format($item->price, 0) }} ¥</h5>
+                                    <h5 class="font-semibold text-sm">{{ number_format($item->price, 0) }} ¥</h5>
+                                    <h5 class="text-xs text-left m-0 pt-1 opacity-70">
+                                        Đã xem : <span>{{$item->product_views}}</span>
+                                    </h5>
                                 </div>
-                                <h5 class="ml-auto text-sm mt-5 pt-1 opacity-70">
-                                    Đã xem : <span>{{$item->product_views}}</span>
-                                </h5>
-                            </div>
-                            <div class="py-3">
-                                <a href="#">
-                                    <i class="fab fa-gratipay hover:text-white bg-gray-200 px-3 py-3 hover:bg-black rounded-full"></i>
-                                </a>
+                                <div class="ml-auto">
+                                    <i class="far fa-heart bg-gray-200 p-2 rounded-full hover:bg-gray-400 hover:text-white duration-700"></i>
+                                </div>
                             </div>
                         </div>
                     </div>

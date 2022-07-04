@@ -25,14 +25,14 @@ class RoleController extends Controller
     }
     public function editForm($id,Request $request){  
         $roles = Role::find($id);
-        return view('admin.role.edit',compact('roles'));
+        return response(compact('roles'), 200);
     }
-    public function saveEdit($id,SaveRoleRequest $request){
+    public function saveEdit($id,Request $request){
         $model = Role::find($id);
         $model->fill($request->all());
        
         $model->save();
-        return redirect(route('role.index'));
+        return response('true', 200);
     }
     public function remove($id){
         Role::destroy($id);

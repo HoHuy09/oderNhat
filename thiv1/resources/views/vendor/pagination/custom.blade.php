@@ -1,6 +1,6 @@
 @if ($paginator->hasPages())
   <div style="margin-Top:20px; text-align: center; justify-content: center;">
-  <ul class="pager " style="display: flex;list-style-type: none; ; padding:0px; margin:0px; justify-content: center;">">
+  <ul class="pager " style="display: flex;list-style-type: none; ; padding:0px; margin:0px; justify-content: center;">
        
        @if ($paginator->onFirstPage())
            <li class="disabled" style="list-style-type: none; margin-Right:20px; padding-Top:20px;"><i class="fas fa-angle-double-left"></i></li>
