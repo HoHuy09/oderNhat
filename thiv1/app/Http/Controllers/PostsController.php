@@ -32,22 +32,30 @@ class PostsController extends Controller
     public function editForm($id,Request $request){  
         $post = Post::find($id);
         $listpost = Listpost::all();
-        return view('admin.post.edit',compact('post','listpost'));
+        // return view('admin.post.edit',compact('post','listpost'));
+        return response(compact('post','listpost'), 200);
     }
     public function saveEdit($id,SavePostRequest $request){
         $model = Post::find($id);
         
         $model->fill($request->all());
-        if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('products');
-            $imgPath = str_replace('public/', '', $imgPath);
-            $model->image = $imgPath;
-        }
         $model->save();
-        return redirect(route('post.index'));
+        // return redirect(route('post.index'));
+        return response('true', 200);
     }
     public function remove($id){
         Post::destroy($id);
         return redirect(route('post.index'));
+    }
+    //image
+        
+    public function profileUpdateImage(Request $request, $id)
+    {
+        $result = Post::find($id);
+        $imgPath = $request['image']->store('public/products');
+        $imgPath = str_replace('public/', '', $imgPath);
+        $result->image = $imgPath;
+        $result->save();
+        return response()->json('true', 200);
     }
 }

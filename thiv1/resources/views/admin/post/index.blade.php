@@ -105,7 +105,7 @@
               <thead>
                 <tr>
                   <th width="10"><input type="checkbox" id="all"></th>
-                  <th>ID đơn hàng</th>
+                  <th>ID bài viết</th>
                   <th>Tiêu đề</th>
                   <th>Nội dung phụ</th>
                   <th>Nội dung chính</th>
@@ -130,8 +130,10 @@
                   <td><img src="{{asset('storage/'.$item->image)}}" width="100"></td>
                   <td>{{$item->listpost->name}}</td>
                   <td>{{$item->phone_number}}</td>
-                  <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i> </button>
-                    <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button>
+                  <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
+                    </button>
+                    <button onclick="getPost({{$item->id}})" class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
+                    </button>
                   </td>
                 </tr>
                 @endforeach
@@ -143,6 +145,70 @@
       </div>
     </div>
   </main>
+  <!--
+  MODAL
+-->
+  <div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row">
+            <div class="form-group  col-md-12">
+              <span class="thong-tin-thanh-toan">
+                <h5>Chỉnh sửa thông tin nhân viên cơ bản</h5>
+              </span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="control-label">ID bài viết</label>
+              <input class="form-control id" type="text" required disabled>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label">Tiêu đề</label>
+              <input class="form-control name" type="text" required>
+            </div>
+            <div class="form-group  col-md-6">
+              <label class="control-label">Số điện thoại</label>
+              <input class="form-control phone" type="number" required>
+            </div>
+            <div class="form-group  col-md-6">
+              <label class="control-label">Ảnh</label>
+              <input class="form-control image" id="iamgeProfile" type="file">
+            </div>
+            <div class="form-group  col-md-6">
+              <label class="control-label">Nội dung chính</label>
+              <input class="form-control content" type="text">
+            </div>
+            <div class="form-group  col-md-6">
+              <label class="control-label">Nội dung phụ</label>
+              <input class="form-control content1" type="text">
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label">Địa chỉ email</label>
+              <input class="form-control email" type="text" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label">Người tạo</label>
+              <input class="form-control people" type="text">
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label">Danh mục</label>
+              <select class="form-control  category" ></select>
+            </div>
+          </div>
+          <button onclick="editUsser()" class="btn btn-save" type="button">Lưu lại</button>
+          <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
+          <BR>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+  MODAL
+-->
   <!-- Essential javascripts for application to work-->
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -150,10 +216,6 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="src/jquery.table2excel.js"></script>
   <script src="js/main.js"></script>
-  <!-- The javascript plugin to display page loading on top-->
-  <script src="js/plugins/pace.min.js"></script>
-  <!-- Page specific javascripts-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
   <!-- Data table plugin-->
   <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
@@ -161,45 +223,6 @@
     $('#sampleTable').DataTable();
   </script>
   <script>
-    function deleteRow(r) {
-      var i = r.parentNode.parentNode.rowIndex;
-      document.getElementById("myTable").deleteRow(i);
-    }
-    jQuery(function() {
-      jQuery(".trash").click(function() {
-        swal({
-            title: "Cảnh báo",
-
-            text: "Bạn có chắc chắn là muốn xóa đơn hàng này?",
-            buttons: ["Hủy bỏ", "Đồng ý"],
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              swal("Đã xóa thành công.!", {
-
-              });
-            }
-          });
-      });
-    });
-    oTable = $('#sampleTable').dataTable();
-    $('#all').click(function(e) {
-      $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));
-      e.stopImmediatePropagation();
-    });
-
-    //EXCEL
-    // $(document).ready(function () {
-    //   $('#').DataTable({
-
-    //     dom: 'Bfrtip',
-    //     "buttons": [
-    //       'excel'
-    //     ]
-    //   });
-    // });
-
-
     //Thời Gian
     function time() {
       var today = new Date();
@@ -266,15 +289,71 @@
         console.log('Oops, unable to copy');
       }
     });
-
-
-    //Modal
-    $("#show-emp").on("click", function() {
-      $("#ModalUP").modal({
-        backdrop: false,
-        keyboard: false
-      })
-    });
+    //get data from table
+    function getPost(id) {
+      $.get(`/api/posts/edit/${id}`, function(data, status) {
+        console.log(data);
+        $('.modal-body .row .id').val(data.post.id);
+        $('.modal-body .row .name').val(data.post.tieu_de);
+        $('.modal-body .row .phone').val(data.post.phone_number);
+        $('.modal-body .row .email').val(data.post.email);
+        $('.modal-body .row .content').val(data.post.content2);
+        $('.modal-body .row .content1').val(data.post.content1);
+        $('.modal-body .row .people').val(data.post.author);
+        data.listpost.forEach(function(item, index) {
+          $('.category').append(`<option value="${item.id}">${item.name}</option>`);
+        });
+      });
+    }
+    //edit data
+    function editUsser() {
+      var id = $('.modal-body .row .id').val();
+      var name = $('.modal-body .row .name').val();
+      var phone = $('.modal-body .row .phone').val();
+      var email = $('.modal-body .row .email').val();
+      var content = $('.modal-body .row .content').val();
+      var content1 = $('.modal-body .row .content1').val();
+      var people = $('.modal-body .row .people').val();
+      var category = $('.modal-body .row .category').val();
+      var updateImage = document.getElementById('iamgeProfile');
+      var data = {
+        id: id,
+        name: name,
+        phone_number: phone,
+        email: email,
+        content2: content,
+        content1: content1,
+        listpostid: category,
+        author: people,
+      }
+      console.log(data);
+      $.post(`/api/posts/edit/${id}`, data, function(data, status) {
+        $('.modal-body .row .id').val(data.posts.id);
+        $('.modal-body .row .name').val(data.post.tieu_de);
+        $('.modal-body .row .phone').val(data.post.phone_number);
+        $('.modal-body .row .email').val(data.post.email);
+        $('.modal-body .row .category').val(data.post.listpostid);
+        $('.modal-body .row .content').val(data.post.content2);
+        $('.modal-body .row .content1').val(data.post.content1);
+        $('.modal-body .row .people').val(data.post.author);
+      });
+      let files = updateImage.files[0]
+      let dataFile = new FormData()
+      dataFile.append("image", files)
+      $.ajax({
+        type: 'POST',
+        url: `/api/posts/add/image/${id}`,
+        data: dataFile,
+        contentType: false,
+        processData: false,
+        success: (response) => {
+          if (response) {
+            console.log(response);
+          }
+          // location.reload();
+        }
+      }); 
+    }
   </script>
 </body>
 

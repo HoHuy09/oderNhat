@@ -42,12 +42,6 @@ class ClientController extends Controller
     public function saveEdit($id,Request $request){
         $model = User::find($id);
         $model->fill($request->all());
-        // if($request->hasFile('image')){
-        //     $imgPath = $request->file('image')->store('public/products');
-        //     $imgPath = str_replace('public/', '', $imgPath);
-        //     $model->image = $imgPath;
-        // }
-        
         $model->save();
         return response('true', 200);
     }

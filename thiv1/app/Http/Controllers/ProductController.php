@@ -76,7 +76,7 @@ class ProductController extends Controller
         $result = Product::find($id);
         $imgPath = $request['image']->store('public/products');
         $imgPath = str_replace('public/', '', $imgPath);
-        $result->avatar = $imgPath;
+        $result->image = $imgPath;
         $result->save();
         return response()->json('true', 200);
     }

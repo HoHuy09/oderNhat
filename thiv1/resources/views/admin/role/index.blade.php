@@ -154,7 +154,7 @@
                             <input class="form-control name" type="text" required>
                         </div>
                     </div>
-                    <button class="btn btn-save"  type="button">Lưu lại</button>
+                    <button onclick="editRole()" class="btn btn-save" type="button">Lưu lại</button>
                     <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
                 </div>
                 <div class="modal-footer">
@@ -281,11 +281,25 @@ MODAL
 
         //get data from modal
         function getRole(id) {
-            $.get(`/api/edit/${id}`, function(data, status) {
+            $.get(`/api/role/edit/${id}`, function(data, status) {
                 console.log(data);
                 $(' .id').val(data.roles.id);
                 $('.name').val(data.roles.name);
             });
+        }
+        console.log(data)
+        // update data
+        function editRole() {
+            var id = $(".modal .row .id").val();
+            var name = $(".modal-body .row .name").val();
+            var data = {
+                name: name,
+            }
+            $.post(`/api/role/edit/${id}`, data, function(data, status) {
+                $(" .id").val(data.roles.id);
+                $(".name").val(data.roles.name);
+            });
+            location.reload();
         }
     </script>
 </body>

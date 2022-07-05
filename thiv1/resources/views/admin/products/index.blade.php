@@ -203,7 +203,7 @@
                             <div class="form-group col-md-6">
                                 <label for="exampleSelect1" class="control-label">Danh mục</label>
                                 <select class="form-control category" id="exampleSelect1">
-                               
+
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
@@ -308,7 +308,7 @@ MODAL
                 name: name,
                 link_sp: link,
                 quantity: number,
-                category: category,
+                cate_id: category,
                 price: price,
                 description: description,
             }
