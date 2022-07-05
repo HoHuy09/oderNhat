@@ -12,4 +12,7 @@ class AdminController extends Controller
     public function statistical(){
         return view('admin.statistical.index');
     }
+    public function carts(){
+        return view('admin.carts.index');
+    }
 }

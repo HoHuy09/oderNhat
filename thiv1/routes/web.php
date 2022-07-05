@@ -50,6 +50,9 @@ Route::get('introduce',[HomeController::class,'introduce'])->name('introduce');
 Route::get('addcart/{id}', [HomeController::class, 'addcart'])->name('addcart');
 Route::get('removecart/{id}', [HomeController::class, 'removecart'])->name('deletecart');
 Route::get('cart', [HomeController::class, 'cart'])->name('cart');
+Route::get('information', [HomeController::class, 'information'])->name('information');
+Route::post('information', [HomeController::class, 'saveinformation']);
+Route::get('buynow/{id}', [HomeController::class, 'buynow'])->name('buynow');
 //User
 
 Route::prefix('user')->middleware('auth')->group(function() {
@@ -134,4 +137,7 @@ Route::prefix('doashboard')->middleware('auth')->group(function() {
 //statistical
 Route::prefix('statistical')->middleware('auth')->group(function() {
     Route::get('/',[AdminController::class,'statistical'])->name('statistical.index');
+});
+Route::prefix('carts')->middleware('auth')->group(function() {
+    Route::get('/',[AdminController::class,'carts'])->name('carts.index');
 });

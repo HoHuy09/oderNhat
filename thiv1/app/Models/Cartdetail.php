@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class Cartdetail extends Model
 {
     use HasFactory;
-    protected $table = 'cart';
-    public $fillable = ['count','quantity','total_price','user_id','status','address','id','phone_number'];
+    protected $table = 'cart_detail';
+    public $fillable = ['cart_id','product_id'];
     public $timestamp = false;
     public function category(){
         return $this->belongsTo(Category::class,'cate_id');

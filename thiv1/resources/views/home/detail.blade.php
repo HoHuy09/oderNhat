@@ -278,7 +278,7 @@
                         </div>
                         <div class="flex flex-col md:mx-auto mt-5">
                             <button class="bg-blue-500 md:w-44 font-bold text-sm py-2 text-white">
-                                MUA NGAY
+                                <a href="{{route('buynow',['id' => $product->id])}}"><i class="fab fa-opencart"></i> MUA NGAY</a>
                             </button>
                             <button class="text-blue-500 md:w-44 font-bold text-sm py-2 hover:bg-blue-500 border border-blue-500 mt-3 hover:text-white">
                                 <a href="{{route('addcart',['id' => $product->id])}}"><i class="fab fa-opencart"></i> THÊM VÀO GIỎ</a>
