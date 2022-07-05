@@ -71,7 +71,7 @@ Checkout
             <p class="">Tổng</p> <span class="ml-auto">{{$total}}</span> ¥
           </div>
           <div class="px-5 pt-5 ">
-            <a href=""><button class="bg-amber-600 text-white w-full text-md py-1 hover:bg-amber-500">Tiến hành đặt hàng</button></a>
+            <a href="{{route('information')}}"><button class="bg-amber-600 text-white w-full text-md py-1 hover:bg-amber-500">Tiến hành đặt hàng</button></a>
             <p class="text-xs mt-2 text-gray-400">*Quý khách nên thanh toán ngay tránh sản phẩm bị tăng giá do chênh lệch tỉ giá</p>
           </div>
         </div>

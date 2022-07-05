@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Cartdetail;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -152,5 +153,92 @@ class HomeController extends Controller
         $user = $request->session()->get('user');
         isset($user) ? $user = $request->session()->get('user') : $user=[];
         return view('home.introduce', compact('cart','user'));
+    }
+    public function information(Request $request)
+    {
+        $cart = $request->session()->get('cart');
+        if (!$cart) {
+            return redirect()->route('home')->with('success', 'Your cart is empty!');
+        }
+        isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user=[];
+        return view('home.information', compact('cart','user'));
+    }
+    public function saveinformation(Request $request)
+    {
+        $cart = $request->session()->get('cart');
+        
+        isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
+        
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user=[];
+        $macart = 'SP'.random_int(10000,1000000000);
+        $total = 0;
+        foreach ($cart as $key => $value) {
+            $cartdetail = new Cartdetail();
+            $cartdetail->cart_id = $macart;
+            $cartdetail->product_id = $value['id'];
+            $total += $value['price'] * $value['quantity'];
+            $cartdetail->save();
+        }
+            $model = new Cart();
+            $model->fill($request->all());
+            if($request->hasFile('image')){
+            $imgPath = $request->file('image')->store('products');
+            $imgPath = str_replace('public/', '', $imgPath);
+            $model->image = $imgPath;
+            }
+            $model->id = $macart;
+            $model->total_price = $total;
+            $model->count = count($cart);
+            $model->status = 1;
+            if($user != []){
+            $model->user_id =  $user['id'];  
+            }
+            $model->save();
+        return view('home.information', compact('cart','user'))->with('success', 'Tạo đơn thành công');
+    }
+    public function buynow(Request $request,$id)
+    {
+        $product = Product::find($id);
+        $product->product_views = $product->product_views + 1;
+        $product->save();
+        $cart = $request->session()->get('cart');
+        isset($cart) ? $cart = $request->session()->get('cart') : $cart=[];
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user=[];
+        $total = 0;
+        $quantity = 0;
+            $quantity = 1;
+            $total = $product['price'] * $quantity;
+        if (!$cart) {
+            $cart = [
+                 $id => [
+                    'id' => $id,
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'quantity' => 1,
+                    'image' => $product->image
+                ]
+            ];
+            session()->put('cart', $cart);
+            return view('home.checkout', compact('cart','user','total','quantity'))->with('success', 'Product added to cart successfully!');
+        }
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+            session()->put('cart', $cart);
+            return view('home.checkout', compact('cart','user','total','quantity'))->with('success', 'Product added to cart successfully!');
+        } else {
+            $cart[$id] = [
+                'id' => $id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'quantity' => 1,
+                'image' => $product->image
+            ];
+            session()->put('cart', $cart);
+            return view('home.information', compact('cart','user','total','quantity'))->with('success', 'Product added to cart successfully!');
+        }
     }
 }
