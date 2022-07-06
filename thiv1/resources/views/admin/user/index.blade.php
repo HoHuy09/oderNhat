@@ -13,8 +13,7 @@
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
   <!-- Font-icon css-->
-  <link rel="stylesheet" type="text/css"
-    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
@@ -24,8 +23,7 @@
 <body onload="time()" class="app sidebar-mini rtl">
   <!-- Navbar-->
   <header class="app-header">
-    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
-      aria-label="Hide Sidebar"></a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
     <!-- Navbar Right Menu-->
     <ul class="app-nav">
 
@@ -39,8 +37,7 @@
   <!-- Sidebar menu-->
   <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
   <aside class="app-sidebar">
-    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{{ asset('storage/') }}/{{Auth::user()->avatar}}" width="50px"
-        alt="User Image">
+    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{{ asset('storage/') }}/{{Auth::user()->avatar}}" width="50px" alt="User Image">
       <div>
         <p class="app-sidebar__user-name"><b>{{Auth::user()->name}}</b></p>
         <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
@@ -86,33 +83,27 @@
                   Tạo mới</a>
               </div>
               <div class="col-sm-2">
-                <a class="btn btn-delete btn-sm nhap-tu-file" type="button" title="Nhập" onclick="myFunction(this)"><i
-                    class="fas fa-file-upload"></i> Tải từ file</a>
+                <a class="btn btn-delete btn-sm nhap-tu-file" type="button" title="Nhập" onclick="myFunction(this)"><i class="fas fa-file-upload"></i> Tải từ file</a>
               </div>
 
               <div class="col-sm-2">
-                <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i
-                    class="fas fa-print"></i> In dữ liệu</a>
+                <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i class="fas fa-print"></i> In dữ liệu</a>
               </div>
               <div class="col-sm-2">
-                <a class="btn btn-delete btn-sm print-file js-textareacopybtn" type="button" title="Sao chép"><i
-                    class="fas fa-copy"></i> Sao chép</a>
+                <a class="btn btn-delete btn-sm print-file js-textareacopybtn" type="button" title="Sao chép"><i class="fas fa-copy"></i> Sao chép</a>
               </div>
 
               <div class="col-sm-2">
                 <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
               </div>
               <div class="col-sm-2">
-                <a class="btn btn-delete btn-sm pdf-file" type="button" title="In" onclick="myFunction(this)"><i
-                    class="fas fa-file-pdf"></i> Xuất PDF</a>
+                <a class="btn btn-delete btn-sm pdf-file" type="button" title="In" onclick="myFunction(this)"><i class="fas fa-file-pdf"></i> Xuất PDF</a>
               </div>
               <div class="col-sm-2">
-                <a class="btn btn-delete btn-sm" type="button" title="Xóa" onclick="myFunction(this)"><i
-                    class="fas fa-trash-alt"></i> Xóa tất cả </a>
+                <a class="btn btn-delete btn-sm" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i> Xóa tất cả </a>
               </div>
             </div>
-            <table class="table table-hover table-bordered js-copytextarea" cellpadding="0" cellspacing="0" border="0"
-              id="sampleTable">
+            <table class="table table-hover table-bordered js-copytextarea" cellpadding="0" cellspacing="0" border="0" id="sampleTable">
               <thead>
                 <tr>
                   <th width="10"><input type="checkbox" id="all"></th>
@@ -129,7 +120,7 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($user as $item) 
+                @foreach ($user as $item)
                 <tr>
                   <td width="10"><input type="checkbox" name="check1" value="1"></td>
                   <td>{{$loop->iteration}}</td>
@@ -141,62 +132,60 @@
                   <td>Nữ</td>
                   <td>0926737168</td>
                   <td>{{$item->roles->name}}</td>
-                  <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                      onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
+                  <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
                     </button>
-                    <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                      data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
+                    <button onclick="getUser({{$item->id}})" class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
                     </button>
                   </td>
                 </tr>
-                @endforeach 
+                @endforeach
               </tbody>
             </table>
             {{$user->links('vendor.pagination.custom')}}
           </div>
-          
-@if ($user->hasPages())
-<!-- Pagination -->
-<div class="pull-right paginations">
-    <ul class="paginations">
-        {{-- Previous Page Link --}}
-        @if ($user->onFirstPage())
-            <li class="disabled">
-                <span><i class="fa fa-angle-double-left"></i></span>
-            </li>
-        @else
-            <li>
-                <a href="{{ $user->previousPageUrl() }}">
-                    <span><i class="fa fa-angle-double-left"></i></span>
-                </a>
-            </li>
-        @endif 
-            @for ($i = 1; $i <= $user->lastPage(); $i++)
-                    @if ($i == $user->currentPage())
-                        <li class="active"><span>{{ $i }}</span></li>
-                    @elseif (($i == $user->currentPage() + 1 || $i == $user->currentPage() + 2) || $i == $user->lastPage())
-                        <li><a href="{{ $user->url($i) }}">{{ $i }}</a></li>
-                    @elseif ($i == $user->lastPage() - 1)
-                        <li class="disabled"><span><i class="fa fa-ellipsis-h"></i></span></li>
-                    @endif
-            @endfor
-           
 
-        {{-- Next Page Link --}}
-         @if ($user->hasMorePages())
-            <li>
-                <a href="{{ $user->nextPageUrl() }}">
-                    <span><i class="fa fa-angle-double-right"></i></span>
+          @if ($user->hasPages())
+          <!-- Pagination -->
+          <div class="pull-right paginations">
+            <ul class="paginations">
+              {{-- Previous Page Link --}}
+              @if ($user->onFirstPage())
+              <li class="disabled">
+                <span><i class="fa fa-angle-double-left"></i></span>
+              </li>
+              @else
+              <li>
+                <a href="{{ $user->previousPageUrl() }}">
+                  <span><i class="fa fa-angle-double-left"></i></span>
                 </a>
-            </li>
-        @else
-            <li class="disabled">
-                <span><i class="fa fa-angle-double-right"></i></span>
-            </li>
-        @endif
-    </ul>
-</div>
-@endif
+              </li>
+              @endif
+              @for ($i = 1; $i <= $user->lastPage(); $i++)
+                @if ($i == $user->currentPage())
+                <li class="active"><span>{{ $i }}</span></li>
+                @elseif (($i == $user->currentPage() + 1 || $i == $user->currentPage() + 2) || $i == $user->lastPage())
+                <li><a href="{{ $user->url($i) }}">{{ $i }}</a></li>
+                @elseif ($i == $user->lastPage() - 1)
+                <li class="disabled"><span><i class="fa fa-ellipsis-h"></i></span></li>
+                @endif
+                @endfor
+
+
+                {{-- Next Page Link --}}
+                @if ($user->hasMorePages())
+                <li>
+                  <a href="{{ $user->nextPageUrl() }}">
+                    <span><i class="fa fa-angle-double-right"></i></span>
+                  </a>
+                </li>
+                @else
+                <li class="disabled">
+                  <span><i class="fa fa-angle-double-right"></i></span>
+                </li>
+                @endif
+            </ul>
+          </div>
+          @endif
         </div>
       </div>
     </div>
@@ -204,8 +193,7 @@
   <!--
   MODAL
 -->
-  <div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
-    data-keyboard="false">
+  <div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
 
@@ -220,19 +208,27 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label class="control-label">ID nhân viên</label>
-              <input class="form-control" type="text" required value="#CD2187" disabled>
+              <input class="form-control id" type="text" required value="#CD2187" disabled>
             </div>
             <div class="form-group col-md-6">
               <label class="control-label">Họ và tên</label>
-              <input class="form-control" type="text" required value="Võ Trường">
+              <input class="form-control name" type="text" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label">Ảnh</label>
+              <input class="form-control image" type="file" required>
             </div>
             <div class="form-group  col-md-6">
               <label class="control-label">Số điện thoại</label>
-              <input class="form-control" type="number" required value="09267312388">
+              <input class="form-control phone" type="number" required>
             </div>
             <div class="form-group col-md-6">
               <label class="control-label">Địa chỉ email</label>
-              <input class="form-control" type="text" required value="truong.vd2000@gmail.com">
+              <input class="form-control email" type="text" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label">Địa chỉ</label>
+              <input class="form-control diachi" type="text" required>
             </div>
             <div class="form-group col-md-6">
               <label class="control-label">Ngày sinh</label>
@@ -240,25 +236,10 @@
             </div>
             <div class="form-group  col-md-6">
               <label for="exampleSelect1" class="control-label">Chức vụ</label>
-              <select class="form-control" id="exampleSelect1">
-                <option>Bán hàng</option>
-                <option>Tư vấn</option>
-                <option>Dịch vụ</option>
-                <option>Thu Ngân</option>
-                <option>Quản kho</option>
-                <option>Bảo trì</option>
-                <option>Kiểm hàng</option>
-                <option>Bảo vệ</option>
-                <option>Tạp vụ</option>
+              <select class="form-control role">
               </select>
             </div>
           </div>
-          <BR>
-          <a href="#" style="    float: right;
-        font-weight: 600;
-        color: #ea0000;">Chỉnh sửa nâng cao</a>
-          <BR>
-          <BR>
           <button class="btn btn-save" type="button">Lưu lại</button>
           <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
           <BR>
@@ -272,45 +253,38 @@
   MODAL
 -->
 
-  <!-- Essential javascripts for application to work-->
-  <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/popper.min.js"></script>
+  <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="src/jquery.table2excel.js"></script>
   <script src="js/main.js"></script>
-  <!-- The javascript plugin to display page loading on top-->
-  <script src="js/plugins/pace.min.js"></script>
-  <!-- Page specific javascripts-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-  <!-- Data table plugin-->
   <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
-  <script type="text/javascript">$('#sampleTable').DataTable();</script>
   <script>
     function deleteRow(r) {
       var i = r.parentNode.parentNode.rowIndex;
       document.getElementById("myTable").deleteRow(i);
     }
-    jQuery(function () {
-      jQuery(".trash").click(function () {
+    jQuery(function() {
+      jQuery(".trash").click(function() {
         swal({
-          title: "Cảnh báo",
-         
-          text: "Bạn có chắc chắn là muốn xóa nhân viên này?",
-          buttons: ["Hủy bỏ", "Đồng ý"],
-        })
+            title: "Cảnh báo",
+
+            text: "Bạn có chắc chắn là muốn xóa nhân viên này?",
+            buttons: ["Hủy bỏ", "Đồng ý"],
+          })
           .then((willDelete) => {
             if (willDelete) {
               swal("Đã xóa thành công.!", {
-                
+
               });
             }
           });
       });
     });
     oTable = $('#sampleTable').dataTable();
-    $('#all').click(function (e) {
+    $('#all').click(function(e) {
       $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));
       e.stopImmediatePropagation();
     });
@@ -368,8 +342,8 @@
       }
     }
     //In dữ liệu
-    var myApp = new function () {
-      this.printTable = function () {
+    var myApp = new function() {
+      this.printTable = function() {
         var tab = document.getElementById('sampleTable');
         var win = window.open('', '', 'height=700,width=700');
         win.document.write(tab.outerHTML);
@@ -394,11 +368,18 @@
     //   }
     // });
 
+    //get data from database
+    function getUser(id) {
+      $.get(`/api/user/edit/${id}`, function(data, status) {
+        $(".modal .row .id").val(data.user.id);
+        $(".modal .row .name").val(data.user.name);
+        $(".modal .row .email").val(data.user.email);
+        data.role.forEach(element => {
+          $(".modal .row .role").append(`<option value="${element.id}">${element.name}</option>`);
+        });
 
-    //Modal
-    $("#show-emp").on("click", function () {
-      $("#ModalUP").modal({ backdrop: false, keyboard: false })
-    });
+      });
+    }
   </script>
 </body>
 

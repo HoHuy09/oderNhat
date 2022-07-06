@@ -13,7 +13,6 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
-
     <link rel="stylesheet" href="{{ asset('website') }}/index.css" />
 </head>
 
@@ -29,8 +28,8 @@
         <img style="width:200px;" src="{{asset('storage/anhweb/loader.gif')}}" alt="">
     </div>
     <!-- header -->
-    <div class="content" style="display: none">
-        <div class="bg-amber-600 sticky top-0 z-20 lg:block hidden">
+    <div class="content" style="display: none ">
+        <div class="sticky top-0 z-20 lg:block hidden"style="background: #001c40;" >
             <div class="containers pt-4 ">
                 <div class="grid grid-cols-12 gap-10">
                     <div class="col-span-3 lg:col-span-2 mx-auto">
@@ -158,25 +157,25 @@
                 <div class="col-span-8 flex px-10 gap-10">
                     <div>
                         <a class="flex" href="#">
-                            <i class="fab fa-battle-net text-xl text-amber-600 mr-2"></i>
+                            <i class="fab fa-battle-net text-xl text-amber-600 mr-2" style="color: #001c40;"></i>
                             <h4 class="font-bold">Market</h4>
                         </a>
                     </div>
                     <div>
                         <a class="flex" href="#">
-                            <i class="fas fa-truck text-amber-600 text-xl mr-2"></i>
+                            <i class="fas fa-truck text-amber-600 text-xl mr-2" style="color: #001c40;"></i>
                             <h4 class="font-bold">Express</h4>
                         </a>
                     </div>
                     <div>
                         <a class="flex" href="#">
-                            <i class="fas fa-fire-alt text-amber-600 text-xl mr-2"></i>
+                            <i class="fas fa-fire-alt text-amber-600 text-xl mr-2" style="color: #001c40;"></i>
                             <h4 class="mt-1 font-bold">Ưu đãi</h4>
                         </a>
                     </div>
                 </div>
                 <div class="col-span-2 flex">
-                    <i class="fas fa-home text-xl text-amber-600 mr-2"></i>
+                    <i class="fas fa-home text-xl text-amber-600 mr-2" style="color: #001c40;"></i>
                     <h4 class="font-bold mt-1">Bán ở nhật bản</h4>
                 </div>
             </div>
@@ -240,15 +239,26 @@
                     <h1 class="font-bold text-xl">
                         {{$product->name}}
                     </h1>
+                    <div class="mt-3 grid grid-cols-2">
+                        <div>
+                            <span class="text-sm text-gray-600">
+                                <i class="fas fa-star text-amber-600"></i>
+                                <i class="fas fa-star text-amber-600"></i>
+                                <i class="fas fa-star text-amber-600"></i>
+                                <i class="fas fa-star text-amber-600"></i>
+                                <i class="fas fa-star text-gray-600"></i>
+                            </span>
+                            <p class="text-sm">Đánh giá: <span>129 đánh giá</span></p>
+                        </div>
+                        <div>
+                            <i class="far fa-heart hover:text-red-500 text-xl duration-700"></i>
+                            <i class="fas fa-share-alt ml-5 hover:text-red-500 text-xl duration-700"></i>
+                            
+                        </div>
+                    </div>
                     <div class="mt-3">
-                        <span class="text-sm text-gray-600">
-                            <i class="fas fa-star text-amber-600"></i>
-                            <i class="fas fa-star text-amber-600"></i>
-                            <i class="fas fa-star text-amber-600"></i>
-                            <i class="fas fa-star text-amber-600"></i>
-                            <i class="fas fa-star text-gray-600"></i>
-                        </span>
-                        <p class="text-sm">Đánh giá</p>
+                        <h5 class="text-sm">Bán bởi : <span>Ordernhat247.vn</span></h5>
+                        <h5 class="text-sm">Thương hiệu : <span>Brand: 和光堂</span></h5>
                     </div>
                     <div class="grid grid-cols-2 text-sm mt-5">
                         <div>
@@ -267,9 +277,9 @@
                         <div>
                             <h4 class="text-sm font-bold">Số lượng:</h4>
                             <div class="flex mt-3">
-                                <button class="px-2 py-1 bg-gray-400 text-sm">-</button>
-                                <input type="text" class="w-14 py-1 text-center border border-gray-300 text-sm" value="1" />
-                                <button class="px-2 py-1 bg-gray-400 text-sm">+</button>
+                                <button onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN(qty) & qty > 1 ) result.value--;return false;" class="px-2 py-1 bg-gray-400 text-sm">-</button>
+                                <input id="qty" value="1" maxlength="3" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" onchange="if(this.value == 0)this.value=1;" autocomplete="off" type="text" class="w-14 py-1 text-center border border-gray-300 text-sm" value="1" />
+                                <button onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" class="px-2 py-1 bg-gray-400 text-sm">+</button>
                             </div>
                             <div>
                                 <h4 class="text-sm mt-3">Ghi chú:</h4>

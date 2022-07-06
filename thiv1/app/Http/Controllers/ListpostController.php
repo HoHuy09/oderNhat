@@ -27,7 +27,8 @@ class ListpostController extends Controller
     }
     public function editForm($id,Request $request){  
         $listpost = Listpost::find($id);
-        return view('admin.listpost.edit',compact('listpost'));
+        // return view('admin.listpost.edit',compact('listpost'));
+        return response(compact('listpost'), 200);
     }
     public function saveEdit($id,Request $request){
         $model = Listpost::find($id);
@@ -38,7 +39,8 @@ class ListpostController extends Controller
             $model->image = $imgPath;
         }
         $model->save();
-        return redirect(route('listpost.index'));
+        // return redirect(route('listpost.index'));
+        return response('true', 200);
     }
     public function remove($id){
         Listpost::destroy($id);

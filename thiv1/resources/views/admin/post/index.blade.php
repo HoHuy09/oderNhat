@@ -318,7 +318,7 @@
       var updateImage = document.getElementById('iamgeProfile');
       var data = {
         id: id,
-        name: name,
+        tieu_de: name,
         phone_number: phone,
         email: email,
         content2: content,
@@ -350,7 +350,7 @@
           if (response) {
             console.log(response);
           }
-          // location.reload();
+          location.reload();
         }
       }); 
     }

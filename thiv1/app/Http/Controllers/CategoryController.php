@@ -29,7 +29,8 @@ class CategoryController extends Controller
     }
     public function editForm($id,Request $request){  
         $category = Category::find($id);
-        return view('admin.categories.edit',compact('category'));
+        // return view('admin.categories.edit',compact('category'));
+        return response(compact('category'), 200);
     }
     public function saveEdit($id,SaveCategoryRequest $request){
         $model = Category::find($id);
@@ -40,7 +41,8 @@ class CategoryController extends Controller
             $model->image = $imgPath;
         }
         $model->save();
-        return redirect(route('categorys.index'));
+        // return redirect(route('categorys.index'));
+        return response('true', 200);
     }
     public function remove($id){
         Category::destroy($id);

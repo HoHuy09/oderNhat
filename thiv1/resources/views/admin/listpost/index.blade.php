@@ -119,8 +119,10 @@
                   <td>{{$item->name}}</td>
                   <td><img src="{{asset('storage/'.$item->image)}}" width="100"></td>
 
-                  <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i> </button>
-                    <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button>
+                  <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
+                    </button>
+                    <button onclick="getListpost({{$item->id}})" class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
+                    </button>
                   </td>
                 </tr>
                 @endforeach
@@ -132,6 +134,46 @@
       </div>
     </div>
   </main>
+  <!--
+  MODAL
+-->
+  <div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row">
+            <div class="form-group  col-md-12">
+              <span class="thong-tin-thanh-toan">
+                <h5>Chỉnh sửa thông tin nhân viên cơ bản</h5>
+              </span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="control-label">ID dannh mục</label>
+              <input class="form-control id" type="text" required disabled>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label">Tên danh mục</label>
+              <input class="form-control name" type="text" required>
+            </div>
+            <div class="form-group  col-md-6">
+              <label class="control-label">Ảnh</label>
+              <input class="form-control image" type="file" required>
+            </div>
+          </div>
+          <button onclick="editListpost()" class="btn btn-save" type="button">Lưu lại</button>
+          <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
+          <BR>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+  MODAL
+-->
   <!-- Essential javascripts for application to work-->
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -139,10 +181,6 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="src/jquery.table2excel.js"></script>
   <script src="js/main.js"></script>
-  <!-- The javascript plugin to display page loading on top-->
-  <script src="js/plugins/pace.min.js"></script>
-  <!-- Page specific javascripts-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
   <!-- Data table plugin-->
   <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
@@ -257,13 +295,29 @@
     });
 
 
-    //Modal
-    $("#show-emp").on("click", function() {
-      $("#ModalUP").modal({
-        backdrop: false,
-        keyboard: false
-      })
-    });
+    //get data
+    function getListpost(id) {
+      $.get(`/api/listpost/edit/${id}`, function(data, status) {
+        console.log(data)
+        $('.modal-body .row .id').val(data.listpost.id)
+        $('.modal-body .row .name').val(data.listpost.name)
+      });
+    }
+
+    // edit data
+    function editListpost() {
+      var id = $('.modal-body .row .id').val()
+      var name = $('.modal-body .row .name').val()
+      var data = {
+        id: id,
+        name: name
+      }
+      $.post(`/api/listpost/edit/${id}`, data, function(data, status) {
+        $('.modal-body .row .id').val(data.listpost.id)
+        $('.modal-body .row .name').val(data.listpost.name)
+      });
+      location.reload()
+    }
   </script>
 </body>
 

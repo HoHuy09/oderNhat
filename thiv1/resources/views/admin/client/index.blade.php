@@ -202,12 +202,7 @@
               </select>
             </div>
           </div>
-          <BR>
-          <a href="#" style="    float: right;
-        font-weight: 600;
-        color: #ea0000;">Chỉnh sửa nâng cao</a>
-          <BR>
-          <BR>
+
           <button onclick="editUsser()" class="btn btn-save" type="button">Lưu lại</button>
           <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
           <BR>
@@ -401,7 +396,7 @@
           }
           location.reload();
         }
-      });      
+      });
     }
   </script>
 </body>
