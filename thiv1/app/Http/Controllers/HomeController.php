@@ -246,4 +246,7 @@ class HomeController extends Controller
             return view('home.information', compact('cart', 'user', 'total', 'quantity'))->with('success', 'Product added to cart successfully!');
         }
     }
+    public function setting(){
+        return view('home.setting');
+    }
 }
