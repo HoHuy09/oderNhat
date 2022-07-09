@@ -6,6 +6,7 @@ use App\Http\Requests\SaveProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -35,7 +36,8 @@ class ClientController extends Controller
     // public function editForm($id){
     public function editForm($id,Request $request){  
         $user = User::find($id);
-        return response(compact('user'), 200);
+        $roles = Role::all();
+        return response(compact('user','roles'), 200);
     }
 
     //

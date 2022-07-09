@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
-use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -31,7 +30,6 @@ Route::post('edit/{id}', [ProductController::class, 'saveEdit']);
 
 Route::get('role/edit/{id}', [RoleController::class, 'editForm']);
 Route::post('role/edit/{id}', [RoleController::class, 'saveEdit']);
-
 
 Route::get('listpost/edit/{id}', [ListpostController::class, 'editForm']);
 Route::post('listpost/edit/{id}', [ListpostController::class, 'saveEdit']);

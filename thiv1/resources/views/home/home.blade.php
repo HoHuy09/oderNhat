@@ -99,8 +99,7 @@ Trang chủ
     <span class="mt-1 ml-10 text-amber-600 hover:text-black"><a href="#">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a></span>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8  md:px-16 lg:px-10">
-
-    @if($products->count() <= 5) @foreach($products as $sp) <div class="text-center px-5 rounded-lg hover:shadow-2xl">
+     @foreach($products as $sp) <div class="text-center px-5 rounded-lg hover:shadow-2xl">
       <img src="{{asset('storage/'.$sp->image)}}" alt="" class="mx-auto py-5 h-44" />
       <div>
         <a href="{{route('detail', ['id' => $sp->id])}}" class="font-bold nameProduct">{{$sp->name}}</a>
@@ -118,7 +117,6 @@ Trang chủ
       </div>
   </div>
   @endforeach
-  @endif
 </div>
 <div class="mt-10">
   <img src="{{asset('storage/anhweb/banner1.png')}}" alt="" />
@@ -136,9 +134,9 @@ Trang chủ
         <a href="{{route('detail', ['id' => $spnb->id])}}" class="font-bold text-md nameProduct">{{$spnb->name}}</a>
         <div class="flex mt-10 pb-7">
           <div class="mr-auto">
-            <h5 class="font-semibold text-sm">{{$sp->price}} VND</h5>
+            <h5 class="font-semibold text-sm">{{$spnb->price}} VND</h5>
             <h5 class=" text-xs text-left m-0 pt-1 opacity-70">
-              Đã xem <span>{{$sp->product_views}}</span>
+              Đã xem <span>{{$spnb->product_views}}</span>
             </h5>
           </div>
           <div>
@@ -153,6 +151,61 @@ Trang chủ
 <div class="mt-10">
   <img src="{{asset('storage/anhweb/banner2.png')}}" alt="" />
 </div>
+</div>
+<!-- danh muc list -->
+<div>
+  <div class="containers px-5 md:px-0 lg:px-0 mt-10">
+    <div class="flex md:px-14 lg:px-0">
+      <h4 class="font-bold text-xl">My shop</h4>
+      <span class="mt-1 ml-10 text-amber-600 hover:text-black"><a href="#">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a></span>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8  md:px-16 lg:px-10">
+      @foreach($productdm1 as $spdm) <div class="text-center px-5 rounded-lg hover:shadow-2xl">
+        <img src="{{asset('storage/'.$spdm->image)}}" alt="" class="mx-auto py-5 h-44" />
+        <div>
+          <a href="{{route('detail', ['id' => $spdm->id])}}" class="font-bold text-md nameProduct">{{$spdm->name}}</a>
+          <div class="flex mt-10 pb-7">
+            <div class="mr-auto">
+              <h5 class="font-semibold text-sm">{{$spdm->price}} VND</h5>
+              <h5 class=" text-xs text-left m-0 pt-1 opacity-70">
+                Đã xem <span>{{$spdm->product_views}}</span>
+              </h5>
+            </div>
+            <div>
+              <i class="far fa-heart bg-gray-200 p-2 rounded-full hover:bg-gray-400 hover:text-white duration-700"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    </div>
+  </div>
+  <div class="containers px-5 md:px-0 lg:px-0 mt-10">
+    <div class="flex md:px-14 lg:px-0">
+      <h4 class="font-bold text-xl">Amazon</h4>
+      <span class="mt-1 ml-10 text-amber-600 hover:text-black"><a href="#">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a></span>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8  md:px-16 lg:px-10">
+      @foreach($productdm2 as $spdm) <div class="text-center px-5 rounded-lg hover:shadow-2xl">
+        <img src="{{asset('storage/'.$spdm->image)}}" alt="" class="mx-auto py-5 h-44" />
+        <div>
+          <a href="{{route('detail', ['id' => $spdm->id])}}" class="font-bold text-md nameProduct">{{$spdm->name}}</a>
+          <div class="flex mt-10 pb-7">
+            <div class="mr-auto">
+              <h5 class="font-semibold text-sm">{{$spdm->price}} VND</h5>
+              <h5 class=" text-xs text-left m-0 pt-1 opacity-70">
+                Đã xem <span>{{$spdm->product_views}}</span>
+              </h5>
+            </div>
+            <div>
+              <i class="far fa-heart bg-gray-200 p-2 rounded-full hover:bg-gray-400 hover:text-white duration-700"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    </div>
+  </div>
 </div>
 <!-- danh mục -->
 <div class="containers px-5  lg:px-0 mt-20">
@@ -257,12 +310,52 @@ Trang chủ
 
   <div class="grid grid-cols-5 gap-5 mt-8">
     <div class="px-3 py-3 rounded-xl hover:shadow-xl border border-gray-300">
-      <a href="">
+      <a href="https://www.amazon.co.jp">
         <img src="{{asset('storage/anhweb/amazon.png')}}" alt="" class="mx-auto" /></a>
       <div>
         <h4 class="font-bold">Amazon</h4>
         <p class="text-sm text-gray-400 mt-3 pb-5">
           Sàn thương mại điện tử Amazon Nhật Bản
+        </p>
+      </div>
+    </div>
+    <div class="px-3 py-3 rounded-xl hover:shadow-xl border border-gray-300">
+      <a href="https://shopping.yahoo.co.jp">
+        <img src="{{asset('storage/anhweb/logo2.png')}}" alt="" class="mx-auto" /></a>
+      <div>
+        <h4 class="font-bold">Yahoo! Shopping</h4>
+        <p class="text-sm text-gray-400 mt-3 pb-5">
+          Sàn thương mại điện tử Yahoo! Nhật Bản
+        </p>
+      </div>
+    </div>
+    <div class="px-3 py-3 rounded-xl hover:shadow-xl border border-gray-300">
+      <a href="https://www.ponparemall.com">
+        <img src="{{asset('storage/anhweb/logo3.png')}}" alt="" class="mx-auto" /></a>
+      <div>
+        <h4 class="font-bold">Panpare Mall</h4>
+        <p class="text-sm text-gray-400 mt-3 pb-5">
+          Trung tâm mua sắm Online Ponpare Mall
+        </p>
+      </div>
+    </div>
+    <div class="px-3 py-3 rounded-xl hover:shadow-xl border border-gray-300">
+      <a href="https://jp.mercari.com">
+        <img src="{{asset('storage/anhweb/logo4.png')}}" alt="" class="mx-auto" /></a>
+      <div>
+        <h4 class="font-bold">Mercari</h4>
+        <p class="text-sm text-gray-400 mt-3 pb-5">
+          Chợ trời Online, bạn có thể trả giá cho sản phẩm muốn mua
+        </p>
+      </div>
+    </div>
+    <div class="px-3 py-3 rounded-xl hover:shadow-xl border border-gray-300">
+      <a href="https://auctions.yahoo.co.jp">
+        <img src="{{asset('storage/anhweb/logo5.png')}}" alt="" class="mx-auto" /></a>
+      <div>
+        <h4 class="font-bold">Yahoo! Auction</h4>
+        <p class="text-sm text-gray-400 mt-3 pb-5">
+          Trang đấu giá lớn nhất Nhật Bản Yahoo! Auction
         </p>
       </div>
     </div>

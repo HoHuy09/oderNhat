@@ -29,7 +29,7 @@
     </div>
     <!-- header -->
     <div class="content" style="display: none ">
-        <div class="sticky top-0 z-20 lg:block hidden"style="background: #001c40;" >
+        <div class="sticky top-0 z-20 lg:block hidden" style="background: #001c40;">
             <div class="containers pt-4 ">
                 <div class="grid grid-cols-12 gap-10">
                     <div class="col-span-3 lg:col-span-2 mx-auto">
@@ -214,7 +214,7 @@
                             <div class="screen-image__cover"></div>
                         </div>
                         <div id="slider" class="slider slider-nav ">
-                            <div class="mx-2">
+                            <div class="mx-2 ">
                                 <img class="thumbnail active w-16 py-3 " src="{{asset('storage/'.$product->image)}}" alt="">
                             </div>
                             <div class="mx-2">
@@ -241,19 +241,25 @@
                     </h1>
                     <div class="mt-3 grid grid-cols-2">
                         <div>
-                            <span class="text-sm text-gray-600">
-                                <i class="fas fa-star text-amber-600"></i>
-                                <i class="fas fa-star text-amber-600"></i>
-                                <i class="fas fa-star text-amber-600"></i>
-                                <i class="fas fa-star text-amber-600"></i>
-                                <i class="fas fa-star text-gray-600"></i>
-                            </span>
+                            <div class="stars mb-3">
+                                <form action="">
+                                    <input class="star star-5" id="star-5" type="radio" name="star" />
+                                    <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" type="radio" name="star" />
+                                    <label class="star star-4" for="star-4"></i></label>
+                                    <input class="star star-3" id="star-3" type="radio" name="star" />
+                                    <label class="star star-3" for="star-3"></label>
+                                    <input class="star star-2" id="star-2" type="radio" name="star" />
+                                    <label class="star star-2" for="star-2"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star" />
+                                    <label class="star star-1" for="star-1"></label>
+                                </form>
+                            </div>
                             <p class="text-sm">Đánh giá: <span>129 đánh giá</span></p>
                         </div>
                         <div>
                             <i class="far fa-heart hover:text-red-500 text-xl duration-700"></i>
                             <i class="fas fa-share-alt ml-5 hover:text-red-500 text-xl duration-700"></i>
-                            
                         </div>
                     </div>
                     <div class="mt-3">
@@ -305,6 +311,111 @@
                     <p>
                         {{$product->description}}
                     </p>
+                </div>
+            </div>
+            <!-- đánh giá -->
+            <div class="mt-10 px-3 md:px-16 lg:px-0">
+                <h3 class="font-bold text-2xl">Đánh giá sản phẩm</h3>
+                <div class=" mt-3 shadow-lg  rounded-md border border-gray-400 grid grid-cols-12 py-10 px-10">
+                    <div class="col-span-3 ">
+                        <h3 class="font-bold text-md text-pink-700  "><span style="font-size: 30px;">4.8</span> trên 5</h3>
+                        <div class="text-md">
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                        </div>
+                    </div>
+                    <div class="col-span-9 grid grid-cols-6 gap-x-5 gap-y-2 ">
+                        <div class="w-full border border-gray-300  text-sm text-center">
+                            <a href="">
+                                <h5 class="px-3 py-1">Tất cả</h5>
+                            </a>
+                        </div>
+                        <div class="w-full border border-gray-300  text-sm text-center">
+                            <a href="">
+                                <h5 class="px-3 py-1">5 sao <span>(12)</span></h5>
+                            </a>
+                        </div>
+                        <div class="w-full border border-gray-300  text-sm text-center">
+                            <a href="">
+                                <h5 class="px-3 py-1">4 sao <span>(12)</span></h5>
+                            </a>
+                        </div>
+                        <div class="w-full border border-gray-300  text-sm text-center">
+                            <a href="">
+                                <h5 class="px-3 py-1">3 sao <span>(12)</span></h5>
+                            </a>
+                        </div>
+                        <div class="w-full border border-gray-300  text-sm text-center">
+                            <a href="">
+                                <h5 class="px-3 py-1">2 sao <span>(12)</span></h5>
+                            </a>
+                        </div>
+                        <div class="w-full border border-gray-300  text-sm text-center">
+                            <a href="">
+                                <h5 class="px-3 py-1">1 sao <span>(12)</span></h5>
+                            </a>
+                        </div>
+                        <div class="w-full border border-gray-300  text-sm text-center">
+                            <a href="">
+                                <h5 class="px-3 py-1">Có Bình Luận <span>(12)</span></h5>
+                            </a>
+                        </div>
+                        <div class="w-full border border-gray-300  text-sm text-center">
+                            <a href="">
+                                <h5 class="px-3 py-1">Có Hình Ảnh / Video<span>(12)</span></h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- comment sản phẩm -->
+                <div>
+                    <div class="grid grid-cols-12  py-5 border-b border-gray-300 mx-10">
+                        <div class="col-span-1">
+                            <img src="{{asset('storage/anhweb/anhcho.jpg')}}" class="w-12 h-12 rounded-full" alt="">
+                        </div>
+                        <div class="col-span-11">
+                            <h4 class="text-sm">xuanha3577</h4>
+                            <div class="text-xs mt-1">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </div>
+                            <span class="text-xs mt-2 opacity-60
+                        ">2022-06-27 19:12 | Phân loại hàng: XANH BÍCH,41</span>
+                            <p class="mt-5 text-sm">Hàng mới nhận được rồi, chưa thử nhưng có cảm giác là ổn định. Đánh cầu không biết như thế nào. Nhưng cứ cho 4 sao cho đã👍</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-12  py-5 border-b border-gray-300 mx-10">
+                        <div class="col-span-1">
+                            <img src="{{asset('storage/anhweb/anhcho.jpg')}}" class="w-12 h-12 rounded-full" alt="">
+                        </div>
+                        <div class="col-span-11">
+                            <h4 class="text-sm">xuanha3577</h4>
+                            <div class="text-xs mt-1">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </div>
+                            <span class="text-xs mt-2 opacity-60
+                        ">2022-06-27 19:12 | Phân loại hàng: XANH BÍCH,41</span>
+                            <p class="mt-5 text-sm">Hàng mới nhận được rồi, chưa thử nhưng có cảm giác là ổn định. Đánh cầu không biết như thế nào. Nhưng cứ cho 4 sao cho đã👍</p>
+                            <div class="flex mt-5 gap-5">
+                                <img onclick="image1(); myFunction()" class=" w-24 h-24 cursor-zoom-in" src="{{asset('storage/anhweb/anhcho1.jpg')}}" alt="">
+                                <img onclick="image2(); myFunction()" class="w-24 h-24 cursor-zoom-in" src="{{asset('storage/anhweb/anhcho2.jpg')}}" alt="">
+                                <img onclick="image3(); myFunction()" class="w-24 h-24 cursor-zoom-in" src="{{asset('storage/anhweb/anhcho3.jpg')}}" alt="">
+                            </div>
+                            <div class="mt-5 ">
+                                <img class="w-6/12  h-72" id="image-comment" style="display: none;" src="{{asset('storage/anhweb/anhcho1.jpg')}}" alt="">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="mt-10 md:mt-3 lg:mt-10 px-3 md:px-16 lg:px-0 z-99">
@@ -565,6 +676,31 @@
             const image = document.querySelector(".screen-image__img");
             image.style = ``;
         });
+        //click image detail
+        function myFunction() {
+            var image = document.getElementById('image-comment')
+            if (true) {
+                image.style.display = "block";
+            } else {
+                image.style.display = "none";
+            }
+        }
+
+
+        function image1() {
+            var a = document.getElementById("image-comment");
+            a.setAttribute("src", "{{asset('storage/anhweb/anhcho1.jpg')}}");
+        }
+
+        function image2() {
+            var a = document.getElementById("image-comment");
+            a.setAttribute("src", "{{asset('storage/anhweb/anhcho2.jpg')}}");
+        }
+
+        function image3() {
+            var a = document.getElementById("image-comment");
+            a.setAttribute("src", "{{asset('storage/anhweb/anhcho3.jpg')}}");
+        }
     </script>
 </body>
 

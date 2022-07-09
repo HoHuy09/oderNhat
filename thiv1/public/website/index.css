@@ -252,3 +252,41 @@ max-width: 100%;
     display: -webkit-box;
     -webkit-box-orient: vertical;
   }
+  /* star */
+  div.stars {
+    display: row;
+    width: 100%;
+    display: inline-block;
+  }
+   
+  input.star { display: none; }
+   
+  label.star {
+    padding: 2px;
+    font-size: 17px;
+    color: #444;
+    transition: all .2s;
+    font-weight: 900;
+  }
+   
+  input.star:checked ~ label.star:before {
+    content: '\f005';
+    color: rgb(12, 126, 37);
+    transition: all .25s;
+  }
+   
+  input.star-5:checked ~ label.star:before {
+    color: rgb(244, 248, 9);
+   
+  }
+   
+  input.star-1:checked ~ label.star:before { color: #F62; }
+   
+  label.star:hover { transform: rotate(-15deg) scale(1.3); }
+   
+  label.star:before {
+    content: '\f006';
+    font-family: FontAwesome;
+  }
+  
+  

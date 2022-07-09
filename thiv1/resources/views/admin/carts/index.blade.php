@@ -48,10 +48,10 @@
             <li><a class="app-menu__item " href="{{route('doashboard.index')}}"><i class='app-menu__icon bx bx-tachometer'></i><span class="app-menu__label">Bảng điều khiển</span></a></li>
             <li><a class="app-menu__item " href="{{route('user.index')}}"><i class='app-menu__icon bx bx-id-card'></i><span class="app-menu__label">Quản lý nhân viên</span></a></li>
             <li><a class="app-menu__item" href="{{route('client.index')}}"><i class='app-menu__icon bx bx-user-voice'></i><span class="app-menu__label">Quản lý khách hàng</span></a></li>
-            <li><a class="app-menu__item active" href="{{route('product.index')}}"><i class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Quản lý sản phẩm</span></a></li>
+            <li><a class="app-menu__item " href="{{route('product.index')}}"><i class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Quản lý sản phẩm</span></a></li>
             <li><a class="app-menu__item" href="{{route('categorys.index')}}"><i class="fas fa-water app-menu__icon"></i><span class="app-menu__label">Danh mục sản phẩm </span></a></li>
             <li><a class="app-menu__item" href="{{route('slideshow.index')}}"><i class='app-menu__icon bx bx-run'></i><span class="app-menu__label">Quản lý Slideshow</span></a></li>
-            <li><a class="app-menu__item" href="{{route('carts.index')}}"><i class='app-menu__icon bx bx-task'></i><span class="app-menu__label">Quản lý đơn hàng</span></a></li>
+            <li><a class="app-menu__item active" href="{{route('carts.index')}}"><i class='app-menu__icon bx bx-task'></i><span class="app-menu__label">Quản lý đơn hàng</span></a></li>
             <li><a class="app-menu__item" href="#"><i class='app-menu__icon bx bx-run'></i><span class="app-menu__label">Quản lý nội bộ</span></a></li>
             <li><a class="app-menu__item" href="{{route('post.index')}}"><i class="fas fa-swatchbook app-menu__icon"></i><span class="app-menu__label">Quản lý Posts</span></a></li>
             <li><a class="app-menu__item" href="{{route('listpost.index')}}"><i class="fab fa-blackberry app-menu__icon"></i><span class="app-menu__label">Danh mục Post</span></a></li>
@@ -218,8 +218,9 @@
                                     <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh</td>
                                     <td>14.500.000 đ</td>
                                     <td><span class="badge bg-danger">Đã hủy</span></td>
-                                    <td><button class="btn btn-primary btn-sm text-green-500" type="button" title="Xóa"><i class="fas fa-info-circle"></i> </button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm text-green-500" id="show-emp" data-target="#ModalUP1" data-toggle="modal"><i class="fas fa-info-circle"></i></a>
+                                        <button type="submit" class="btn btn-primary btn-sm edit" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -229,6 +230,192 @@
             </div>
         </div>
     </main>
+
+    <!--
+  MODAL
+-->
+    <div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group  col-md-12">
+                            <span class="thong-tin-thanh-toan">
+                                <h5>Chỉnh sửa thông tin sản phẩm cơ bản</h5>
+                            </span>
+                        </div>
+                    </div>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label">ID sản phẩm</label>
+                                <input class="form-control id" type="text" required value="#CD2187" disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Tên sản phẩm</label>
+                                <input class="form-control name" type="text" required value="Bàn ăn gỗ Theresa">
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label class="control-label">Số lượng</label>
+                                <input class="form-control number" type="number" required value="20">
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="exampleSelect1" class="control-label">Tình trạng sản phẩm</label>
+                                <select class="form-control" id="exampleSelect1">
+                                    <option>Còn hàng</option>
+                                    <option>Hết hàng</option>
+                                    <option>Đang nhập hàng</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="">Sản phẩm Nổi Bật</label>
+                                <select name="status" class="form-control">
+                                    <option>-- Chọn tình trạng --</option>
+                                    <option value="1">Hot</option>
+                                    <option value="0">Bình thường</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Giá bán</label>
+                                <input class="form-control price" type="text">
+                            </div>
+                            <!-- \image -->
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Ảnh sản phẩm</label>
+                                <input type="file" class="form-control image" name="image" value="image" id="image">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Link sản phẩm</label>
+                                <input type="text" name="link_sp" placeholder="Điền link sản phẩm" class="form-control link">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="exampleSelect1" class="control-label">Danh mục</label>
+                                <select class="form-control category" id="exampleSelect1">
+
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Mô tả sản phẩm</label>
+                                <textarea class="form-control description" id="mota" name="description"></textarea>
+                                <script>
+                                    CKEDITOR.replace('mota');
+                                </script>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="btn btn-save" onclick="editProduct()" type="button">Lưu lại</button>
+                    <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+MODAL
+-->
+    <!--
+  MODAL 2
+-->
+    <div class="modal fade" id="ModalUP1" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered  mx-auto justify-center  " role="document">
+            <div class="modal-content mx-auto " style="width:900px;">
+                <div class="modal-body " style="width:900px;">
+                    <div class="row">
+                        <div class="form-group  col-md-12">
+                            <span class="thong-tin-thanh-toan">
+                                <h5>Chi tiết đơn hàng</h5>
+                            </span>
+                        </div>
+                    </div>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label">ID sản phẩm</label>
+                                <input class="form-control id" type="text" required value="#CD2187" disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Họ tên</label>
+                                <input class="form-control name" type="text" required disabled>
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label class="control-label">Số lượng</label>
+                                <input class="form-control number" type="number" required value="20" disabled>
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="exampleSelect1" class="control-label">Tình trạng sản phẩm</label>
+                                <input class="form-control hhhh" type="text" value="Đã thanh toán" required disabled>
+                            </div>
+                            <div class="form-group col-md-10 ">
+                                <label class="control-label">Đơn hàng</label>
+                                <input class="form-control donhang" value="Bàn ăn mở rộng Gepa" type="text" required disabled>
+                            </div>
+                            <div class="form-group col-md-2 ">
+                                <label class="control-label">Giá đơn</label>
+                                <input class="form-control donhang" value="1233" type="text" required disabled>
+                            </div>
+                            <div class="form-group col-md-10 ">
+                                <input class="form-control donhang" type="text" required disabled>
+                            </div>
+                            <div class="form-group col-md-2 ">
+                                <input class="form-control donhang" type="text" required disabled>
+                            </div>
+                            <div class="form-group col-md-10 ">
+                                <input class="form-control donhang" type="text" required disabled>
+                            </div>
+                            <div class="form-group col-md-2 ">
+                                <input class="form-control donhang" type="text" required disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label">tổng tiền</label>
+                                <input class="form-control price" type="text" disabled>
+                            </div>
+
+                            <!-- \image -->
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Ảnh sản phẩm</label>
+                                <input type="file" class="form-control image" name="image" value="image" id="image" disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Link sản phẩm</label>
+                                <input type="text" name="link_sp" placeholder="Điền link sản phẩm" class="form-control link" disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="exampleSelect1" class="control-label">Danh mục</label>
+                                <input type="text" placeholder="Điền link sản phẩm" class="form-control category" disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="exampleSelect1" class="control-label">Ngày đặt</label>
+                                <input type="date" placeholder="Điền link sản phẩm" class="form-control date" disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="exampleSelect1" class="control-label">SĐT</label>
+                                <input type="text" class="form-control phone" disabled>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="exampleSelect1" class="control-label">Địa chỉ</label>
+                                <input type="text" class="form-control phone" disabled>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Mô tả sản phẩm</label>
+                                <textarea class="form-control description" id="mota" name="description" disabled></textarea>
+                                <script>
+                                    CKEDITOR.replace('mota');
+                                </script>
+                            </div>
+                        </div>
+                    </form>
+                    <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+MODAL
+-->
     <script src="js/popper.min.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

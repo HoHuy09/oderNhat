@@ -14,21 +14,14 @@ class UsersController extends Controller
     public function index(Request $request){
         $pageSize = 5;
        
-
         $keyword = $request->has('keyword') ? $request->keyword : "";
-        
 
         // dd($keyword, $cate_id, $rq_column_names, $rq_order_by);
        $query = User::where('email', 'like', "%$keyword%")->orWhere('name', 'like', "%$keyword%");
-        
-        
         $user = $query->paginate($pageSize);
         // giữ lại các giá trị đang tìm kiếm trong link phần trang
         $user->appends($request->input());
-
-        
         $searchData = compact('keyword');
-        
         return view('admin.user.index', compact('user', 'searchData'));
     }
     public function addForm(){
@@ -51,7 +44,8 @@ class UsersController extends Controller
     public function editForm($id,Request $request){  
         $user = User::find($id);
         $roles = Role::all();
-        return view('admin.user.edit',compact('roles','user'));
+        // return view('admin.user.edit',compact('roles','user'));
+        return response(compact('roles','user'), 200);
     }
     public function saveEdit($id,SaveUserRequest $request){
         $model = User::find($id);
@@ -66,7 +60,8 @@ class UsersController extends Controller
         }
        
         $model->save();
-        return redirect(route('user.index'));
+        // return redirect(route('user.index'));
+        return response('true', 200);
     }
     public function remove($id){
         User::destroy($id);

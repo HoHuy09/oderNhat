@@ -314,7 +314,7 @@ MODAL
                 price: price,
                 description: description,
             }
-            console.log(category);
+            console.log(data);
             $.post(`/api/edit/${id}`, data, function(data, status) {
                 $(".modal .row .id").val(data.user.id);
                 $(".modal-body .row .name").val(data.product.name);
@@ -337,7 +337,7 @@ MODAL
                     if (response) {
                         console.log(response);
                     }
-                    location.reload();
+                    // location.reload();
                 }
             });
         }

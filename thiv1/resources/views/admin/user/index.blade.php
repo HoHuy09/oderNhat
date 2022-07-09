@@ -374,10 +374,10 @@
         $(".modal .row .id").val(data.user.id);
         $(".modal .row .name").val(data.user.name);
         $(".modal .row .email").val(data.user.email);
-        data.role.forEach(element => {
+        console.log(data)
+        data.roles.forEach(element => {
           $(".modal .row .role").append(`<option value="${element.id}">${element.name}</option>`);
         });
-
       });
     }
   </script>
