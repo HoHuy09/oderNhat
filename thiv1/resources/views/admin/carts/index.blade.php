@@ -75,7 +75,7 @@
                     <div class="tile-body">
                         <div class="row element-button">
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-black text-white w-48 text-left">Tổng bộ : (30) </a>
+                                <a href="" class="btn bg-black text-white w-48 text-left">Tổng bộ : ({{$carts->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
                                 <a href="" class="btn bg-yellow-500 text-white w-48 text-left">Đã đặt cọc : (30) </a>
@@ -133,6 +133,7 @@
                             <thead>
                                 <tr>
                                     <th>ID đơn hàng</th>
+                                    <th>Mã Đơn Hàng</th>
                                     <th>Khách hàng</th>
                                     <th>Đơn hàng</th>
                                     <th>SĐT</th>
@@ -144,20 +145,23 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($carts as $item)
                                 <tr>
-                                    <td>MD0837</td>
-                                    <td>Triệu Thanh Phú</td>
-                                    <td>Ghế làm việc Zuno, Bàn ăn gỗ Theresa</td>
-                                    <td>0926737168</td>
-                                    <td>2</td>
-                                    <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh</td>
-                                    <td>9.400.000 đ</td>
-                                    <td><span class="badge bg-success">Hoàn thành</span></td>
+                                    <td>{{($carts->currentPage() - 1)*$carts->perPage() + $loop->iteration}}</td>
+                                    <td>{{$item->ma_sp}}</td>
+                                    <td>{{$item->username->name}}</td>
+                                    <td>{{$item->cartdetail->name_product}}</td>
+                                    <td>{{$item->phone_number}}</td>
+                                    <td>{{$item->count}}</td>
+                                    <td>{{$item->address}}</td>
+                                    <td>{{number_format($item->total_price, 0)}} VNĐ</td>
+                                    <td><span class="badge bg-success">{{$item->status}}</span></td>
                                     <td><button class="btn btn-primary btn-sm text-green-500" type="button" title="Xóa"><i class="fas fa-info-circle"></i></button>
                                         <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button>
                                     </td>
                                 </tr>
-                                <tr>
+                                @endforeach
+                                {{-- <tr>
                                     <td>MĐ8265</td>
                                     <td>Nguyễn Thị Ngọc Cẩm</td>
                                     <td>Ghế ăn gỗ Lucy màu trắng</td>
@@ -222,7 +226,7 @@
                                         <a class="btn btn-primary btn-sm text-green-500" id="show-emp" data-target="#ModalUP1" data-toggle="modal"><i class="fas fa-info-circle"></i></a>
                                         <button type="submit" class="btn btn-primary btn-sm edit" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button>
                                     </td>
-                                </tr>
+                                </tr> --}}
                             </tbody>
                         </table>
                     </div>

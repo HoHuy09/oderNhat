@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,6 +14,7 @@ class AdminController extends Controller
         return view('admin.statistical.index');
     }
     public function carts(){
-        return view('admin.carts.index');
+        $carts = Cart::paginate(10);
+        return view('admin.carts.index',compact('carts'));
     }
 }

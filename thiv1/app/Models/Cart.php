@@ -5,16 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Cart extends Model
 {
     use HasFactory;
     protected $table = 'cart';
-    public $fillable = ['count','quantity','total_price','user_id','status','address','id','phone_number'];
+    public $fillable = ['count','quantity','total_price','user_id','status','address','ma_sp','phone_number'];
     public $timestamp = false;
     public function category(){
         return $this->belongsTo(Category::class,'cate_id');
     }
     public function product(){
         return $this->belongsTo(Product::class,'product_id');
+    }
+    public function username(){
+        return $this->belongsTo(User::class,'user_id');
+    }
+    public function cartdetail(){
+        return $this->belongsTo(Cartdetail::class,'ma_sp','cart_id');
     }
 }

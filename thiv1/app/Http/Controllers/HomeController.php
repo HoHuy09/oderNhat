@@ -184,6 +184,7 @@ class HomeController extends Controller
             $cartdetail = new Cartdetail();
             $cartdetail->cart_id = $macart;
             $cartdetail->product_id = $value['id'];
+            $cartdetail->name_product = $value['name'];
             $total += $value['price'] * $value['quantity'];
             $cartdetail->save();
         }
@@ -194,7 +195,7 @@ class HomeController extends Controller
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }
-        $model->id = $macart;
+        $model->ma_sp = $macart;
         $model->total_price = $total;
         $model->count = count($cart);
         $model->status = 1;
