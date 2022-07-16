@@ -337,7 +337,7 @@ MODAL
                     if (response) {
                         console.log(response);
                     }
-                    // location.reload();
+                    location.reload();
                 }
             });
         }

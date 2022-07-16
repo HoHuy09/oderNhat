@@ -55,7 +55,7 @@ Route::post('information', [HomeController::class, 'saveinformation']);
 Route::get('buynow/{id}', [HomeController::class, 'buynow'])->name('buynow');
 //User
 Route::get('setting', [HomeController::class, 'setting']); // setting
-Route::prefix('user')->middleware('auth')->group(function() {
+Route::prefix('user')->middleware(['role:admin'])->group(function() {
     Route::get('/',[UsersController::class,'index'])->name('user.index');
     Route::get('add', [UsersController::class, 'addForm'])->name('user.add');
     Route::post('add', [UsersController::class, 'saveAdd']);

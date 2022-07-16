@@ -24,4 +24,7 @@ class Cart extends Model
     public function cartdetail(){
         return $this->belongsTo(Cartdetail::class,'ma_sp','cart_id');
     }
+    public function statusdetail(){
+        return $this->belongsTo(Statusdetail::class,'status');
+    }
 }

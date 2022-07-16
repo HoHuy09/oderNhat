@@ -238,14 +238,14 @@
                                 </select>
                             </div>
 
-                            <div class="form-group  col-md-3">
+                            <!-- <div class="form-group  col-md-3">
                                 <label for="exampleSelect1" class="control-label">Chức vụ</label>
                                 <select name="role_id" class="form-control">
                                     @foreach ($roles as $item)
                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="form-group col-md-12">
                                 <label class="control-label">Avatar</label>
                                 <div id="myfileupload">

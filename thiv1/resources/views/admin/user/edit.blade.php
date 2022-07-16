@@ -13,14 +13,14 @@
                 <p class="text-danger">{{$message}}</p>
                 @enderror
                 <br> 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="">Chọn chức năng</label>
                     <select name="role_id" class="form-control">
                      @foreach ($roles as $item)
                         <option @if($item->id == $user->role_id) selected @endif value="{{$item->id}}">{{$item->name}}</option>
                     @endforeach
                     </select>
-                    </div>
+                    </div> -->
                 <div class="form-group">
                     <label for="">Email:</label>
                     <input type="email" name="email" value="{{$user->email}}" class="form-control" >

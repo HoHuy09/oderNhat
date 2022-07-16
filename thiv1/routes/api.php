@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,8 @@ Route::post('category/edit/{id}', [CategoryController::class, 'saveEdit']);
 Route::get('posts/edit/{id}', [PostsController::class, 'editForm']);
 Route::post('posts/edit/{id}', [PostsController::class, 'saveEdit']);
 
+Route::get('cart/edit/{id}', [AdminController::class, 'editForm']);
+Route::post('cart/edit/{id}', [AdminController::class, 'saveEdit']);
 
 Route::post('slideshow/add/image/{id}', [SlideshowController::class, 'updateImage']);
 

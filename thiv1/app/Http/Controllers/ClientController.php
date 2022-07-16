@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class ClientController extends Controller
 {
     public function index(Request $request){
-        $user = User::all()->where('role_id', 2);
+        $user = User::all();
         return view('admin.client.index',compact('user'));
     }
     public function addForm(){

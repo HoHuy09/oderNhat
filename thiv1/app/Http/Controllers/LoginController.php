@@ -30,7 +30,7 @@ class LoginController extends Controller
                     ]
             ;
                 session()->put('user', $user);
-            if(Auth::user()->role_id == 1){
+            if(Auth::user()){
                 return redirect()->route('user.index');
             }else{
                 return redirect()->route('home');
@@ -45,7 +45,7 @@ class LoginController extends Controller
         $model = new User();
         $model->fill($request->all());
         $model->password = Hash::make($request->password);
-        $model->role_id = 2;
+        $model->assignRole('member');
         $model->save();
     }
     public function resetpassword(){

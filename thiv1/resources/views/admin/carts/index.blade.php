@@ -78,40 +78,40 @@
                                 <a href="" class="btn bg-black text-white w-48 text-left">Tổng bộ : ({{$carts->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-yellow-500 text-white w-48 text-left">Đã đặt cọc : (30) </a>
+                                <a href="" class="btn bg-yellow-500 text-white w-48 text-left">Đã đặt cọc : ({{$spdc->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-orange-500 text-white w-48 text-left">Đang sử lý : (30) </a>
+                                <a href="" class="btn bg-orange-500 text-white w-48 text-left">Đang sử lý : ({{$spxl->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-lime-500 text-white w-48 text-left">Đã thanh toán : (30) </a>
+                                <a href="" class="btn bg-lime-500 text-white w-48 text-left">Đã thanh toán : ({{$sptt->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-cyan-500 text-white w-48 text-left">Người bán giao : (30) </a>
+                                <a href="" class="btn bg-cyan-500 text-white w-48 text-left">Người bán giao : ({{$spnbg->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-indigo-500 text-white w-48 text-left">Kho : (30) </a>
+                                <a href="" class="btn bg-indigo-500 text-white w-48 text-left">Kho : ({{$spk->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-green-500 text-white w-48 text-left">Đang vận chuyển : (30) </a>
+                                <a href="" class="btn bg-green-500 text-white w-48 text-left">Đang vận chuyển : ({{$spdvc->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-red-600 text-white w-48 text-left">Kho Việt Nam : (30) </a>
+                                <a href="" class="btn bg-red-600 text-white w-48 text-left">Kho Việt Nam : ({{$spkvn->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-lime-500 text-white w-48 text-left">Sẵn sàng giao : (30) </a>
+                                <a href="" class="btn bg-lime-500 text-white w-48 text-left">Sẵn sàng giao : ({{$spssg->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-amber-600 text-white w-48 text-left">Chờ xử lý khiếu nại : (30) </a>
+                                <a href="" class="btn bg-amber-600 text-white w-48 text-left">Chờ xử lý khiếu nại : ({{$spxlkn->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-lime-800 text-white w-48 text-left">Đang giao hàng : (30) </a>
+                                <a href="" class="btn bg-lime-800 text-white w-48 text-left">Đang giao hàng : ({{$spdgh->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-fuchsia-900 text-white w-48 text-left">Đã kết thúc : (30) </a>
+                                <a href="" class="btn bg-fuchsia-900 text-white w-48 text-left">Đã kết thúc : ({{$spdkt->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-red-900 text-white w-48 text-left">Đã hủy : (30) </a>
+                                <a href="" class="btn bg-red-900 text-white w-48 text-left">Đã hủy : ({{$spdh->count()}}) </a>
                             </div>
                         </div>
                         <div class="row element-button">
@@ -155,78 +155,13 @@
                                     <td>{{$item->count}}</td>
                                     <td>{{$item->address}}</td>
                                     <td>{{number_format($item->total_price, 0)}} VNĐ</td>
-                                    <td><span class="badge bg-success">{{$item->status}}</span></td>
-                                    <td><button class="btn btn-primary btn-sm text-green-500" type="button" title="Xóa"><i class="fas fa-info-circle"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button>
+                                    <td><span class="badge bg-success">{{$item->statusdetail->name}}</span></td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm text-green-500" id="show-emp" onclick="getCart({{$item->id}})" data-target="#ModalUP1" data-toggle="modal"><i class="fas fa-info-circle"></i></a>
+                                        <button type="submit" class="btn btn-primary btn-sm edit" title="Sửa" onclick="getCart1({{$item->id}})" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
                                 @endforeach
-                                {{-- <tr>
-                                    <td>MĐ8265</td>
-                                    <td>Nguyễn Thị Ngọc Cẩm</td>
-                                    <td>Ghế ăn gỗ Lucy màu trắng</td>
-                                    <td>0926737168</td>
-                                    <td>1</td>
-                                    <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh</td>
-                                    <td>3.800.000 đ</td>
-                                    <td><span class="badge bg-success">Hoàn thành</span></td>
-                                    <td><button class="btn btn-primary btn-sm text-green-500" type="button" title="Xóa"><i class="fas fa-info-circle"></i> </button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>MT9835</td>
-                                    <td>Đặng Hoàng Phúc</td>
-                                    <td>Giường ngủ Jimmy, Bàn ăn mở rộng cao cấp Dolas, Ghế làm việc Zuno</td>
-                                    <td>0926737168</td>
-                                    <td>3 </td>
-                                    <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh</td>
-                                    <td>40.650.000 đ</td>
-                                    <td><span class="badge bg-success">Hoàn thành</span></td>
-                                    <td><button class="btn btn-primary btn-sm text-green-500" type="button" title="Xóa"><i class="fas fa-info-circle"></i> </button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>ER3835</td>
-                                    <td>Nguyễn Thị Mỹ Yến</td>
-                                    <td>Bàn ăn mở rộng Gepa</td>
-                                    <td>0926737168</td>
-                                    <td>1 </td>
-                                    <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh</td>
-                                    <td>16.770.000 đ</td>
-                                    <td><span class="badge bg-info">Chờ thanh toán</span></td>
-                                    <td><button class="btn btn-primary btn-sm text-green-500" type="button" title="Xóa"><i class="fas fa-info-circle"></i> </button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>AL3947</td>
-                                    <td>Phạm Thị Ngọc</td>
-                                    <td>Bàn ăn Vitali mặt đá, Ghế ăn gỗ Lucy màu trắng</td>
-                                    <td>0926737168</td>
-                                    <td>2 </td>
-                                    <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh</td>
-                                    <td>19.770.000 đ</td>
-                                    <td><span class="badge bg-warning">Đang giao hàng</span></td>
-                                    <td><button class="btn btn-primary btn-sm text-green-500" type="button" title="Xóa"><i class="fas fa-info-circle"></i> </button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>QY8723</td>
-                                    <td>Ngô Thái An</td>
-                                    <td>Giường ngủ Kara 1.6x2m</td>
-                                    <td>0926737168</td>
-                                    <td>1 </td>
-                                    <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh</td>
-                                    <td>14.500.000 đ</td>
-                                    <td><span class="badge bg-danger">Đã hủy</span></td>
-                                    <td>
-                                        <a class="btn btn-primary btn-sm text-green-500" id="show-emp" data-target="#ModalUP1" data-toggle="modal"><i class="fas fa-info-circle"></i></a>
-                                        <button type="submit" class="btn btn-primary btn-sm edit" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-                                    </td>
-                                </tr> --}}
                             </tbody>
                         </table>
                     </div>
@@ -249,65 +184,60 @@
                             </span>
                         </div>
                     </div>
-                    <form action="" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label class="control-label">ID sản phẩm</label>
-                                <input class="form-control id" type="text" required value="#CD2187" disabled>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="control-label">Tên sản phẩm</label>
-                                <input class="form-control name" type="text" required value="Bàn ăn gỗ Theresa">
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label class="control-label">Số lượng</label>
-                                <input class="form-control number" type="number" required value="20">
-                            </div>
-                            <div class="form-group col-md-6 ">
-                                <label for="exampleSelect1" class="control-label">Tình trạng sản phẩm</label>
-                                <select class="form-control" id="exampleSelect1">
-                                    <option>Còn hàng</option>
-                                    <option>Hết hàng</option>
-                                    <option>Đang nhập hàng</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6 ">
-                                <label for="">Sản phẩm Nổi Bật</label>
-                                <select name="status" class="form-control">
-                                    <option>-- Chọn tình trạng --</option>
-                                    <option value="1">Hot</option>
-                                    <option value="0">Bình thường</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="control-label">Giá bán</label>
-                                <input class="form-control price" type="text">
-                            </div>
-                            <!-- \image -->
-                            <div class="form-group col-md-6">
-                                <label class="control-label">Ảnh sản phẩm</label>
-                                <input type="file" class="form-control image" name="image" value="image" id="image">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="control-label">Link sản phẩm</label>
-                                <input type="text" name="link_sp" placeholder="Điền link sản phẩm" class="form-control link">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="exampleSelect1" class="control-label">Danh mục</label>
-                                <select class="form-control category" id="exampleSelect1">
-
-                                </select>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label class="control-label">Mô tả sản phẩm</label>
-                                <textarea class="form-control description" id="mota" name="description"></textarea>
-                                <script>
-                                    CKEDITOR.replace('mota');
-                                </script>
-                            </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label">ID sản phẩm</label>
+                            <input class="form-control id" type="text" required value="#CD2187" disabled>
                         </div>
-                    </form>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Tên sản phẩm</label>
+                            <input class="form-control name" type="text" required value="Bàn ăn gỗ Theresa">
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label class="control-label">Số lượng</label>
+                            <input class="form-control number" type="number" required value="20">
+                        </div>
+                        <div class="form-group col-md-6 ">
+                            <label for="exampleSelect1" class="control-label">Tình trạng sản phẩm</label>
+                            <select class="form-control" id="exampleSelect1">
+                                <option>Còn hàng</option>
+                                <option>Hết hàng</option>
+                                <option>Đang nhập hàng</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6 ">
+                            <label for="">Sản phẩm Nổi Bật</label>
+                            <select name="status" class="form-control " id="status">
+
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Giá bán</label>
+                            <input class="form-control price" type="text">
+                        </div>
+                        <!-- \image -->
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Ảnh sản phẩm</label>
+                            <input type="file" class="form-control image" name="image" value="image" id="image">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Link sản phẩm</label>
+                            <input type="text" name="link_sp" placeholder="Điền link sản phẩm" class="form-control link">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleSelect1" class="control-label">Danh mục</label>
+                            <select class="form-control category" id="exampleSelect1">
+
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Mô tả sản phẩm</label>
+                            <textarea class="form-control description" id="mota" name="description"></textarea>
+                            <script>
+                                CKEDITOR.replace('mota');
+                            </script>
+                        </div>
+                    </div>
                     <button class="btn btn-save" onclick="editProduct()" type="button">Lưu lại</button>
                     <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
                 </div>
@@ -333,86 +263,82 @@ MODAL
                             </span>
                         </div>
                     </div>
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label class="control-label">ID sản phẩm</label>
-                                <input class="form-control id" type="text" required value="#CD2187" disabled>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="control-label">Họ tên</label>
-                                <input class="form-control name" type="text" required disabled>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label class="control-label">Số lượng</label>
-                                <input class="form-control number" type="number" required value="20" disabled>
-                            </div>
-                            <div class="form-group col-md-6 ">
-                                <label for="exampleSelect1" class="control-label">Tình trạng sản phẩm</label>
-                                <input class="form-control hhhh" type="text" value="Đã thanh toán" required disabled>
-                            </div>
-                            <div class="form-group col-md-10 ">
-                                <label class="control-label">Đơn hàng</label>
-                                <input class="form-control donhang" value="Bàn ăn mở rộng Gepa" type="text" required disabled>
-                            </div>
-                            <div class="form-group col-md-2 ">
-                                <label class="control-label">Giá đơn</label>
-                                <input class="form-control donhang" value="1233" type="text" required disabled>
-                            </div>
-                            <div class="form-group col-md-10 ">
-                                <input class="form-control donhang" type="text" required disabled>
-                            </div>
-                            <div class="form-group col-md-2 ">
-                                <input class="form-control donhang" type="text" required disabled>
-                            </div>
-                            <div class="form-group col-md-10 ">
-                                <input class="form-control donhang" type="text" required disabled>
-                            </div>
-                            <div class="form-group col-md-2 ">
-                                <input class="form-control donhang" type="text" required disabled>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="control-label">tổng tiền</label>
-                                <input class="form-control price" type="text" disabled>
-                            </div>
-
-                            <!-- \image -->
-                            <div class="form-group col-md-6">
-                                <label class="control-label">Ảnh sản phẩm</label>
-                                <input type="file" class="form-control image" name="image" value="image" id="image" disabled>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="control-label">Link sản phẩm</label>
-                                <input type="text" name="link_sp" placeholder="Điền link sản phẩm" class="form-control link" disabled>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="exampleSelect1" class="control-label">Danh mục</label>
-                                <input type="text" placeholder="Điền link sản phẩm" class="form-control category" disabled>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="exampleSelect1" class="control-label">Ngày đặt</label>
-                                <input type="date" placeholder="Điền link sản phẩm" class="form-control date" disabled>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="exampleSelect1" class="control-label">SĐT</label>
-                                <input type="text" class="form-control phone" disabled>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label for="exampleSelect1" class="control-label">Địa chỉ</label>
-                                <input type="text" class="form-control phone" disabled>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label class="control-label">Mô tả sản phẩm</label>
-                                <textarea class="form-control description" id="mota" name="description" disabled></textarea>
-                                <script>
-                                    CKEDITOR.replace('mota');
-                                </script>
-                            </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Mã sản phẩm</label>
+                            <input class="form-control id" type="text" required value="#CD2187" disabled>
                         </div>
-                    </form>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Họ tên</label>
+                            <input class="form-control name" type="text" required disabled>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label class="control-label">Số lượng</label>
+                            <input class="form-control number" type="number" required value="20" disabled>
+                        </div>
+                        <div class="form-group col-md-6 ">
+                            <label for="exampleSelect1" class="control-label">Tình trạng sản phẩm</label>
+                            <input class="form-control status" type="text" value="Đã thanh toán" required disabled>
+                        </div>
+                        <div class="form-group col-md-10 ">
+                            <label class="control-label">Đơn hàng</label>
+                            <input class="form-control donhang" value="Bàn ăn mở rộng Gepa" type="text" required disabled>
+                        </div>
+                        <div class="form-group col-md-2 ">
+                            <label class="control-label">Giá đơn</label>
+                            <input class="form-control donhang" value="1233" type="text" required disabled>
+                        </div>
+                        <div class="form-group col-md-10 ">
+                            <input class="form-control donhang" type="text" required disabled>
+                        </div>
+                        <div class="form-group col-md-2 ">
+                            <input class="form-control donhang" type="text" required disabled>
+                        </div>
+                        <div class="form-group col-md-10 ">
+                            <input class="form-control donhang" type="text" required disabled>
+                        </div>
+                        <div class="form-group col-md-2 ">
+                            <input class="form-control donhang" type="text" required disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">tổng tiền</label>
+                            <input class="form-control price" type="text" disabled>
+                        </div>
+
+                        <!-- \image -->
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Ảnh sản phẩm</label>
+                            <input type="file" class="form-control image" name="image" value="image" id="image" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Link sản phẩm</label>
+                            <input type="text" name="link_sp" placeholder="Điền link sản phẩm" class="form-control link" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleSelect1" class="control-label">Danh mục</label>
+                            <input type="text" placeholder="Điền link sản phẩm" class="form-control category" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleSelect1" class="control-label">Ngày đặt</label>
+                            <input type="text" class="form-control date" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleSelect1" class="control-label">SĐT</label>
+                            <input type="text" class="form-control phone" disabled>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="exampleSelect1" class="control-label">Địa chỉ</label>
+                            <input type="text" class="form-control address" disabled>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Mô tả sản phẩm</label>
+                            <textarea class="form-control description" id="mota" name="description" disabled></textarea>
+                            <script>
+                                CKEDITOR.replace('mota');
+                            </script>
+                        </div>
+                    </div>
                     <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
-                </div>
-                <div class="modal-footer">
                 </div>
             </div>
         </div>
@@ -543,6 +469,49 @@ MODAL
                 keyboard: false
             })
         });
+        $("#show-emp1").on("click", function() {
+            $("#ModalUP1").modal({
+                backdrop: false,
+                keyboard: false
+            })
+        });
+        //get data from modal
+        function getCart(id) {
+            $.get(`/api/cart/edit/${id}`, function(data) {
+                $(".id").val(data.cart.ma_sp);
+                $(".name").val(data.cart.name);
+                $(".price").val(data.cart.total_price);
+                $(".quantity").val(data.cart.quantity);
+                $(".image").val(data.cart.image);
+                $(".mota").val(data.cart.mota);
+                $(".phone").val(data.cart.phone_number);
+                $(".address").val(data.cart.address);
+                $(".date").val(data.cart.created_at);
+                $(".status").val(data.cart.status);
+                $(".number").val(data.cart.count);
+
+            });
+        }
+        //get data from modal
+        function getCart1(id) {
+            $.get(`/api/cart/edit/${id}`, function(data) {
+                $(".id").val(data.cart.ma_sp);
+                $(".name").val(data.cart.name);
+                $(".price").val(data.cart.total_price);
+                $(".quantity").val(data.cart.quantity);
+                $(".image").val(data.cart.image);
+                $(".mota").val(data.cart.mota);
+                $(".phone").val(data.cart.phone_number);
+                $(".address").val(data.cart.address);
+                $(".date").val(data.cart.created_at);
+                $(".status").val(data.cart.status);
+                $(".number").val(data.cart.count);
+
+                data.category.forEach(element => {
+                    $(".modal-body .row .category").append(`<option value="${element.id}">${element.name}</option>`);
+                });
+            });
+        }
     </script>
 </body>
 
