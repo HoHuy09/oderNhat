@@ -6,7 +6,9 @@ use App\Models\Cart;
 use App\Models\Cartdetail;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -23,11 +25,12 @@ class HomeController extends Controller
         $productdm2 = Product::all()->filter(function ($item) {
             return $item->cate_id == 3;
         })->sortByDesc('id')->take(10);
+        $product_sales =  Product::where('sales','>', 0)->take(5)->get();
         $cart = $request->session()->get('cart');
         isset($cart) ? $cart = $request->session()->get('cart') : $cart = [];
         $user = $request->session()->get('user');
         isset($user) ? $user = $request->session()->get('user') : $user = [];
-        return view('home.home', compact('products', 'productnb', 'category', 'productdm1','productdm2', 'cart', 'user'));
+        return view('home.home', compact('products','product_sales', 'productnb', 'category', 'productdm1','productdm2', 'cart', 'user'));
     }
     public function detail(Request $request, $id)
     {
@@ -91,12 +94,17 @@ class HomeController extends Controller
         $product->product_views = $product->product_views + 1;
         $product->save();
         $cart = session()->get('cart');
+        if($product->sales > 0){
+            $price = $product->price - ($product->price * $product->sales / 100);}
+        else{
+            $price = $product->price;
+        }
         if (!$cart) {
             $cart = [
                 $id => [
                     'id' => $id,
                     'name' => $product->name,
-                    'price' => $product->price,
+                    'price' => $price,
                     'quantity' => 1,
                     'image' => $product->image
                 ]
@@ -199,10 +207,9 @@ class HomeController extends Controller
         $model->total_price = $total;
         $model->count = count($cart);
         $model->status = 1;
-        if ($user != []) {
-            $model->user_id =  $user['id'];
-        }
         $model->save();
+        $cart = session()->get('cart');
+        
         return view('home.information', compact('cart', 'user'))->with('success', 'Tạo đơn thành công');
     }
     public function buynow(Request $request, $id)
@@ -247,7 +254,31 @@ class HomeController extends Controller
             return view('home.information', compact('cart', 'user', 'total', 'quantity'))->with('success', 'Product added to cart successfully!');
         }
     }
-    public function setting(){
+    public function setting(Request $request){
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user = [];
         return view('home.setting');
+    }
+    public function setting1(Request $request){
+       
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user = [];
+        var_dump($user);die;
+        return view('home.setting1');
+    }
+    public function savesetting(Request $request){
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user = [];
+        var_dump($user);die;
+        $model = User::find($user['id']);
+        // check trùng password
+        if($model->password != $request->password_confirmation){
+            var_dump('password không trùng');die;
+            return redirect()->back()->with('error', 'Mật khẩu không trùng khớp');
+        }
+        // giải mã password
+    
+        $model->save();
+        return redirect()->route('setting')->with('success', 'Cập nhật thành công');
     }
 }

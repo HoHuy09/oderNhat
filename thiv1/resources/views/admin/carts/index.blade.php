@@ -81,7 +81,7 @@
                                 <a href="" class="btn bg-yellow-500 text-white w-48 text-left">Đã đặt cọc : ({{$spdc->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="" class="btn bg-orange-500 text-white w-48 text-left">Đang sử lý : ({{$spxl->count()}}) </a>
+                                <a href="" class="btn bg-orange-500 text-white w-48 text-left">Đang xử lý : ({{$spxl->count()}}) </a>
                             </div>
                             <div class="col-sm-2">
                                 <a href="" class="btn bg-lime-500 text-white w-48 text-left">Đã thanh toán : ({{$sptt->count()}}) </a>
@@ -123,10 +123,13 @@
                             </div>
 
                             <div class="col-sm-2">
-                                <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
+                                <a class="btn btn-excel btn-sm" href="#" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
                             </div>
                             <div class="col-sm-2">
                                 <a class="btn btn-delete btn-sm pdf-file" type="button" title="In" onclick="myFunction(this)"><i class="fas fa-file-pdf"></i> Xuất PDF</a>
+                            </div>
+                            <div class="col-sm-2">
+                                <a class="btn btn-excel btn-sm" href="{{route('carts.add')}}" > Tạo mới</a>
                             </div>
                         </div>
                         <table class="table table-hover table-bordered" id="sampleTable">
@@ -149,13 +152,43 @@
                                 <tr>
                                     <td>{{($carts->currentPage() - 1)*$carts->perPage() + $loop->iteration}}</td>
                                     <td>{{$item->ma_sp}}</td>
-                                    <td>{{$item->username->name}}</td>
+                                    <td>{{$item->name}}</td>
+                                    @if ($item->name_product != null)
+                                    <td>{{$item->name_product}}</td>
+                                    @else
                                     <td>{{$item->cartdetail->name_product}}</td>
+                                    @endif
                                     <td>{{$item->phone_number}}</td>
                                     <td>{{$item->count}}</td>
                                     <td>{{$item->address}}</td>
                                     <td>{{number_format($item->total_price, 0)}} VNĐ</td>
+                                    @if ($item->status == 1)
                                     <td><span class="badge bg-success">{{$item->statusdetail->name}}</span></td>
+                                    @elseif($item->status == 2)
+                                    <td><span class="badge bg-orange-500">{{$item->statusdetail->name}}</span></td>
+                                    @elseif($item->status == 3)
+                                    <td><span class="badge bg-lime-500">{{$item->statusdetail->name}}</span></td>
+                                    @elseif($item->status == 4)
+                                    <td><span class="badge bg-indigo-500">{{$item->statusdetail->name}}</span></td>
+                                    @elseif($item->status == 5)
+                                    <td><span class="badge bg-indigo-500">{{$item->statusdetail->name}}</span></td>
+                                    @elseif($item->status == 6)
+                                    <td><span class="badge bg-indigo-500">{{$item->statusdetail->name}}</span></td>
+                                    @elseif($item->status == 7)
+                                    <td><span class="badge bg-green-500">{{$item->statusdetail->name}}</span></td>
+                                    @elseif($item->status == 8)
+                                    <td><span class="badge bg-red-600">{{$item->statusdetail->name}}</span></td>
+                                    @elseif($item->status == 9)
+                                    <td><span class="badge bg-lime-500">{{$item->statusdetail->name}}</span></td>
+                                    @elseif($item->status == 10)
+                                    <td><span class="badge bg-amber-600">{{$item->statusdetail->name}}</span></td>
+                                    @elseif($item->status == 11)
+                                    <td><span class="badge bg-lime-800 ">{{$item->statusdetail->name}}</span></td>
+                                    @elseif($item->status == 12)
+                                    <td><span class="badge bg-fuchsia-900">{{$item->statusdetail->name}}</span></td>
+                                    @else
+                                    <td><span class="badge bg-red-900 ">{{$item->statusdetail->name}}</span></td>
+                                    @endif
                                     <td>
                                         <a class="btn btn-primary btn-sm text-green-500" id="show-emp" onclick="getCart({{$item->id}})" data-target="#ModalUP1" data-toggle="modal"><i class="fas fa-info-circle"></i></a>
                                         <button type="submit" class="btn btn-primary btn-sm edit" title="Sửa" onclick="getCart1({{$item->id}})" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button>
@@ -164,6 +197,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{$carts->links('vendor.pagination.custom')}}
                     </div>
                 </div>
             </div>
@@ -187,48 +221,38 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="control-label">ID sản phẩm</label>
-                            <input class="form-control id" type="text" required value="#CD2187" disabled>
+                            <input class="form-control id" type="text" required disabled>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Tên sản phẩm</label>
-                            <input class="form-control name" type="text" required value="Bàn ăn gỗ Theresa">
+                            <input class="form-control name" type="text" required disabled>
                         </div>
                         <div class="form-group  col-md-6">
                             <label class="control-label">Số lượng</label>
-                            <input class="form-control number" type="number" required value="20">
+                            <input class="form-control number" type="number" required disabled value="20">
                         </div>
-                        <div class="form-group col-md-6 ">
-                            <label for="exampleSelect1" class="control-label">Tình trạng sản phẩm</label>
-                            <select class="form-control" id="exampleSelect1">
-                                <option>Còn hàng</option>
-                                <option>Hết hàng</option>
-                                <option>Đang nhập hàng</option>
-                            </select>
-                        </div>
+
                         <div class="form-group col-md-6 ">
                             <label for="">Sản phẩm Nổi Bật</label>
-                            <select name="status" class="form-control " id="status">
-
-                            </select>
+                            <input class="form-control phone" type="text" name="" id="" disabled>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Giá bán</label>
-                            <input class="form-control price" type="text">
-                        </div>
-                        <!-- \image -->
-                        <div class="form-group col-md-6">
-                            <label class="control-label">Ảnh sản phẩm</label>
-                            <input type="file" class="form-control image" name="image" value="image" id="image">
+                            <input class="form-control price" type="text" disabled>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Link sản phẩm</label>
-                            <input type="text" name="link_sp" placeholder="Điền link sản phẩm" class="form-control link">
+                            <input type="text" name="link_sp" placeholder="Điền link sản phẩm" class="form-control link" disabled>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleSelect1" class="control-label">Danh mục</label>
-                            <select class="form-control category" id="exampleSelect1">
+                            <label for="exampleSelect1" class="control-label">Trạng thái sản phẩm</label>
+                            <select class="form-control status" id="exampleSelect1">
 
                             </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label class="control-label">Địa chỉ</label>
+                            <input type="text" class="form-control address" disabled>
                         </div>
                         <div class="form-group col-md-12">
                             <label class="control-label">Mô tả sản phẩm</label>
@@ -238,7 +262,7 @@
                             </script>
                         </div>
                     </div>
-                    <button class="btn btn-save" onclick="editProduct()" type="button">Lưu lại</button>
+                    <button class="btn btn-save" onclick="editCart()" type="button">Lưu lại</button>
                     <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
                 </div>
                 <div class="modal-footer">
@@ -346,13 +370,14 @@ MODAL
     <!--
 MODAL
 -->
-    <script src="js/popper.min.js"></script>
+<script src="js/popper.min.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="src/jquery.table2excel.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
     <script>
         function deleteRow(r) {
@@ -381,17 +406,6 @@ MODAL
             $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));
             e.stopImmediatePropagation();
         });
-
-        //EXCEL
-        // $(document).ready(function () {
-        //   $('#').DataTable({
-
-        //     dom: 'Bfrtip',
-        //     "buttons": [
-        //       'excel'
-        //     ]
-        //   });
-        // });
 
 
         //Thời Gian
@@ -444,23 +458,6 @@ MODAL
                 win.print();
             }
         }
-        //     //Sao chép dữ liệu
-        //     var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
-
-        // copyTextareaBtn.addEventListener('click', function(event) {
-        //   var copyTextarea = document.querySelector('.js-copytextarea');
-        //   copyTextarea.focus();
-        //   copyTextarea.select();
-
-        //   try {
-        //     var successful = document.execCommand('copy');
-        //     var msg = successful ? 'successful' : 'unsuccessful';
-        //     console.log('Copying text command was ' + msg);
-        //   } catch (err) {
-        //     console.log('Oops, unable to copy');
-        //   }
-        // });
-
 
         //Modal
         $("#show-emp").on("click", function() {
@@ -495,7 +492,7 @@ MODAL
         //get data from modal
         function getCart1(id) {
             $.get(`/api/cart/edit/${id}`, function(data) {
-                $(".id").val(data.cart.ma_sp);
+                $(".id").val(data.cart.id);
                 $(".name").val(data.cart.name);
                 $(".price").val(data.cart.total_price);
                 $(".quantity").val(data.cart.quantity);
@@ -506,10 +503,32 @@ MODAL
                 $(".date").val(data.cart.created_at);
                 $(".status").val(data.cart.status);
                 $(".number").val(data.cart.count);
-
-                data.category.forEach(element => {
-                    $(".modal-body .row .category").append(`<option value="${element.id}">${element.name}</option>`);
+                data.status.forEach(element => {
+                    $(".modal-body .row .status").append(`<option value="${element.id}">${element.name}</option>`);
                 });
+            });
+        }
+        //update data
+        function editCart() {
+            var id = $(".id").val();
+            var status = $(".status").val();
+            var data = {
+                status: status,
+            }
+            console.log(data);
+            $.post(`/api/cart/edit/${id}`, data, function(data, status) {
+                $(".id").val(data.carts.id);
+                $(".status").val(data.carts.status);
+            });
+            $.ajax({
+                type: 'POST',
+                url: `/api/cart/edit/${id}`,
+                success: (response) => {
+                    if (response) {
+                        console.log(response);
+                    }
+                    location.reload();
+                }
             });
         }
     </script>

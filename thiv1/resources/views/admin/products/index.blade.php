@@ -111,6 +111,7 @@
                                     <th>Số lượng</th>
                                     <th>Tình trạng</th>
                                     <th>Giá tiền</th>
+                                    <th>Sale</th>
                                     <th>Danh mục</th>
                                     <th>Chức năng</th>
                                 </tr>
@@ -126,6 +127,7 @@
                                     <td>{{$item->quantity}}</td>
                                     <td><span class="badge bg-success">Còn hàng</span></td>
                                     <td>{{$item->price}}</td>
+                                    <td>{{$item->sales}}</td>
                                     <td>{{$item->category->name}}</td>
                                     <td>
                                         <a class="btn btn-primary btn-sm trash" onclick="return confirm('Bạn có muốn xóa không?')" href="{{route('product.remove', ['id' => $item->id])}}"><i class="fas fa-trash-alt"></i></a>

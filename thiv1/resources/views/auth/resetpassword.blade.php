@@ -27,7 +27,7 @@
                     <span class="login100-form-title">
                         <b>KHÔI PHỤC MẬT KHẨU</b>
                     </span>
-                    <form action="custommer.html" method="post">
+                    <form action="" method="post">
                         @csrf
                         <div class="wrap-input100 validate-input"
                             data-validate="Bạn cần nhập đúng thông tin như: ex@abc.xyz">

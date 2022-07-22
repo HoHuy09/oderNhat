@@ -217,18 +217,11 @@
                             <div class="mx-2 ">
                                 <img class="thumbnail active w-16 py-3 " src="{{asset('storage/'.$product->image)}}" alt="">
                             </div>
-                            <div class="mx-2">
-                                <img class="thumbnail w-16 py-3" src="{{asset('storage/'.$product->image)}}" alt="">
-                            </div>
-                            <div class="mx-2">
-                                <img class="thumbnail w-16 py-3 " src="{{asset('storage/'.$product->image)}}" alt="">
-                            </div>
-                            <div class="mx-2">
-                                <img class="thumbnail w-16 py-3 " src="{{asset('storage/'.$product->image)}}" alt="">
-                            </div>
-                            <div class="mx-2">
-                                <img class="thumbnail w-16 py-3 " src="{{asset('storage/'.$product->image)}}" alt="">
-                            </div>
+                            @foreach($hasp as $hasp)
+                            <div class="mx-2 ">
+                                <img class="thumbnail w-16 py-3 " src="{{asset('storage/'.$hasp->image)}}" alt="">
+                        </div>
+                      @endforeach
                         </div>
                         <button id="slideLeft" class="previous_caro absolute left-0 hidden" style="top: 380px; margin-Left:-100px;"><i class="fas fa-angle-left  bg-black opacity-80 px-3 py-2 rounded-full text-white "></i></button>
                         <button id="slideRight" class="next_caro absolute right-0 hidden" style="top: 380px;margin-Right:-100px;"><i class="fas fa-angle-right  bg-black opacity-80 px-3 py-2 rounded-full text-white "></i></button>
@@ -270,8 +263,12 @@
                         <div>
                             <h5>Gía hiện tại:</h5>
                             <div class="mt-3">
-                                <h5 class="text-2xl font-bold">5,478 ¥</h5>
+                                @if($product->sales > 0)
+                                <h5 class="text-2xl font-bold">{{ number_format($product->price - ($product->price * $product->sales / 100), 0) }} ¥</h5>
                                 <span class="font-bold mt-1 text-gray-400">{{ number_format($product->price, 0) }} ¥</span>
+                                @else
+                                <span class="font-bold mt-1 text-2xl">{{ number_format($product->price, 0) }} ¥</span>
+                                @endif
                             </div>
                         </div>
                         <div>

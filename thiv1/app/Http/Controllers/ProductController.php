@@ -24,7 +24,7 @@ class ProductController extends Controller
         $model = new Product();
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $imgPath = $request->file('image')->store('products');
+            $imgPath = $request->file('image')->store('public/products');
             $imgPath = str_replace('public/', '', $imgPath);
             $model->image = $imgPath;
         }
@@ -35,7 +35,7 @@ class ProductController extends Controller
             ;
             // duyệt từng ảnh và thực hiện lưu
             foreach ($request->product_image as $index => $files) {
-                $imgPath = $files->store('products');
+                $imgPath = $files->store('public/products');
                 $imgPath = str_replace('public/', '', $imgPath);
                 // Tạo đối tưọng HinhAnh
                 $hinhAnh = new ProductImage();

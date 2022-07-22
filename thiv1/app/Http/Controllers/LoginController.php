@@ -26,15 +26,15 @@ class LoginController extends Controller
                     [
                         'id' => Auth::user()->id,
                         'name' => Auth::user()->name,
-                        'avatar' => Auth::user()->avatar
+                        'avatar' => Auth::user()->avatar,
+                        'email' => Auth::user()->email,
+                        'password' => Auth::user()->password,
                     ]
             ;
                 session()->put('user', $user);
-            if(Auth::user()){
-                return redirect()->route('user.index');
-            }else{
+            
                 return redirect()->route('home');
-            }
+            
         }
         return back()->with('msg', 'Tài khoản/mật khẩu không chính xác');
     }
@@ -47,6 +47,7 @@ class LoginController extends Controller
         $model->password = Hash::make($request->password);
         $model->assignRole('member');
         $model->save();
+        return redirect()->route('home');
     }
     public function resetpassword(){
         return view('auth.resetpassword');

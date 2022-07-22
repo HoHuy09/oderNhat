@@ -133,7 +133,7 @@
         <div class="grid grid-cols-12 mt-10 gap-10">
             <div class="col-span-3">
                 <ul class="border border-gray-300">
-                    <a href="">
+                    <a href="{{route('setting')}}">
                         <li class="border-b border-gray-300 px-3 py-2 bg-gray-300 text-sm font-medium hover:text-yellow-700">
                             Thông tin người dùng
                         </li>
@@ -150,57 +150,23 @@
                 <p class="mt-3 text-sm border-b border-gray-300 pb-2">
                     Quản lý thông tin hồ sơ để bảo mật tài khoản của bạn
                 </p>
-                <form action="">
+                <form action="" method="post" >
+                    @csrf
                     <div class="px-20 mt-5 text-sm">
                         <div class="flex py-5 form-control--oneline gap-10">
-                            <h4 class="w-28">Họ tên</h4>
+                            <h4 class="w-28">Mật khẩu cũ</h4>
+                            <input class="w-96 border-b-2 border-gray-300 pb-1" type="text" name=">password_confirmation" />
+                        </div>
+                        <div class="flex py-5 form-control--oneline gap-10">
+                            <h4 class="w-28">Mật khẩu mới</h4>
                             <input class="w-96 border-b-2 border-gray-300 pb-1" type="text" />
                         </div>
-                        <div class="flex py-5 form-control--oneline gap-10">
-                            <h4 class="w-28">Quốc gia</h4>
-                            <input class="w-96 border-b-2 border-gray-300 pb-1" type="text" />
-                        </div>
-                        <div class="flex py-5 form-control--oneline gap-10">
-                            <h4 class="w-28">Số điện thoại</h4>
-                            <div class="w-96 flex">
-                                <select class="border-gray-300 pb-1 border-b-2 outline-none px-2" name="" id="">
-                                    <option value="">+84</option>
-                                    <option value="">+99</option>
-                                    <option value="">+90</option>
-                                </select>
-                                <input class="border-b-2 w-full border-gray-300 pb-1 pl-5" type="text" />
-                            </div>
-                        </div>
-                        <div class="flex py-5 form-control--oneline gap-10">
-                            <h4 class="w-28">Ngày sinh</h4>
-                            <input class="w-96 border-b-2 border-gray-300 pb-1" type="date" />
-                        </div>
-                        <div class="flex py-5 form-control--oneline gap-10">
-                            <h4 class="w-28">Giới tính</h4>
-                            <div class="flex gap-5">
-                                <div class="flex">
-                                    <input class="mt-2 mr-2" type="radio" name="gender" id="" />
-                                    <h5 class="mt-1" id="check1">Nam</h5>
-                                </div>
-                                <div class="flex">
-                                    <input class="mt-2 mr-2" type="radio" name="gender" id="" />
-                                    <h5 class="mt-1" id="check2">Nữ</h5>
-                                </div>
-                                <div class="flex">
-                                    <input class="mt-2 mr-2" type="radio" name="gender" id="" />
-                                    <h5 class="mt-1" id="check3">Khác</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex py-5 form-control--oneline gap-10">
-                            <h4 class="w-28">Quốc gia</h4>
-                            <input class="w-96 border-b-2 border-gray-300 pb-1" type="text" />
-                        </div>
+                       
                         <p class="text-xs text-gray-500">
                             * Nhập ngày sinh của bạn để nhận hàng trăm khuyến mãi và phiếu giảm giá đặc biệt từ
                             Order247.
                         </p>
-                        <button class="mt-14 bg-blue-600 text-white px-10 py-2" onclick="myFunction()">Xác nhận</button>
+                        <button type="submit" class="mt-14 bg-blue-600 text-white px-10 py-2" >Xác nhận</button>
                     </div>
                 </form>
             </div>

@@ -36,14 +36,13 @@
               <span class="symbol-input100">
                 <i class='bx bx-user'></i>
               </span>
-           
-            </div>
-             @error('email')
-              <span class="focus-input100" style="font-size:12px; margin-top:-10px; color:red;">{{$message}}</span>
-              @enderror
 
+            </div>
+            @error('email')
+            <span class="focus-input100" style="font-size:12px; margin-top:-10px; color:red;">{{$message}}</span>
+            @enderror
             <div class="wrap-input100 validate-input" style="padding-top:14px;margin-bottom:0px;">
-              <input autocomplete="off" class="input100" type="password" placeholder="Mật khẩu" name="password">
+              <input autocomplete="off" class="input100" type="password" placeholder="Mật khẩu" name="password" id="password-field">
               <span toggle="#password-field" class="bx fa-fw bx-hide field-icon click-eye"></span>
               <span class="focus-input100"></span>
               <span class="symbol-input100" style="padding-top:12px;">
@@ -51,8 +50,8 @@
               </span>
             </div>
             @error('password')
-              <span class="focus-input100" style="font-size:12px; margin-top:-10px; color:red;">{{$message}}</span>
-              @enderror
+            <span class="focus-input100" style="font-size:12px; margin-top:-10px; color:red;">{{$message}}</span>
+            @enderror
 
             <!--=====ĐĂNG NHẬP======-->
             <div class="container-login100-form-btn">
@@ -68,48 +67,47 @@
               <!--=====LINK TÌM MẬT KHẨU======-->
               <div class="text-right p-t-12">
                 <a class="txt2" href="{{route('resetpassword')}}">
-                                    Bạn quên mật khẩu?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                    <!--=====FOOTER======-->
-                    <div class="text-center p-t-70 txt2">
-                        Phần mềm quản lý bán hàng <i class="far fa-copyright" aria-hidden="true"></i>
-                        <script type="text/javascript">document.write(new Date().getFullYear());</script> <a
-                            class="txt2" href="#"> </a>
-                    </div>
-</div>
+                  Bạn quên mật khẩu?
+                </a>
+              </div>
             </div>
+          </form>
+          <!--=====FOOTER======-->
+          <div class="text-center p-t-70 txt2">
+            Phần mềm quản lý bán hàng <i class="far fa-copyright" aria-hidden="true"></i>
+            <script type="text/javascript">
+              document.write(new Date().getFullYear());
+            </script> <a class="txt2" href="#"> </a>
+          </div>
         </div>
+      </div>
     </div>
-    <!--Javascript-->
+  </div>
+  <!--Javascript-->
+  <script src="/js/main.js"></script>
+  <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+  <script src="js/jquery/jquery-3.2.1.min.js"></script>
 
-    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/select2/select2.min.js"></script>
-    <script type="text/javascript">
-        //show - hide mật khẩu
-        function myFunction() {
-            var x = document.getElementById("myInput");
-            if (x.type === "password") {
-                x.type = "text"
-            } else {
-                x.type = "password";
-            }
-        }
-        $(".click-eye").click(function () {
-            $(this).toggleClass("bx-show bx-hide");
-            var input = $($(this).attr("toggle"));
-            if (input.attr("type") == "password") {
-                input.attr("type", "text");
-            } else {
-                input.attr("type", "password");
-            }
-        });
-    </script>
+  <script type="text/javascript">
+    //show - hide mật khẩu
+    function myFunction() {
+      var x = document.getElementById("myInput");
+      if (x.type === "password") {
+        x.type = "text"
+      } else {
+        x.type = "password";
+      }
+    }
+    $(".click-eye").click(function() {
+      $(this).toggleClass("bx-show bx-hide");
+      var input = $($(this).attr("toggle"));
+      if (input.attr("type") == "password") {
+        input.attr("type", "text");
+      } else {
+        input.attr("type", "password");
+      }
+    });
+  </script>
 </body>
 
 </html>

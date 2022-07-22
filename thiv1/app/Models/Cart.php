@@ -10,7 +10,7 @@ class Cart extends Model
 {
     use HasFactory;
     protected $table = 'cart';
-    public $fillable = ['count','quantity','total_price','user_id','status','address','ma_sp','phone_number'];
+    public $fillable = ['count','total_price','name','status','address','ma_sp','phone_number','name_product'];
     public $timestamp = false;
     public function category(){
         return $this->belongsTo(Category::class,'cate_id');

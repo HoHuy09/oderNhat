@@ -105,9 +105,11 @@ Trang chủ
       <span class="my-auto ml-auto text-white font-bold "><a href="#">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a></span>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5   md:px-16 lg:px-10 ">
-      @foreach($products as $sp)
+      @foreach($product_sales as $sp)
       <div class="text-center px-5 rounded-lg hover:shadow-2xl bg-white relative">
         <a href="{{route('detail', ['id' => $sp->id])}}">
+          <!-- Phan tram sale -->
+
           <img src="{{asset('storage/'.$sp->image)}}" alt="" class="mx-auto py-5 h-44" />
         </a>
         <div>
@@ -120,8 +122,11 @@ Trang chủ
             </div>
           </div>
         </div>
-        <div class="absolute " style="top: -30px; right:-20px;">
-          <img class="w-20" src="{{asset('storage/anhweb/sale 50.png')}}" alt="">
+        <div class="absolute  " style="top: -35px; right:-20px;">
+          <div class="relative">
+            <img class="w-24" src="{{asset('storage/anhweb/sale 50.png')}}" alt="">
+            <h3 class="absolute top-3 text-white right-4 text-sm font-bold">{{$sp->sales}}%</h3><!-- end phan tram sale -->
+          </div>
         </div>
       </div>
 

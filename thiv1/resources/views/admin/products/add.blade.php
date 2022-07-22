@@ -240,12 +240,17 @@
                 <label class="control-label">Giá bán</label>
                 <input class="form-control" name="price" type="text">
               </div>
+              <div class="form-group col-md-3">
+                <label class="control-label">Sale</label>
+                <input class="form-control" name="sales" type="number">
+              </div>
               <!-- \image -->
               <div class="form-group col-md-12">
                 <label class="control-label">Ảnh sản phẩm</label>
                 <div id="myfileupload">
                   <input type="file" id="uploadfile" name="image" onchange="readURL(this);" />
                 </div>
+                
                 <div id="thumbbox">
                   <img height="450" width="400" alt="Thumb image" id="thumbimage" style="display: none" />
                   <a class="removeimg" href="javascript:"></a>
@@ -255,6 +260,13 @@
                   <p style="clear:both"></p>
                 </div>
 
+              </div>
+              <div class="form-group col-md-12">
+                <label class="control-label">Ảnh liên quan</label>
+                <div id="myfileupload">
+                  <input type="file" name="product_image[]" multiple />
+                </div>
+              
               </div>
               <div class="form-group col-md-12">
                 <label class="control-label">Mô tả sản phẩm</label>
