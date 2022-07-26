@@ -16,10 +16,9 @@ Trang chủ
     </div>
     <div class="lg:col-span-10 hidden lg:block">
       <div class="your-class">
-        <div> <img src="{{asset('storage/anhweb/banner7.png')}}" class="w-full bg-cover bg-left" style="height: 400px" alt="" /></div>
-        <div><img src="{{asset('storage/anhweb/banner4.png')}}" class="w-full bg-cover" style="height: 400px" alt="" /></div>
-        <div><img src="{{asset('storage/anhweb/banner5.png')}}" class="w-full bg-cover" style="height: 400px" alt="" /></div>
-        <div><img src="{{asset('storage/anhweb/banner6.png')}}" class="w-full bg-cover" style="height: 400px" alt="" /></div>
+        @foreach($slideshow as $sl)
+        <div> <img src="{{asset('storage/'.$sl->image)}}" class="w-full bg-cover bg-left" style="height: 400px" alt="" /></div>
+        @endforeach
       </div>
     </div>
     <!-- banner mobile -->
@@ -146,7 +145,7 @@ Trang chủ
   </div>
   <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8  md:px-16 lg:px-10">
     @foreach($products as $sp) <div class="text-center px-5 rounded-lg hover:shadow-2xl">
-      <img src="{{asset('storage/'.$sp->image)}}" alt="" class="mx-auto py-5 h-44" />
+      <a href="{{route('detail', ['id' => $sp->id])}}"><img src="{{asset('storage/'.$sp->image)}}" alt="" class="mx-auto py-5 h-44" /></a>
       <div>
         <a href="{{route('detail', ['id' => $sp->id])}}" class="font-bold nameProduct">{{$sp->name}}</a>
         <div class="flex mt-10 pb-7">
@@ -175,7 +174,7 @@ Trang chủ
   </div>
   <div class="grid grid-cols-2  md:px-16 lg:px-10 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8">
     @if($productnb->count() <= 10) @foreach($productnb as $spnb) <div class=" px-5 rounded-lg hover:shadow-2xl">
-      <img src="{{asset('storage/'.$spnb->image)}}" alt="" class="mx-auto py-5 h-44" />
+      <a href="{{route('detail', ['id' => $spnb->id])}}"><img src="{{asset('storage/'.$spnb->image)}}" alt="" class="mx-auto py-5 h-44" /></a>
       <div>
         <a href="{{route('detail', ['id' => $spnb->id])}}" class="font-bold text-md nameProduct">{{$spnb->name}}</a>
         <div class="flex mt-10 pb-7">
@@ -207,7 +206,7 @@ Trang chủ
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8  md:px-16 lg:px-10">
       @foreach($productdm1 as $spdm) <div class="text-center px-5 rounded-lg hover:shadow-2xl">
-        <img src="{{asset('storage/'.$spdm->image)}}" alt="" class="mx-auto py-5 h-44" />
+        <a href="{{route('detail', ['id' => $spdm->id])}}"><img src="{{asset('storage/'.$spdm->image)}}" alt="" class="mx-auto py-5 h-44" /></a>
         <div>
           <a href="{{route('detail', ['id' => $spdm->id])}}" class="font-bold text-md nameProduct">{{$spdm->name}}</a>
           <div class="flex mt-10 pb-7">
@@ -233,7 +232,7 @@ Trang chủ
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-8  md:px-16 lg:px-10">
       @foreach($productdm2 as $spdm) <div class="text-center px-5 rounded-lg hover:shadow-2xl">
-        <img src="{{asset('storage/'.$spdm->image)}}" alt="" class="mx-auto py-5 h-44" />
+        <a href="{{route('detail', ['id' => $spdm->id])}}"><img src="{{asset('storage/'.$spdm->image)}}" alt="" class="mx-auto py-5 h-44" /></a>
         <div>
           <a href="{{route('detail', ['id' => $spdm->id])}}" class="font-bold text-md nameProduct">{{$spdm->name}}</a>
           <div class="flex mt-10 pb-7">
@@ -264,79 +263,17 @@ Trang chủ
     </div>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 md:px-16 lg:px-10 mt-10 text-center gap-5">
-    <!-- @foreach($category as $cate)
-  <div>
-    <a href="#">
-      <img class="mx-auto" src="{{asset('storage/'.$cate->image)}}" alt="" />
-      <div>
-<h4>{{$cate->name}}</h4>
-      </div>
-    </a>
-  </div>
-  @endforeach -->
+    @foreach($category as $cate)
     <div>
-      <a href="">
-        <img class="mx-auto" src="{{asset('storage/anhweb/20211009091530.png')}}" alt="" />
+      <a href="#">
+        <img class="mx-auto" src="{{asset('storage/'.$cate->image)}}" alt="" />
         <div>
-          <h4>Đồ chơi & trò chơi</h4>
+          <h4>{{$cate->name}}</h4>
         </div>
       </a>
     </div>
-    <div>
-      <a href="">
-        <img class="mx-auto" src="{{asset('storage/anhweb/20211009092309.png')}}" alt="" />
-        <div>
-          <h4>Đồng hồ & phụ kiện</h4>
-        </div>
-      </a>
-    </div>
-    <div>
-      <a href="">
-        <img class="mx-auto" src="{{asset('storage/anhweb/10.png')}}" alt="" />
-        <div>
-          <h4>Điện tử văn phòng</h4>
-        </div>
-      </a>
-    </div>
-    <div>
-      <a href="">
-        <img class="mx-auto" src="{{asset('storage/anhweb/11.png')}}" alt="" />
-        <div>
-          <h4>Đồ điện . AV & Máy ảnh</h4>
-        </div>
-      </a>
-    </div>
-    <div>
-      <a href="">
-        <img class="mx-auto" src="{{asset('storage/anhweb/12.png')}}" alt="" />
-        <div>
-          <h4>Thể thao & Giải trí</h4>
-        </div>
-      </a>
-    </div>
-    <div>
-      <a href="">
-        <img class="mx-auto" src="{{asset('storage/anhweb/13.png')}}" alt="" />
-        <div>
-          <h4>Thời trang & Phụ kiện</h4>
-        </div>
-      </a>
-    </div>
-    <a href="">
-      <div>
-        <img class="mx-auto" src="{{asset('storage/anhweb/14.png')}}" alt="" />
-        <div>
-          <h4>Ôto xe, Xe máy, Xe đap</h4>
-        </div>
-      </div>
-    </a>
-    <div>
-      <a href=""><img class="mx-auto" src="{{asset('storage/anhweb/20211009092309.png')}}" alt="" />
-        <div>
-          <h4>Đồng hồ & phụ kiện</h4>
-        </div>
-      </a>
-    </div>
+    @endforeach
+
   </div>
   <div class="mt-10 ">
     <img src="{{asset('storage/anhweb/banner3.png')}}" alt="" />

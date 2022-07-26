@@ -220,8 +220,8 @@
                             @foreach($hasp as $hasp)
                             <div class="mx-2 ">
                                 <img class="thumbnail w-16 py-3 " src="{{asset('storage/'.$hasp->image)}}" alt="">
-                        </div>
-                      @endforeach
+                            </div>
+                            @endforeach
                         </div>
                         <button id="slideLeft" class="previous_caro absolute left-0 hidden" style="top: 380px; margin-Left:-100px;"><i class="fas fa-angle-left  bg-black opacity-80 px-3 py-2 rounded-full text-white "></i></button>
                         <button id="slideRight" class="next_caro absolute right-0 hidden" style="top: 380px;margin-Right:-100px;"><i class="fas fa-angle-right  bg-black opacity-80 px-3 py-2 rounded-full text-white "></i></button>
@@ -290,12 +290,16 @@
                             </div>
                         </div>
                         <div class="flex flex-col md:mx-auto mt-5">
-                            <button class="bg-blue-500 md:w-44 font-bold text-sm py-2 text-white">
-                                <a href="{{route('buynow',['id' => $product->id])}}"><i class="fab fa-opencart"></i> MUA NGAY</a>
-                            </button>
-                            <button class="text-blue-500 md:w-44 font-bold text-sm py-2 hover:bg-blue-500 border border-blue-500 mt-3 hover:text-white">
-                                <a href="{{route('addcart',['id' => $product->id])}}"><i class="fab fa-opencart"></i> THÊM VÀO GIỎ</a>
-                            </button>
+                            <a href="{{route('buynow',['id' => $product->id])}}">
+                                <button class="bg-blue-500 md:w-44 font-bold text-sm py-2 text-white">
+                                    <i class="fab fa-opencart"></i> MUA NGAY
+                                </button>
+                            </a>
+                            <a href="{{route('addcart',['id' => $product->id])}}">
+                                <button class="text-blue-500 md:w-44 font-bold text-sm py-2 hover:bg-blue-500 border border-blue-500 mt-3 hover:text-white">
+                                    <i class="fab fa-opencart"></i> THÊM VÀO GIỎ
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -311,7 +315,7 @@
                 </div>
             </div>
             <!-- đánh giá -->
-            <div class="mt-10 px-3 md:px-16 lg:px-0">
+            <div class="mt-10 px-3 md:px-16 lg:px-0 hidden">
                 <h3 class="font-bold text-2xl">Đánh giá sản phẩm</h3>
                 <div class=" mt-3 shadow-lg  rounded-md border border-gray-400 grid grid-cols-12 py-10 px-10">
                     <div class="col-span-3 ">

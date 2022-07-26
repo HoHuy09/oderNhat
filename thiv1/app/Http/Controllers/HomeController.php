@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Saveinformation;
 use App\Models\Cart;
 use App\Models\Cartdetail;
 use App\Models\Category;
+use App\Models\Listpost;
+use App\Models\Post;
 use App\Models\Product;
+use App\Models\Slideshow;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +19,7 @@ class HomeController extends Controller
     public function home(Request $request)
     {
         $category = Category::all();
+        $slideshow = Slideshow::all();
         $products = Product::all()->sortByDesc('id')->take(5);
         $productnb = Product::all()->filter(function ($item) {
             return $item->status == 1;
@@ -30,7 +35,7 @@ class HomeController extends Controller
         isset($cart) ? $cart = $request->session()->get('cart') : $cart = [];
         $user = $request->session()->get('user');
         isset($user) ? $user = $request->session()->get('user') : $user = [];
-        return view('home.home', compact('products','product_sales', 'productnb', 'category', 'productdm1','productdm2', 'cart', 'user'));
+        return view('home.home', compact('products','product_sales', 'productnb', 'category', 'productdm1','productdm2', 'cart', 'user','slideshow'));
     }
     public function detail(Request $request, $id)
     {
@@ -178,7 +183,7 @@ class HomeController extends Controller
         isset($user) ? $user = $request->session()->get('user') : $user = [];
         return view('home.information', compact('cart', 'user'));
     }
-    public function saveinformation(Request $request)
+    public function saveinformation(Saveinformation $request)
     {
         $cart = $request->session()->get('cart');
 
@@ -209,8 +214,7 @@ class HomeController extends Controller
         $model->status = 1;
         $model->save();
         $cart = session()->get('cart');
-        
-        return view('home.information', compact('cart', 'user'))->with('success', 'Tạo đơn thành công');
+        return redirect()->route('payment')->with('success', 'Tạo đơn thành công');
     }
     public function buynow(Request $request, $id)
     {
@@ -280,5 +284,20 @@ class HomeController extends Controller
     
         $model->save();
         return redirect()->route('setting')->with('success', 'Cập nhật thành công');
+    }
+    public function payment(Request $request){
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user = [];
+        return view('home.payment', compact('user'));
+    }
+    public function posts(Request $request){
+        $user = $request->session()->get('user');
+        isset($user) ? $user = $request->session()->get('user') : $user = [];
+        $cart = $request->session()->get('cart');
+        isset($cart) ? $cart = $request->session()->get('cart') : $cart = [];
+        $post = Post::all();
+        $listpost = Listpost::all();
+        $news = Post::all()->sortByDesc('id')->take(3);
+        return view('home.post', compact('user', 'cart','post','listpost','news'));
     }
 }

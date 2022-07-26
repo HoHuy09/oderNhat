@@ -142,9 +142,15 @@
            </a>
          </div>
          <div>
-           <a class="flex" href="#">
+           <a class="flex" href="{{route('introduce')}}">
              <i class="fas fa-leaf  text-xl mr-2" style="color: #001c40;"></i>
              <h4 class="font-bold">Giới thiệu</h4>
+           </a>
+         </div>
+         <div>
+           <a href="{{route('post')}}" class="flex">
+             <i class="fab fa-accusoft text-xl  mr-2" style="color: #001c40;"></i>
+             <h4 class="font-bold ">Bài viết</h4>
            </a>
          </div>
        </div>
@@ -152,5 +158,6 @@
          <i class="fas fa-home text-xl  mr-2" style="color: #001c40;"></i>
          <h4 class="font-bold ">Bán ở nhật bản</h4>
        </div>
+
      </div>
    </div>

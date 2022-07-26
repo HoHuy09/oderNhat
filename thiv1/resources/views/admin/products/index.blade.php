@@ -26,11 +26,8 @@
         <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
         <!-- Navbar Right Menu-->
         <ul class="app-nav">
-
-
             <!-- User Menu-->
             <li><a class="app-nav__item" href="/index.html"><i class='bx bx-log-out bx-rotate-180'></i> </a>
-
             </li>
         </ul>
     </header>
@@ -127,7 +124,11 @@
                                     <td>{{$item->quantity}}</td>
                                     <td><span class="badge bg-success">Còn hàng</span></td>
                                     <td>{{$item->price}}</td>
+                                    @if ($item->sales == null)
+                                    <td>Không</td>
+                                    @else
                                     <td>{{$item->sales}}</td>
+                                    @endif
                                     <td>{{$item->category->name}}</td>
                                     <td>
                                         <a class="btn btn-primary btn-sm trash" onclick="return confirm('Bạn có muốn xóa không?')" href="{{route('product.remove', ['id' => $item->id])}}"><i class="fas fa-trash-alt"></i></a>

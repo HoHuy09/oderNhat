@@ -53,6 +53,10 @@ Route::get('cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('information', [HomeController::class, 'information'])->name('information');
 Route::post('information', [HomeController::class, 'saveinformation']);
 Route::get('buynow/{id}', [HomeController::class, 'buynow'])->name('buynow');
+Route::get('payment', [HomeController::class, 'payment'])->name('payment');
+Route::get('post', [HomeController::class, 'posts'])->name('post');
+Route::get('post/{id}', [HomeController::class, 'postdetail'])->name('post.detail');
+Route::get('listposts/{id}', [HomeController::class, 'listposts'])->name('listposts');
 //User
 Route::get('setting', [HomeController::class, 'setting'])->name('setting');
 Route::get('setting1', [HomeController::class, 'setting1'])->name('setting1');
